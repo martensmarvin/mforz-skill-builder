@@ -3310,7 +3310,7 @@ Gemaakt op ${new Date().toLocaleDateString('nl-NL')}
                 const ZOHO_FUNCTION_URL = '/api/submit-skill';
                 
                 // Verstuur naar Zoho Flow
-                const response = await fetch(ZOHO_FLOW_WEBHOOK, {
+                const response = await fetch(/api/submit-skill, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -3319,9 +3319,9 @@ Gemaakt op ${new Date().toLocaleDateString('nl-NL')}
                 });
 
                 if (response.ok) {
-                    console.log('✅ Lead succesvol verstuurd naar Zoho CRM via Flow');
+                    console.log('✅ Lead succesvol verstuurd naar Zoho CRM ');
                 } else {
-                    console.error('❌ Fout bij versturen naar Zoho Flow:', response.statusText);
+                    console.error('❌ Fout bij versturen naar Zoho CRM:', response.statusText);
                 }
                 
                 // Log data voor debugging
