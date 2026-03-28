@@ -13,13 +13,12 @@ export default async function handler(req, res) {
             });
         }
 
+        // Zoho CRM Function URL
         const zohoUrl = 'https://www.zohoapis.eu/crm/v7/functions/skillbuildersubmit/actions/execute?auth_type=oauth';
 
         const response = await fetch(zohoUrl, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ payload })
         });
 
@@ -45,3 +44,5 @@ export default async function handler(req, res) {
         });
     }
 }
+```
+
