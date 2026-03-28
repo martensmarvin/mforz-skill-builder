@@ -3290,46 +3290,40 @@ Gemaakt op ${new Date().toLocaleDateString('nl-NL')}
 
         async function createZohoCRMLead(name, company, email, skillName, skillContent) {
             try {
-                // Prepare data for Zoho Flow webhook
-                const webhookData = {
+                // Prepare data for Vercel API proxy
+                const payload = {
                     name: name,
                     company: company,
                     email: email,
-                    skillName: skillName,
-                    skillContent: skillContent,
-                    mode: currentMode === 'advanced' ? 'Complete Designer (6 stappen)' : 'Snelstart (3 stappen)',
+                    skill_name: skillName,
+                    skill_md: skillContent,
+                    category: currentMode === 'advanced' ? 'Complete Designer (6 stappen)' : 'Snelstart (3 stappen)',
                     timestamp: new Date().toISOString(),
-                    source: 'MFORZ Skill Builder',
-                    userAgent: navigator.userAgent,
-                    referrer: document.referrer || 'Direct'
+                    source: 'MFORZ Skill Builder'
                 };
 
-                console.log('Sending to Zoho Flow:', webhookData);
+                console.log('📤 Sending skill to CRM via Vercel proxy:', payload);
 
-                // Zoho Flow webhook URL - ACTIEF
-                const ZOHO_FUNCTION_URL = '/api/submit-skill';
-                
-                // Verstuur naar Zoho Flow
-                const response = await fetch(/api/submit-skill, {
+                // Call Vercel serverless function (proxy to Zoho CRM Function)
+                const response = await fetch('/api/submit-skill', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(webhookData)
+                    body: JSON.stringify({ payload })
                 });
 
+                const data = await response.json();
+                
                 if (response.ok) {
-                    console.log('✅ Lead succesvol verstuurd naar Zoho CRM ');
+                    console.log('✅ Lead succesvol verstuurd naar Zoho CRM:', data);
                 } else {
-                    console.error('❌ Fout bij versturen naar Zoho CRM:', response.statusText);
+                    console.error('❌ Fout bij versturen naar Zoho CRM:', data.message || response.statusText);
                 }
                 
-                // Log data voor debugging
-                console.log('📊 Lead data klaar voor Zoho Flow webhook:', JSON.stringify(webhookData, null, 2));
-                
             } catch (error) {
-                console.error('Error in createZohoCRMLead:', error);
-                // Continue - don't break user experience even if webhook fails
+                console.error('❌ Error in createZohoCRMLead:', error);
+                // Continue - don't break user experience even if request fails
             }
         }
 
