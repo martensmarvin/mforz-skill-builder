@@ -3307,7 +3307,7 @@ Gemaakt op ${new Date().toLocaleDateString('nl-NL')}
                 console.log('Sending to Zoho Flow:', webhookData);
 
                 // Zoho Flow webhook URL - ACTIEF
-                const ZOHO_FLOW_WEBHOOK = 'https://flow.zoho.eu/20072364821/flow/webhook/incoming?zapikey=1001.72910cf8b9dfd47ca1fc571663718d36.86cdce801780ae614034f9487ee97b58&isdebug=false';
+                const ZOHO_FUNCTION_URL = '/api/submit-skill';
                 
                 // Verstuur naar Zoho Flow
                 const response = await fetch(ZOHO_FLOW_WEBHOOK, {
