@@ -1,0 +1,3439 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MFORZ Skill Builder | Claude Skills voor Zoho One</title>
+    <meta name="description" content="Bouw je eigen Claude AI skill voor Zoho One automatisering. Kies uit sjablonen of start vanaf scratch.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #2F4F6F;
+            --accent: #f49000;
+            --accent-strong: #B85E00;
+            --accent-hover: #A95400;
+            --background: #EFF6FF;
+            --surface: #FFFFFF;
+            --white: #FFFFFF;
+            --text-dark: #0F172A;
+            --text-muted: #475569;
+            --border: #E2E8F0;
+            --success: #2F4F6F;
+            --success-bg: #EFF6FF;
+            --radius: 20px;
+            --radius-sm: 12px;
+            --shadow: 0 8px 24px rgba(15,23,42,0.05);
+            --shadow-hover: 0 12px 32px rgba(15,23,42,0.10);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            overflow: visible;
+            height: auto !important;
+            min-height: 0 !important;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'DM Sans', Arial, sans-serif;
+            background: #ffffff;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow: visible;
+            height: auto !important;
+            min-height: 0 !important;
+            padding-bottom: 40px !important;
+            margin: 0 !important;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px 0 20px;
+            overflow: visible;
+        }
+        
+        /* Header */
+        .header {
+            background: var(--background);
+            border-radius: var(--radius);
+            padding: 56px 48px 48px 48px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow);
+            text-align: left !important;
+        }
+        
+        .header-content {
+            text-align: left !important;
+        }
+        
+        .header-eyebrow {
+            font-size: 10px !important;
+            font-weight: 700;
+            color: var(--accent-strong);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+            display: block;
+            text-align: left !important;
+        }
+        
+        .header h1 {
+            font-size: 48px !important;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            line-height: 1.15;
+            text-align: left !important;
+        }
+        
+        .header h1 .highlight {
+            color: var(--accent);
+        }
+        
+        .header-intro {
+            font-size: 18px !important;
+            color: var(--text-dark);
+            margin-bottom: 12px !important;
+            line-height: 1.5;
+            font-weight: 500;
+            text-align: left !important;
+        }
+        
+        .header-detail {
+            font-size: 15px !important;
+            color: var(--text-muted);
+            margin: 0 !important;
+            line-height: 1.6;
+            text-align: left !important;
+        }
+        
+        .header-capabilities {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .capability-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .capability-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 14px;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .capability-text {
+            font-size: 14px;
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 24px 40px 24px;
+            }
+            .header h1 {
+                font-size: 36px !important;
+            }
+            .header-capabilities {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Mode Selection */
+        .mode-selection {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+        }
+        
+        .mode-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+        
+        .mode-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+        
+        .mode-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .mode-card {
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 28px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .mode-card:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+        
+        .mode-card-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent-strong);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
+        }
+        
+        .mode-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+        
+        .mode-card-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        
+        .mode-card-use-case {
+            font-size: 13px;
+            color: var(--primary);
+            font-weight: 600;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        
+        @media (max-width: 768px) {
+            .mode-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Progress Bars */
+        .progress-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--background);
+            border-radius: var(--radius);
+            padding: 24px 40px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+        }
+        
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .progress-step.completed {
+            cursor: pointer;
+        }
+        
+        .progress-step.completed:hover .progress-number {
+            transform: scale(1.1);
+        }
+        
+        .progress-number {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            transition: all 0.2s ease;
+        }
+        
+        .progress-step.active .progress-number {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(244, 144, 0, 0.3);
+        }
+        
+        .progress-step.completed .progress-number {
+            background: var(--success);
+            color: white;
+            border-color: var(--success);
+        }
+        
+        .progress-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-align: center;
+        }
+        
+        .progress-step.active .progress-label {
+            color: var(--accent-strong);
+            font-weight: 700;
+        }
+        
+        .progress-step.completed .progress-label {
+            color: var(--primary);
+        }
+        
+        .progress-line {
+            position: absolute;
+            top: 24px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--border);
+            z-index: 1;
+        }
+        
+        .progress-line-fill {
+            height: 100%;
+            background: var(--success);
+            transition: width 0.3s ease;
+        }
+        
+        /* Quick Progress */
+        .quick-progress-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--background);
+            border-radius: var(--radius);
+            padding: 20px 32px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+        }
+        
+        .quick-progress-bar .progress-line {
+            position: absolute;
+            top: 28px;
+            left: 32px;
+            right: 32px;
+            height: 3px;
+            background: var(--border);
+            z-index: 1;
+        }
+        
+        .quick-progress-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+        }
+        
+        .quick-progress-step {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .quick-progress-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--text-muted);
+            flex-shrink: 0;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .quick-progress-step.active .quick-progress-number {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        
+        .quick-progress-step.completed .quick-progress-number {
+            background: var(--success);
+            color: white;
+            border-color: var(--success);
+        }
+        
+        .quick-progress-text {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+        
+        .quick-progress-step.active .quick-progress-text {
+            color: var(--accent-strong);
+        }
+        
+        .quick-progress-step.completed .quick-progress-text {
+            color: var(--primary);
+        }
+        
+        .quick-progress-arrow {
+            color: var(--border);
+            font-size: 16px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Steps */
+        .step {
+            display: none;
+        }
+        
+        .step.active {
+            display: block;
+        }
+        
+        .step-content {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+        }
+        
+        .step-header {
+            margin-bottom: 32px;
+        }
+        
+        .step-number {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--accent-strong);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
+        }
+        
+        .step-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+        
+        .step-description {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 28px;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+        
+        .form-help {
+            display: block;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 15px;
+            font-family: 'DM Sans', Arial, sans-serif;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-sm);
+            background: white;
+            color: var(--text-dark);
+            transition: all 0.2s ease;
+        }
+        
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(244, 144, 0, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+        
+        /* Use Case Pills */
+        .use-case-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        
+        .use-case-pill {
+            padding: 8px 16px;
+            background: var(--background);
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .use-case-pill:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            transform: translateY(-1px);
+        }
+        
+        /* Trigger Builder */
+        .trigger-builder {
+            background: var(--background);
+            border-radius: var(--radius-sm);
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .trigger-input-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .trigger-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .trigger-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        
+        .trigger-text {
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+        
+        .trigger-remove {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 4px 8px;
+            font-size: 18px;
+            line-height: 1;
+            transition: color 0.2s ease;
+        }
+        
+        .trigger-remove:hover {
+            color: #dc2626;
+        }
+        
+        .trigger-examples {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+        
+        .trigger-examples-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        
+        .trigger-example-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .trigger-example-pill {
+            padding: 6px 12px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            font-size: 12px;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .trigger-example-pill:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        
+        /* Buttons */
+        .button {
+            padding: 14px 32px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: 'DM Sans', Arial, sans-serif;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .button-primary {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .button-primary:hover {
+            background: var(--accent-hover);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+        
+        .button-secondary {
+            background: var(--background);
+            color: var(--primary);
+            border: 2px solid var(--border);
+        }
+        
+        .button-secondary:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px;
+        }
+        
+        /* Checkbox */
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px;
+            background: var(--background);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        
+        .checkbox-item:hover {
+            background: #e0f2fe;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            margin-top: 2px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .checkbox-label {
+            flex: 1;
+        }
+        
+        .checkbox-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+        
+        .checkbox-description {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        
+        /* Preview Section */
+        .preview-section {
+            background: var(--background);
+            border-radius: var(--radius);
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+        
+        .preview-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border);
+        }
+        
+        .preview-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        
+        .preview-filename {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            font-family: 'Monaco', 'Courier New', monospace;
+            background: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+        
+        .preview-content {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 24px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            color: var(--text-dark);
+            white-space: pre-wrap;
+        }
+        
+        /* Download Section */
+        .download-section {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+        }
+        
+        .download-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        
+        .download-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+        
+        .download-description {
+            font-size: 15px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .download-actions {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            max-width: 500px;
+            margin: 0 auto 32px;
+        }
+        
+        .download-button {
+            padding: 18px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .download-button:hover {
+            background: var(--accent-hover);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+        
+        .download-button-icon {
+            font-size: 20px;
+        }
+        
+        /* Trust Box */
+        .trust-box {
+            background: #f0fdf4;
+            border: 2px solid #86efac;
+            border-radius: var(--radius-sm);
+            padding: 20px 24px;
+            margin-top: 24px;
+        }
+        
+        .trust-box-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #166534;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .trust-box-content {
+            font-size: 13px;
+            color: #166534;
+            line-height: 1.6;
+        }
+        
+        .trust-box-list {
+            margin: 8px 0 0 0;
+            padding-left: 20px;
+        }
+        
+        .trust-box-list li {
+            margin-bottom: 4px;
+        }
+        
+        /* Email Optional */
+        .email-optional {
+            background: var(--background);
+            border-radius: var(--radius-sm);
+            padding: 24px;
+            margin-top: 32px;
+        }
+        
+        .email-optional-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+        
+        .email-optional-description {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        
+        .email-form {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .email-form input {
+            flex: 1;
+        }
+        
+        .email-form button {
+            padding: 14px 28px;
+            white-space: nowrap;
+        }
+        
+        /* Success Message */
+        .success-message {
+            background: #f0fdf4;
+            border: 2px solid #86efac;
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            margin-top: 12px;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: #166534;
+            font-weight: 600;
+        }
+        
+        .success-message.show {
+            display: flex;
+        }
+        
+        /* MCP Selector */
+        .mcp-selector {
+            background: var(--background);
+            border-radius: var(--radius-sm);
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .mcp-category {
+            margin-bottom: 24px;
+        }
+        
+        .mcp-category:last-child {
+            margin-bottom: 0;
+        }
+        
+        .mcp-category-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border);
+        }
+        
+        .mcp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 12px;
+        }
+        
+        .mcp-option {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .mcp-option:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow);
+        }
+        
+        .mcp-option.selected {
+            border-color: var(--accent);
+            background: rgba(244, 144, 0, 0.05);
+        }
+        
+        .mcp-option-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+        
+        .mcp-option-service {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        
+        .mcp-option-tools {
+            font-size: 11px;
+            color: var(--accent-strong);
+            font-weight: 600;
+        }
+        
+        /* Tool Selector */
+        .tool-selector {
+            background: var(--background);
+            border-radius: var(--radius-sm);
+            padding: 24px;
+            margin-top: 16px;
+            display: none;
+        }
+        
+        .tool-selector.show {
+            display: block;
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 8px;
+            margin-top: 16px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .tool-option {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .tool-option:hover {
+            background: var(--background);
+        }
+        
+        .tool-option input[type="checkbox"] {
+            cursor: pointer;
+        }
+        
+        .tool-option-name {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        /* Utilities */
+        .hidden {
+            display: none !important;
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px 0 16px;
+            }
+            .step-content {
+                padding: 28px 20px;
+            }
+            .button-group {
+                flex-direction: column;
+            }
+            .button {
+                width: 100%;
+            }
+            .email-form {
+                flex-direction: column;
+            }
+            .email-form button {
+                width: 100%;
+            }
+            .quick-progress-steps {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .quick-progress-arrow {
+                transform: rotate(90deg);
+                align-self: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Landing Page -->
+        <div id="landing-page">
+            <div class="header">
+                <div class="header-content">
+                    <span class="header-eyebrow">MFORZ Skill Builder voor Claude</span>
+                    <h1>Build Skills to Connect <span class="highlight">Claude to Zoho One</span></h1>
+                    <p class="header-intro">Leer Claude jouw Zoho-processen uitvoeren. Bouw custom skills die Claude toegang geven tot CRM, Books, Desk, Mail en Analytics.</p>
+                    <p class="header-detail">Deze builder genereert een skill-bestand dat Claude leert hoe jouw team met Zoho werkt — en helpt je begrijpen wat sterke business skills effectief maakt.</p>
+                    
+                    <div class="header-capabilities">
+                        <div class="capability-item">
+                            <div class="capability-icon">✓</div>
+                            <div class="capability-text">Skills leren Claude jouw Zoho-processen herkennen en uitvoeren</div>
+                        </div>
+                        <div class="capability-item">
+                            <div class="capability-icon">✓</div>
+                            <div class="capability-text">Verbind Claude met CRM, Books, Desk, Mail en Analytics via één skill</div>
+                        </div>
+                        <div class="capability-item">
+                            <div class="capability-icon">✓</div>
+                            <div class="capability-text">Bepaal welke acties Claude mag uitvoeren en wanneer hij om toestemming vraagt</div>
+                        </div>
+                        <div class="capability-item">
+                            <div class="capability-icon">✓</div>
+                            <div class="capability-text">Upload je skill in Claude en activeer direct je Zoho-automatisering</div>
+                        </div>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left: 4px solid var(--primary); padding: 20px; border-radius: 12px; margin-top: 32px; margin-bottom: 32px;">
+                        <div style="font-weight: 600; color: var(--primary); margin-bottom: 12px; font-size: 15px;">💡 Wat je leert tijdens het bouwen</div>
+                        <div style="font-size: 14px; color: var(--text-dark); line-height: 1.7;">
+                            Deze builder is meer dan een generator — het is een workshop. Terwijl je jouw skill bouwt, leer je:<br><br>
+                            → Hoe je Claude effectieve triggers leert<br>
+                            → Welke Zoho-data en -acties je skill nodig heeft<br>
+                            → Hoe je edge cases voorkomt die skills breken<br>
+                            → Hoe je veiligheidsregels balanceert met autonomie<br><br>
+                            Deze kennis kun je toepassen op alle toekomstige Claude skills.
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 40px;">
+                        <button onclick="startBuilding()" style="background: var(--accent); color: white; border: none; padding: 18px 48px; border-radius: 12px; font-size: 18px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(244, 144, 0, 0.3); transition: all 0.2s ease;">
+                            Start met bouwen →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mode Selection Page (initially hidden) -->
+        <div id="mode-selection-page" class="hidden">
+
+        <!-- Mode Selection -->
+        <div id="mode-selection" class="mode-selection">
+            <h2 class="mode-title">Hoe wil je je skill bouwen?</h2>
+            <p class="mode-subtitle">Beide paden leveren een werkende skill op. Het verschil: hoeveel controle en leermomenten wil je?</p>
+            
+            <div class="mode-cards">
+                <div class="mode-card" onclick="startQuickMode()">
+                    <div class="mode-card-label">Beste keuze voor standaard processen</div>
+                    <h3>Snelstart — Eenvoudige Skill</h3>
+                    <p class="mode-card-desc">Kies een standaard Zoho-actie, pas aan, klaar. Perfect voor eenmalige acties en processen die altijd hetzelfde verlopen.</p>
+                    <span class="mode-card-use-case">Geschikt voor: Lead toevoegen, contact opzoeken, afspraak maken</span>
+                    <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted);">
+                        <strong>Wat krijg je:</strong><br>
+                        • Pre-built trigger-set voor common Zoho-acties<br>
+                        • Standaard veiligheidsregels<br>
+                        • Direct klaar om in Claude te uploaden<br><br>
+                        ⏱ Tijdsinvestering: ~3 minuten<br>
+                        📚 Leereffect: ★☆☆ — Je ziet hoe een skill eruitziet
+                    </div>
+                </div>
+                
+                <div class="mode-card" onclick="startAdvancedMode()">
+                    <div class="mode-card-label">Beste keuze voor robuuste workflows</div>
+                    <h3>Complete Designer — Complete Skill</h3>
+                    <p class="mode-card-desc">Bouw een robuuste skill met triggers, edge cases en veiligheidscontroles. Doorloop 6 stappen die je helpen grondig nadenken over skill-design.</p>
+                    <span class="mode-card-use-case">Geschikt voor: Processen met uitzonderingen, workflows waar meerdere mensen mee werken</span>
+                    <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted);">
+                        <strong>Wat krijg je:</strong><br>
+                        • Zelf alle triggers en edge cases definiëren<br>
+                        • Keuze uit alle Zoho-services en acties<br>
+                        • Custom governance-regels per skill<br>
+                        • Inzicht in wat sterke skills effectief maakt<br><br>
+                        ⏱ Tijdsinvestering: ~8 minuten<br>
+                        📚 Leereffect: ★★★ — Je begrijpt skill design patterns
+                    </div>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 24px; font-size: 14px; color: var(--text-muted);">
+                💡 Tip: Ook ervaren gebruikers kiezen vaak Snelstart voor eenvoudige skills. Complete Designer gebruik je als je de kwaliteit van je skill belangrijk vindt.
+            </p>
+        </div>
+        </div>
+        <!-- End Mode Selection Page -->
+
+        <!-- Quick Start Flow -->
+        <div id="quick-mode" class="hidden">
+            <!-- Quick Progress Bar -->
+            <div class="quick-progress-bar">
+                <div class="progress-line">
+                    <div class="progress-line-fill" id="quick-progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="quick-progress-steps">
+                    <div class="quick-progress-step active" data-step="1">
+                        <div class="quick-progress-number">1</div>
+                        <div class="quick-progress-text">Use Case</div>
+                    </div>
+                    <div class="quick-progress-arrow">→</div>
+                    <div class="quick-progress-step" data-step="2">
+                        <div class="quick-progress-number">2</div>
+                        <div class="quick-progress-text">Details</div>
+                    </div>
+                    <div class="quick-progress-arrow">→</div>
+                    <div class="quick-progress-step" data-step="3">
+                        <div class="quick-progress-number">3</div>
+                        <div class="quick-progress-text">Preview & Download</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Step 1: Use Case -->
+            <div id="quick-step-1" class="step active">
+                <div class="step-content">
+                    <div class="step-header">
+                        <div class="step-number">Stap 1 van 3</div>
+                        <h2 class="step-title">Welke Zoho-skill wil je bouwen?</h2>
+                        <p class="step-description">Kies een standaard skill of beschrijf je eigen use case.</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Veelvoorkomende skills</label>
+                        <div class="use-case-pills">
+                            <div class="use-case-pill" onclick="selectQuickUseCase('lead')">🎯 Lead toevoegen aan CRM</div>
+                            <div class="use-case-pill" onclick="selectQuickUseCase('contact')">👤 Contact opzoeken</div>
+                            <div class="use-case-pill" onclick="selectQuickUseCase('afspraak')">📅 Afspraak inplannen</div>
+                            <div class="use-case-pill" onclick="selectQuickUseCase('email')">✉️ Email versturen vanuit CRM</div>
+                            <div class="use-case-pill" onclick="selectQuickUseCase('deal')">💼 Deal aanmaken</div>
+                            <div class="use-case-pill" onclick="selectQuickUseCase('taak')">✓ Taak aanmaken</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="quick-skill-name">Of beschrijf je eigen skill</label>
+                        <p class="form-help">Geef je skill een duidelijke naam die beschrijft wat hij doet.</p>
+                        <input type="text" id="quick-skill-name" class="form-input" placeholder="Bijv. 'Lead toevoegen met automatische enrichment'">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="quick-purpose">Wat moet deze skill doen?</label>
+                        <p class="form-help">Beschrijf in enkele zinnen het doel en het resultaat.</p>
+                        <textarea id="quick-purpose" class="form-textarea" placeholder="Bijv. 'Deze skill voegt een nieuwe lead toe aan Zoho CRM en haalt automatisch bedrijfsgegevens op via de company enrichment API.'"></textarea>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="button button-secondary" onclick="backToModeSelection()">← Terug</button>
+                        <button class="button button-primary" onclick="goToQuickStep(2)">Volgende →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Step 2: Details -->
+            <div id="quick-step-2" class="step">
+                <div class="step-content">
+                    <div class="step-header">
+                        <div class="step-number">Stap 2 van 3</div>
+                        <h2 class="step-title">Triggers en output</h2>
+                        <p class="step-description">Leer Claude wanneer hij deze skill moet gebruiken en wat hij moet opleveren.</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Wanneer moet Claude deze skill gebruiken?</label>
+                        <p class="form-help">Voeg triggerzinnen toe die Claude herkent. Minimaal 2 triggers aanbevolen.</p>
+                        
+                        <div class="trigger-builder">
+                            <div class="trigger-input-group">
+                                <input type="text" id="quick-trigger-input" class="form-input" placeholder="Bijv. 'voeg een lead toe' of 'maak een nieuwe prospect aan'">
+                                <button class="button button-primary" onclick="addQuickTrigger()">Toevoegen</button>
+                            </div>
+                            
+                            <div id="quick-trigger-list" class="trigger-list">
+                                <!-- Triggers worden hier toegevoegd -->
+                            </div>
+
+                            <div class="trigger-examples">
+                                <div class="trigger-examples-title">Klik om een voorbeeld toe te voegen:</div>
+                                <div class="trigger-example-pills" id="quick-trigger-examples">
+                                    <!-- Worden dynamisch gevuld op basis van use case -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="quick-output">Wat moet Claude opleveren?</label>
+                        <p class="form-help">Beschrijf het verwachte resultaat wanneer deze skill wordt uitgevoerd.</p>
+                        <textarea id="quick-output" class="form-textarea" placeholder="Bijv. 'Een bevestiging met de lead ID, bedrijfsnaam en volgende stappen voor follow-up.'"></textarea>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="button button-secondary" onclick="goToQuickStep(1)">← Terug</button>
+                        <button class="button button-primary" onclick="goToQuickStep(3)">Preview & Download →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Step 3: Preview & Download -->
+            <div id="quick-step-3" class="step">
+                <div class="preview-section">
+                    <div class="preview-header">
+                        <h2 class="preview-title">Preview van je skill</h2>
+                        <div class="preview-filename" id="quick-preview-filename">SKILL.md</div>
+                    </div>
+                    <div class="preview-content" id="quick-preview-content">
+                        <!-- Preview wordt hier geladen -->
+                    </div>
+                </div>
+
+                <div class="download-section">
+                    <div class="download-header">
+                        <h2 class="download-title">Je skill is klaar!</h2>
+                        <p class="download-description">Download je SKILL.md-bestand en upload het in Claude om je Zoho-skill te activeren.</p>
+                    </div>
+
+                    <div class="download-actions">
+                        <button class="download-button" onclick="downloadQuickSkill()">
+                            <span class="download-button-icon">📥</span>
+                            <span>Download SKILL.md</span>
+                        </button>
+                        <button class="button button-secondary" onclick="sendForReview()" style="margin-top: 12px;">
+                            📤 Verstuur voor Review
+                        </button>
+                    </div>
+
+                    <div class="trust-box">
+                        <div class="trust-box-title">
+                            <span>🔒</span>
+                            <span>Skill Bestandsbeveiliging</span>
+                        </div>
+                        <div class="trust-box-content">
+                            <p style="margin-bottom: 12px; line-height: 1.6;">Je skill-bestand is een tekstbestand (.md) dat je kunt openen en inspecteren in elke teksteditor.</p>
+                            <div style="margin-bottom: 12px;">
+                                <strong style="color: var(--primary);">Het bevat:</strong>
+                                <ul class="trust-box-list" style="margin-top: 6px;">
+                                    <li>De skill-definitie die jij hebt gebouwd</li>
+                                    <li>Triggers, stappen en veiligheidsregels</li>
+                                    <li>Zoho-service selecties</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <strong style="color: #dc2626;">Het bevat NIET:</strong>
+                                <ul class="trust-box-list" style="margin-top: 6px;">
+                                    <li>Login-gegevens of wachtwoorden</li>
+                                    <li>Daadwerkelijke klantdata uit je Zoho</li>
+                                    <li>API-sleutels of tokens</li>
+                                </ul>
+                            </div>
+                            <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted); line-height: 1.6;">Skill-bestanden geven Claude instructies — de daadwerkelijke Zoho-toegang configureer je apart in Claude's settings.</p>
+                        </div>
+                    </div>
+
+                    <div class="email-optional">
+                        <h3 class="email-optional-title">Wil je een installatie-handleiding ontvangen? (optioneel)</h3>
+                        <p class="email-optional-description">We sturen je een korte email met stappen om je skill in Claude te uploaden en te testen. Je download blijft altijd mogelijk, ook zonder email.</p>
+                        
+                        <div class="email-form">
+                            <input type="email" id="quick-email-input" class="form-input" placeholder="je@email.nl">
+                            <button class="button button-primary" onclick="sendQuickGuide()">Stuur handleiding</button>
+                        </div>
+                        
+                        <div id="quick-email-success" class="success-message">
+                            <span>✓</span>
+                            <span>Handleiding verstuurd! Check je inbox.</span>
+                        </div>
+                    </div>
+
+                    <div class="button-group" style="justify-content: center; margin-top: 32px;">
+                        <button class="button button-secondary" onclick="goToQuickStep(2)">← Terug naar details</button>
+                        <button class="button button-secondary" onclick="startNewSkill()">Nieuwe skill maken</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Advanced Mode Flow -->
+        <div id="advanced-mode" class="hidden">
+            <!-- Progress Bar -->
+            <div class="progress-bar">
+                <div class="progress-line">
+                    <div class="progress-line-fill" id="progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="progress-steps">
+                    <div class="progress-step active" data-step="1">
+                        <div class="progress-number">1</div>
+                        <div class="progress-label">Basis</div>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <div class="progress-number">2</div>
+                        <div class="progress-label">Triggers</div>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <div class="progress-number">3</div>
+                        <div class="progress-label">MCP & Tools</div>
+                    </div>
+                    <div class="progress-step" data-step="4">
+                        <div class="progress-number">4</div>
+                        <div class="progress-label">Implementatie</div>
+                    </div>
+                    <div class="progress-step" data-step="5">
+                        <div class="progress-number">5</div>
+                        <div class="progress-label">Veiligheid</div>
+                    </div>
+                    <div class="progress-step" data-step="6">
+                        <div class="progress-number">6</div>
+                        <div class="progress-label">Preview</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Step 1: Basics -->
+            <div id="adv-step-1" class="step active">
+                <div class="step-content">
+                    <div class="step-header">
+                        <div class="step-number">Stap 1 van 6</div>
+                        <h2 class="step-title">Wat doet deze skill?</h2>
+                        <p class="step-description">Beschrijf welke Zoho-taak je Claude wilt leren. Een skill is een instructie-set die Claude leert wanneer en hoe hij een specifiek Zoho-proces moet uitvoeren.</p>
+                    </div>
+
+                    <div style="background: #eff6ff; border-left: 4px solid var(--primary); padding: 16px; border-radius: 8px; margin-bottom: 24px;">
+                        <div style="font-weight: 600; color: var(--primary); margin-bottom: 8px;">💡 Voorbeeld van een goede skill-definitie</div>
+                        <div style="font-size: 14px; color: var(--text-dark); line-height: 1.6;">
+                            "Deze skill leert Claude hoe hij leads van LinkedIn moet toevoegen aan Zoho CRM, inclusief bedrijfsverrijking en sales rep toewijzing."
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="skill-name">Geef deze skill een herkenbare naam</label>
+                        <p class="form-help">Dit label zie jij in Claude, niet je team. Bijvoorbeeld: "zoho-lead-intake" of "crm-contact-enrichment"</p>
+                        <input type="text" id="skill-name" class="form-input" placeholder="Bijv. 'zoho-lead-enrichment'">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="skill-purpose">Wat moet deze skill kunnen?</label>
+                        <p class="form-help">Beschrijf in 2-3 zinnen wat Claude moet leren. Wees specifiek over de Zoho-acties. Bijvoorbeeld:<br><br>
+                        "Wanneer ik een LinkedIn-lead deel, moet deze skill Claude leren:<br>
+                        • Het bedrijf opzoeken in onze CRM-database<br>
+                        • Bedrijfsdata ophalen via externe enrichment API<br>
+                        • Een nieuw lead-record aanmaken in Zoho CRM<br>
+                        • De lead toewijzen aan de juiste sales rep o.b.v. regio<br>
+                        • Een follow-up taak aanmaken voor die rep"</p>
+                        <textarea id="skill-purpose" class="form-textarea" placeholder="Beschrijf wat deze skill Claude moet leren..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="output-type">Hoe weet je dat de skill succesvol was?</label>
+                        <p class="form-help">Dit helpt Claude begrijpen wanneer de skill-uitvoering compleet is</p>
+                        <select id="output-type" class="form-select">
+                            <option value="confirmation">Bevestiging — "Lead toegevoegd met ID 12345"</option>
+                            <option value="data">Gestructureerde data — Tabel of lijst met resultaten</option>
+                            <option value="summary">Samenvatting — Overzicht van uitgevoerde acties</option>
+                            <option value="action">Actie-items — Vervolgstappen voor jou of je team</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="output-description">Beschrijf exact wat Claude moet antwoorden</label>
+                        <p class="form-help">Bijvoorbeeld: "Bevestiging met lead-ID, bedrijfsnaam, aantal medewerkers, toegewezen sales rep, en aanbevolen vervolgactie"</p>
+                        <textarea id="output-description" class="form-textarea" placeholder="Beschrijf het ideale antwoord van Claude..."></textarea>
+                    </div>
+
+                    <div style="background: #f0fdf4; border-left: 4px solid #86efac; padding: 16px; border-radius: 8px; margin-top: 24px;">
+                        <div style="font-weight: 600; color: #166534; margin-bottom: 8px;">💡 Waarom dit belangrijk is</div>
+                        <div style="font-size: 14px; color: #166534; line-height: 1.6; margin-bottom: 12px;">
+                            Een heldere skill-definitie is het verschil tussen een skill die Claude soms begrijpt en een skill die altijd werkt.<br><br>
+                            Vage skill-doelen → Claude raadt wat je bedoelt<br>
+                            Heldere skill-doelen → Claude weet precies wat te doen
+                        </div>
+                        <div style="font-weight: 600; color: #166534; margin-bottom: 8px;">📚 Wat je hier leert</div>
+                        <div style="font-size: 14px; color: #166534; line-height: 1.6;">
+                            Het definiëren van goede skills is de basis van effectieve Claude-automatisering. Deze skill-thinking kun je toepassen op elk Claude-project.
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="button button-secondary" onclick="backToModeSelection()">← Terug</button>
+                        <button class="button button-primary" onclick="goToAdvStep(2)">Volgende →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Step 2: Triggers -->
+            <div id="adv-step-2" class="step">
+                <div class="step-content">
+                    <div class="step-header">
+                        <div class="step-number">Stap 2 van 6</div>
+                        <h2 class="step-title">Hoe herkent Claude deze skill?</h2>
+                        <p class="step-description">Triggers zijn de zinnen die deze skill activeren. Leer Claude herkennen wanneer jij deze specifieke skill wilt gebruiken.</p>
+                    </div>
+
+                    <div style="background: #eff6ff; border-left: 4px solid #3b82f6; padding: 16px; border-radius: 8px; margin-bottom: 24px;">
+                        <div style="font-weight: 600; color: var(--primary); margin-bottom: 12px;">📝 Wat zijn goede triggers?</div>
+                        <div style="font-size: 14px; color: var(--text-dark); line-height: 1.6;">
+                            <p style="margin-bottom: 12px;"><strong>Goede triggers = skill die altijd werkt</strong><br>Slechte triggers = skill die soms werkt</p>
+                            <p style="margin-bottom: 8px; font-weight: 600;">✅ Goede triggers zijn:</p>
+                            <ul style="margin-left: 20px; margin-bottom: 12px;">
+                                <li>Natuurlijk — zoals je het echt zou zeggen</li>
+                                <li>Specifiek — duidelijk voor deze skill</li>
+                                <li>Gevarieerd — meerdere manieren om hetzelfde te vragen</li>
+                            </ul>
+                            <p style="margin-bottom: 8px; font-weight: 600;">❌ Vermijd:</p>
+                            <ul style="margin-left: 20px;">
+                                <li>Te algemeen — "help me met CRM"</li>
+                                <li>Te technisch — "voer CREATE_LEAD functie uit"</li>
+                                <li>Slechts 1 variatie — meer is beter</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Trigger zinnen voor deze skill</label>
+                        <p class="form-help">💡 Hoeveel triggers heb je nodig? Minimaal 3-5 verschillende manieren. Meer triggers = Claude herkent de skill beter.</p>
+                        
+                        <div class="trigger-builder">
+                            <div class="trigger-input-group">
+                                <input type="text" id="trigger-input" class="form-input" placeholder="Bijvoorbeeld: 'voeg deze lead toe aan CRM'">
+                                <button class="button button-primary" onclick="addTrigger()">Toevoegen</button>
+                            </div>
+                            
+                            <div id="trigger-list" class="trigger-list">
+                                <!-- Triggers worden hier toegevoegd -->
+                            </div>
+
+                            <div class="trigger-examples">
+                                <div class="trigger-examples-title">Voorbeelden (klik om toe te voegen):</div>
+                                <div class="trigger-example-pills">
+                                    <div class="trigger-example-pill" onclick="addExampleTrigger('maak een nieuwe lead aan')">maak een nieuwe lead aan</div>
+                                    <div class="trigger-example-pill" onclick="addExampleTrigger('voeg dit bedrijf toe aan CRM')">voeg dit bedrijf toe aan CRM</div>
+                                    <div class="trigger-example-pill" onclick="addExampleTrigger('nieuwe prospect registreren')">nieuwe prospect registreren</div>
+                                    <div class="trigger-example-pill" onclick="addExampleTrigger('lead toevoegen met deze gegevens')">lead toevoegen met deze gegevens</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background: #f0fdf4; border-left: 4px solid #86efac; padding: 16px; border-radius: 8px; margin-top: 24px;">
+                        <div style="font-weight: 600; color: #166534; margin-bottom: 8px;">📚 Wat je hier leert</div>
+                        <div style="font-size: 14px; color: #166534; line-height: 1.6;">
+                            Trigger-design is cruciaal voor skill-herkenning. Een skill met 5+ gevarieerde triggers werkt betrouwbaarder dan een skill met 2 algemene triggers. Dit leermoment geldt voor alle Claude skills, niet alleen Zoho.
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="button button-secondary" onclick="goToAdvStep(1)">← Terug</button>
+                        <button class="button button-primary" onclick="goToAdvStep(3)">Volgende →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Step 3: MCP & Tools -->
+            <div id="adv-step-3" class="step">
+                <div class="step-content">
+                    <div class="step-header">
+                        <div class="step-number">Stap 3 van 6</div>
+                        <h2 class="step-title">Welke Zoho-toegang heeft deze skill nodig?</h2>
+                        <p class="step-description">Skills verbinden Claude met Zoho via Connectors. Hier bepaal je welke Zoho-services en -acties deze specifieke skill mag gebruiken.</p>
+                    </div>
+
+                    <div style="background: #eff6ff; border-left: 4px solid #3b82f6; padding: 16px; border-radius: 8px; margin-bottom: 24px;">
+                        <div style="font-weight: 600; color: var(--primary); margin-bottom: 12px;">🔌 Hoe skills toegang krijgen tot Zoho</div>
+                        <div style="font-size: 14px; color: var(--text-dark); line-height: 1.6;">
+                            <p style="margin-bottom: 12px;">Skills op zichzelf geven Claude geen toegang — ze definiëren alleen WELKE toegang nodig is. De daadwerkelijke connectie maak je in Claude's settings door een Zoho Connector te activeren.</p>
+                            <p style="margin-bottom: 8px;"><strong>Deze skill bepaalt:</strong></p>
+                            <ul style="margin-left: 20px;">
+                                <li>Welke Zoho-service (CRM, Books, Mail, etc.)</li>
+                                <li>Welke acties (lezen, schrijven, zoeken, etc.)</li>
+                                <li>Welke veiligheidsregels gelden</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Heeft deze skill Zoho-toegang nodig?</label>
+                        <p class="form-help">Vink aan als deze skill gegevens moet opzoeken, records moet aanmaken, of e-mails moet versturen in Zoho.</p>
+                        
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="use-mcp" onchange="toggleMCPSelector()">
+                                <div class="checkbox-label">
+                                    <div class="checkbox-title">Ja, deze skill heeft Zoho-toegang nodig</div>
+                                    <div class="checkbox-description">
+                                        <strong>Vink aan als de skill:</strong><br>
+                                        ✓ Gegevens moet opzoeken in Zoho-services<br>
+                                        ✓ Records moet aanmaken of bijwerken<br>
+                                        ✓ E-mails moet versturen via Zoho Mail<br>
+                                        ✓ Rapporten moet genereren uit Zoho Analytics<br>
+                                        <br>
+                                        <strong>Laat leeg als:</strong><br>
+                                        ○ De skill alleen tekst analyseert of schrijft<br>
+                                        ○ Je alle Zoho-data zelf copy-paste naar Claude<br>
+                                        ○ Het om pure conversatie zonder data-toegang gaat
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="mcp-selector-adv" class="mcp-selector hidden">
+                        <label class="form-label">Welke Zoho-service gebruikt deze skill?</label>
+                        <p class="form-help">Kies de service die bij je skill past. Je ziet alleen wat je nodig hebt.</p>
+                        <div id="mcp-categories">
+                            <!-- MCP servers worden hier geladen per categorie -->
+                        </div>
+                    </div>
+
+                    <div id="tool-selector-adv" class="tool-selector">
+                        <label class="form-label">Welke acties mag deze skill uitvoeren?</label>
+                        <p class="form-help">💡 Tip: Selecteer alleen wat echt nodig is. Meer permissions = groter risico bij fouten.</p>
+                        <div class="tool-grid" id="tool-grid-adv">
+                            <!-- Tools worden hier geladen -->
+                        </div>
+                    </div>
+
+                    <div style="background: #f0fdf4; border-left: 4px solid #86efac; padding: 16px; border-radius: 8px; margin-top: 24px;">
+                        <div style="font-weight: 600; color: #166534; margin-bottom: 8px;">💡 Waarom skill-permissions belangrijk zijn</div>
+                        <div style="font-size: 14px; color: #166534; line-height: 1.6; margin-bottom: 12px;">
+                            Te brede permissions → Risico dat skill onbedoeld data wijzigt<br>
+                            Te smalle permissions → Skill kan z'n taak niet uitvoeren<br><br>
+                            Goede skills krijgen precies genoeg toegang, niet meer.
+                        </div>
+                        <div style="font-weight: 600; color: #166534; margin-bottom: 8px;">📚 Wat je hier leert</div>
+                        <div style="font-size: 14px; color: #166534; line-height: 1.6;">
+                            Skill-based access control is een core concept in Claude-automatisering. Door hier bewust over na te denken, bouw je veilige én functionele skills.
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="button button-secondary" onclick="goToAdvStep(2)">← Terug</button>
+                        <button class="button button-primary" onclick="goToAdvStep(4)">Volgende →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Step 4: Implementation -->
+            <div id="adv-step-4" class="step">
+                <div class="step-content">
+                    <div class="step-header">
+                        <div class="step-number">Stap 4 van 6</div>
+                        <h2 class="step-title">Wat zijn de uitvoeringsstappen?</h2>
+                        <p class="step-description">Skills bevatten logica. Beschrijf stap-voor-stap wat Claude moet doen wanneer deze skill wordt getriggerd.</p>
+                    </div>
+
+                    <div style="background: #eff6ff; border-left: 4px solid #3b82f6; padding: 16px; border-radius: 8px; margin-bottom: 24px;">
+                        <div style="font-weight: 600; color: var(--primary); margin-bottom: 8px;">🎯 Goede skill-logica is expliciet</div>
+                        <div style="font-size: 14px; color: var(--text-dark); line-height: 1.6;">
+                            Claude is slim, maar niet helderziend. Hoe meer je expliciet maakt, hoe betrouwbaarder je skill werkt.
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="implementation-steps">Stappen van deze skill</label>
+                        <p class="form-help">Gebruik genummerde stappen met werkwoorden. Bijvoorbeeld:<br><br>
+                        1. Vraag gebruiker om lead-data (naam, email, bedrijf, rol)<br>
+                        2. Valideer dat verplichte velden (email, bedrijf) ingevuld zijn<br>
+                        3. Zoek in Zoho CRM of dit bedrijf al bestaat<br>
+                        4. Als nieuw bedrijf: haal bedrijfsdata op via Clearbit API<br>
+                        5. Maak lead-record aan in CRM met alle data<br>
+                        6. Bepaal verantwoordelijke sales rep o.b.v. bedrijfsregio<br>
+                        7. Maak follow-up taak voor die sales rep (deadline: +2 dagen)<br>
+                        8. Bevestig aan gebruiker: lead-ID, toegewezen rep, volgende stap<br><br>
+                        💡 Pro tip: Specificeer voorwaarden ("Als X, dan Y"). Dit maakt je skill robuust voor verschillende scenario's.</p>
+                        <textarea id="implementation-steps" class="form-textarea" style="min-height: 180px;" placeholder="1. ...
+2. ...
+3. ..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="edge-cases">Hoe moet deze skill omgaan met uitzonderingen?</label>
+                        <p class="form-help">Elke productie-skill heeft edge case handling. Denk aan:<br><br>
+                        • Ontbrekende data — "Als email ontbreekt, vraag gebruiker erom"<br>
+                        • Duplicaten — "Als bedrijf bestaat, vraag: nieuwe lead of update contact?"<br>
+                        • API-fouten — "Als enrichment faalt, maak lead met beschikbare data + flag"<br>
+                        • Geen match — "Als geen sales rep voor regio, wijs toe aan [manager name]"<br><br>
+                        ✅ Concrete instructies: "Als X, doe Y"<br>
+                        ❌ Vage instructies: "Handle errors appropriately"</p>
+                        <textarea id="edge-cases" class="form-textarea" placeholder="- Als ... dan ...
+- Als ... dan ..."></textarea>
+                    </div>
+
+                    <div style="background: #f0fdf4; border-left: 4px solid #86efac; padding: 16px; border-radius: 8px; margin-top: 24px;">
+                        <div style="font-weight: 600; color: #166534; margin-bottom: 8px;">📚 Wat je hier leert</div>
+                        <div style="font-size: 14px; color: #166534; line-height: 1.6;">
+                            Edge case handling is wat demo-skills van productie-skills onderscheidt. Skills zonder edge cases werken in 80% van gevallen. Skills met edge cases werken in 95%+ van gevallen. Deze skill-design pattern geldt voor alle Claude-automatisering.
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="button button-secondary" onclick="goToAdvStep(3)">← Terug</button>
+                        <button class="button button-primary" onclick="goToAdvStep(5)">Volgende →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Step 5: Governance -->
+            <div id="adv-step-5" class="step">
+                <div class="step-content">
+                    <div class="step-header">
+                        <div class="step-number">Stap 5 van 6</div>
+                        <h2 class="step-title">Welke veiligheidsregels gelden?</h2>
+                        <p class="step-description">Elke skill heeft governance-regels. Bepaal hoe autonoom deze skill mag werken en welke acties altijd bevestiging vereisen.</p>
+                    </div>
+
+                    <div style="background: #eff6ff; border-left: 4px solid #3b82f6; padding: 16px; border-radius: 8px; margin-bottom: 24px;">
+                        <div style="font-weight: 600; color: var(--primary); margin-bottom: 8px;">🛡️ Skill governance = balans tussen snelheid en veiligheid</div>
+                        <div style="font-size: 14px; color: var(--text-dark); line-height: 1.6;">
+                            Te streng → Claude vraagt te vaak toestemming, skill vertraagt<br>
+                            Te los → Risico op onbedoelde acties, vooral bij nieuwe skills
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Veiligheidsopties voor deze skill</label>
+                        
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="gov-confirm-writes">
+                                <div class="checkbox-label">
+                                    <div class="checkbox-title">Vraag bevestiging voor schrijfacties</div>
+                                    <div class="checkbox-description">
+                                        <strong>Wanneer aan:</strong> Deze skill vraagt "Zal ik dit uitvoeren?" voor elke create/update/delete-actie in Zoho.<br><br>
+                                        ✅ Gebruik voor deze skill als:<br>
+                                        • Je de skill net hebt gebouwd (test-fase)<br>
+                                        • De skill financiële impact heeft (facturen, betalingen)<br>
+                                        • Acties niet omkeerbaar zijn (permanente deletes)<br><br>
+                                        ❌ Skip voor deze skill als:<br>
+                                        • Het een volledig geautomatiseerde routine is<br>
+                                        • Je deze skill 10+ keer per dag gebruikt<br>
+                                        • De skill alleen data opvraagt (read-only)<br><br>
+                                        <strong>Impact op skill:</strong> ⚡ Langzamer maar veiliger
+                                    </div>
+                                </div>
+                            </label>
+                            
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="gov-check-duplicates">
+                                <div class="checkbox-label">
+                                    <div class="checkbox-title">Controleer op duplicaten</div>
+                                    <div class="checkbox-description">
+                                        <strong>Wanneer aan:</strong> Deze skill zoekt eerst of vergelijkbare records bestaan voordat nieuwe worden aangemaakt.<br><br>
+                                        ✅ Gebruik voor deze skill als:<br>
+                                        • De skill leads, contacts of accounts aanmaakt<br>
+                                        • Je data importeert vanuit externe bronnen<br>
+                                        • Uniciteit cruciaal is voor je CRM-hygiëne<br><br>
+                                        ❌ Skip voor deze skill als:<br>
+                                        • De skill altijd nieuwe items maakt (tasks, notes, events)<br>
+                                        • Duplicaten geen probleem zijn voor dit data-type<br><br>
+                                        <strong>Impact op skill:</strong> ⚡ Iets langzamer, voorkomt CRM-rommel
+                                    </div>
+                                </div>
+                            </label>
+                            
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="gov-read-only">
+                                <div class="checkbox-label">
+                                    <div class="checkbox-title">Alleen-lezen modus</div>
+                                    <div class="checkbox-description">
+                                        <strong>Wanneer aan:</strong> Deze skill mag ALLEEN data opvragen, niets wijzigen.<br><br>
+                                        ✅ Gebruik voor deze skill als:<br>
+                                        • Het een rapportage- of analyse-skill is<br>
+                                        • Je de skill aan het testen bent<br>
+                                        • Read-only access voldoende is<br><br>
+                                        ❌ Skip voor deze skill als:<br>
+                                        • De skill juist data moet aanmaken of updaten<br>
+                                        • Automatisering het doel is<br><br>
+                                        <strong>Impact op skill:</strong> 🔒 Maximum veilig, maar geen wijzigingen mogelijk
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="gov-environment">In welke omgeving wordt deze skill gebruikt?</label>
+                        <p class="form-help">💡 Best practice voor nieuwe skills: Test altijd eerst in Sandbox. Pas na succesvolle tests activeer je de skill in Productie.</p>
+                        <select id="gov-environment" class="form-select">
+                            <option value="production">Productie — Live Zoho-data, echte klanten</option>
+                            <option value="sandbox">Sandbox — Test-omgeving, veilig experimenteren</option>
+                            <option value="development">Development — Ontwikkel-data</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Branding (optioneel)</label>
+                        
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" id="branding-attribution" checked>
+                                <div class="checkbox-label">
+                                    <div class="checkbox-title">MFORZ attributie toevoegen</div>
+                                    <div class="checkbox-description">Voegt een klein credit toe aan het einde van de skill (geen invloed op functionaliteit)</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div style="background: #f0fdf4; border-left: 4px solid #86efac; padding: 16px; border-radius: 8px; margin-top: 24px;">
+                        <div style="font-weight: 600; color: #166534; margin-bottom: 8px;">📚 Wat je hier leert</div>
+                        <div style="font-size: 14px; color: #166534; line-height: 1.6;">
+                            Skill governance is geen "one size fits all". Verschillende skills hebben verschillende veiligheidsbehoeften. Goede skill designers vragen zich af: Wat is het risico? Hoe vaak wordt deze skill uitgevoerd? Zijn acties omkeerbaar? Deze risk-based thinking geldt voor alle Claude skills met write-access.
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="button button-secondary" onclick="goToAdvStep(4)">← Terug</button>
+                        <button class="button button-primary" onclick="goToAdvStep(6)">Review & Download →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Step 6: Preview & Download -->
+            <div id="adv-step-6" class="step">
+                <div class="preview-section">
+                    <div class="preview-header">
+                        <h2 class="preview-title">Stap 6 van 6: Review & Download Skill</h2>
+                        <div class="preview-filename" id="adv-preview-filename">SKILL.md</div>
+                        <p style="margin-top: 8px; font-size: 14px; color: var(--text-muted);">Je skill is klaar. Check of alles klopt, download het skill-bestand, en upload het in Claude om je Zoho-automatisering te activeren.</p>
+                    </div>
+                    <div class="preview-content" id="adv-preview-content">
+                        <!-- Preview wordt hier geladen -->
+                    </div>
+                    
+                    <div style="background: #eff6ff; border: 1px solid #bfdbfe; padding: 16px; border-radius: 8px; margin-top: 16px;">
+                        <div style="font-weight: 600; color: var(--primary); margin-bottom: 8px;">💡 Wat zit er in dit bestand?</div>
+                        <div style="font-size: 14px; color: var(--text-dark); line-height: 1.6;">
+                            Dit skill-bestand bevat:<br>
+                            • Skill-naam en doel-omschrijving<br>
+                            • Trigger-patronen die Claude herkent<br>
+                            • Zoho-services en acties die de skill gebruikt<br>
+                            • Uitvoeringsstappen en edge case handling<br>
+                            • Veiligheidsregels en governance-instellingen<br><br>
+                            Claude leest dit bestand om te begrijpen hoe deze specifieke skill werkt.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="download-section">
+                    <div class="download-header">
+                        <h2 class="download-title">✅ Klaar om te activeren</h2>
+                    </div>
+
+                    <div class="download-actions" style="display: flex; gap: 12px; margin-bottom: 24px;">
+                        <button class="download-button" onclick="downloadAdvSkill()" style="flex: 1;">
+                            <span class="download-button-icon">📥</span>
+                            <span>Download Skill</span>
+                        </button>
+                        <button class="download-button" onclick="sendForReview()" style="flex: 1; background: white; color: var(--primary); border: 2px solid var(--primary);">
+                            <span class="download-button-icon">📤</span>
+                            <span>Verstuur voor Review</span>
+                        </button>
+                    </div>
+
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; border-radius: 8px; margin-bottom: 24px;">
+                        <div style="font-weight: 600; margin-bottom: 12px;">📥 Na downloaden — Activeer in 3 stappen:</div>
+                        <ol style="margin-left: 20px; line-height: 1.8; color: var(--text-dark);">
+                            <li>Open Claude (claude.ai of Claude app)</li>
+                            <li>Ga naar Settings → Skills → Upload skill</li>
+                            <li>Upload dit .md bestand</li>
+                        </ol>
+                        <p style="margin-top: 12px; font-size: 14px; color: var(--text-muted);">Claude herkent het automatisch en activeert de skill. Je kunt nu één van je triggers gebruiken om de skill te testen.</p>
+                    </div>
+
+                    <div style="background: #fef3c7; border-left: 4px solid #fbbf24; padding: 16px; border-radius: 8px; margin-bottom: 24px;">
+                        <div style="font-weight: 600; color: #92400e; margin-bottom: 8px;">🔧 Skill aanpassen</div>
+                        <div style="font-size: 14px; color: #92400e; line-height: 1.6;">
+                            Je kunt deze skill altijd aanpassen:<br>
+                            • Open het .md bestand in een teksteditor<br>
+                            • Pas triggers, stappen of regels aan<br>
+                            • Upload opnieuw in Claude<br><br>
+                            Skills zijn levende documenten — itereer gerust.
+                        </div>
+                    </div>
+
+                    <div class="trust-box">
+                        <div class="trust-box-title">
+                            <span>🔒</span>
+                            <span>Skill Bestandsbeveiliging</span>
+                        </div>
+                        <div class="trust-box-content">
+                            <p style="margin-bottom: 12px; line-height: 1.6;">Je skill-bestand is een tekstbestand (.md) dat je kunt openen en inspecteren in elke teksteditor.</p>
+                            <div style="margin-bottom: 12px;">
+                                <strong style="color: var(--primary);">Het bevat:</strong>
+                                <ul class="trust-box-list" style="margin-top: 6px;">
+                                    <li>De skill-definitie die jij hebt gebouwd</li>
+                                    <li>Triggers, stappen en veiligheidsregels</li>
+                                    <li>Zoho-service selecties</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <strong style="color: #dc2626;">Het bevat NIET:</strong>
+                                <ul class="trust-box-list" style="margin-top: 6px;">
+                                    <li>Login-gegevens of wachtwoorden</li>
+                                    <li>Daadwerkelijke klantdata uit je Zoho</li>
+                                    <li>API-sleutels of tokens</li>
+                                </ul>
+                            </div>
+                            <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted); line-height: 1.6;">Skill-bestanden geven Claude instructies — de daadwerkelijke Zoho-toegang configureer je apart in Claude's settings.</p>
+                        </div>
+                    </div>
+
+                    <div style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 4px solid #86efac; padding: 24px; border-radius: 12px; margin-top: 24px; margin-bottom: 24px;">
+                        <div style="font-weight: 700; color: #166534; margin-bottom: 16px; font-size: 16px;">📚 Wat je hebt geleerd</div>
+                        <div style="font-size: 14px; color: #166534; line-height: 1.8;">
+                            Door deze 6 stappen te doorlopen, heb je nagedacht over:<br><br>
+                            ✓ <strong>Skill-definitie</strong> — Wat moet deze skill kunnen?<br>
+                            ✓ <strong>Trigger-design</strong> — Hoe herkent Claude deze skill?<br>
+                            ✓ <strong>Access control</strong> — Welke Zoho-toegang is nodig?<br>
+                            ✓ <strong>Execution logic</strong> — Wat zijn de uitvoeringsstappen?<br>
+                            ✓ <strong>Edge cases</strong> — Hoe omgaan met uitzonderingen?<br>
+                            ✓ <strong>Governance</strong> — Hoeveel autonomie is veilig?<br><br>
+                            Dit zijn precies de facetten die sterke business skills onderscheiden van zwakke skills. Deze skill-design principes kun je toepassen op alle toekomstige Claude-projecten.
+                        </div>
+                    </div>
+
+                    <div class="email-optional">
+                        <h3 class="email-optional-title">Wil je een installatie-handleiding ontvangen? (optioneel)</h3>
+                        <p class="email-optional-description">We sturen je een korte email met stappen om je skill in Claude te uploaden en te testen. Je download blijft altijd mogelijk, ook zonder email.</p>
+                        
+                        <div class="email-form">
+                            <input type="email" id="adv-email-input" class="form-input" placeholder="je@email.nl">
+                            <button class="button button-primary" onclick="sendAdvGuide()">Stuur handleiding</button>
+                        </div>
+                        
+                        <div id="adv-email-success" class="success-message">
+                            <span>✓</span>
+                            <span>Handleiding verstuurd! Check je inbox.</span>
+                        </div>
+                    </div>
+
+                    <div class="button-group" style="justify-content: center; margin-top: 32px;">
+                        <button class="button button-secondary" onclick="goToAdvStep(5)">← Terug naar veiligheid</button>
+                        <button class="button button-secondary" onclick="startNewSkill()">Nieuwe skill maken</button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        // Global state
+        let currentMode = null;
+        let currentStep = 1;
+        let quickStep = 1;
+        let triggers = [];
+        let quickTriggers = [];
+        let examples = [];
+        let selectedMCPServer = null;
+        let selectedTools = [];
+        let quickSkillData = {};
+
+        // MCP Servers - Full dataset from original
+        const mcpServers = [
+  {
+    "serverName": "Books-Financial-Overview-MCP-Server",
+    "displayName": "Financieel Overzicht",
+    "service": "Zoho Books",
+    "description": "View invoices, bills, expenses, bank transactions, and chart of accounts. Core financial data retrieval for accounting workflows.",
+    "tools": [
+      "list_organizations",
+      "get_organization",
+      "list_invoices",
+      "get_invoice",
+      "list_contacts",
+      "get_contact",
+      "list_bills",
+      "list_expenses",
+      "list_items",
+      "list_bank_accounts",
+      "list_bank_transactions",
+      "list_chart_of_accounts"
+    ],
+    "category": "Finance"
+  },
+  {
+    "serverName": "Desk-Knowledge-Base-MCP-Server",
+    "displayName": "Kennisbank",
+    "service": "Zoho Desk",
+    "description": "Access and manage knowledge base articles. Search for solutions, suggest articles for tickets, and manage KB categories.",
+    "tools": [
+      "getOrganizations",
+      "getDepartments",
+      "getArticles",
+      "getArticle",
+      "searchSolutions",
+      "suggestArticlesForTicket",
+      "createArticle",
+      "updateArticle",
+      "getAllKBRootCategories",
+      "getAgents"
+    ],
+    "category": "Support"
+  },
+  {
+    "serverName": "Desk-Contacts-Accounts-MCP-Server",
+    "displayName": "Contacten & Accounts",
+    "service": "Zoho Desk",
+    "description": "Manage customer contacts and accounts linked to support tickets. Search, create, and view contact/account details and their ticket history.",
+    "tools": [
+      "getOrganizations",
+      "getDepartments",
+      "getContacts",
+      "getContact",
+      "searchContacts",
+      "createContact",
+      "updateContact",
+      "getContactTicketHistory",
+      "getAccounts",
+      "getAccount",
+      "searchAccounts",
+      "createAccount",
+      "getTicketsByContact",
+      "getTicketsByAccount"
+    ],
+    "category": "Support"
+  },
+  {
+    "serverName": "Desk-Ticket-Operations-MCP-Server",
+    "displayName": "Ticket Beheer",
+    "service": "Zoho Desk",
+    "description": "Core ticket management — search, view, create, and update support tickets. Includes ticket conversations, threads, and comments.",
+    "tools": [
+      "getOrganizations",
+      "getDepartments",
+      "getAccessibleOrganizations",
+      "getTickets",
+      "getTicket",
+      "searchTickets",
+      "listOfTickets",
+      "doSearch",
+      "createTicket",
+      "updateTicket",
+      "getTicketConversations",
+      "getThreads",
+      "getThread",
+      "getTicketComments",
+      "createTicketComment",
+      "sendReply"
+    ],
+    "category": "Support"
+  },
+  {
+    "serverName": "Mail-Organization-MCP-Server",
+    "displayName": "Mail Organisatie",
+    "service": "Zoho Mail",
+    "description": "Organize your mailbox by moving, archiving, labeling, and managing emails and folders. Includes task management within Mail.",
+    "tools": [
+      "getMailAccounts",
+      "getAllFolders",
+      "moveMessages",
+      "archiveMessage",
+      "unArchiveMessage",
+      "deleteEmail",
+      "spamMessage",
+      "unSpamMessage",
+      "unreadMessage",
+      "applyLabelToMessages",
+      "removeLabelFromMessage",
+      "createFolder",
+      "renameFolder",
+      "createLabel",
+      "getAllLabelDetails",
+      "listPersonalTasks"
+    ],
+    "category": "Mail"
+  },
+  {
+    "serverName": "Mail-Sending-Replies-MCP-Server",
+    "displayName": "Mail Versturen",
+    "service": "Zoho Mail",
+    "description": "Compose and send new emails, reply to existing threads, and manage attachments for outgoing mail.",
+    "tools": [
+      "getMailAccounts",
+      "getAllFolders",
+      "sendEmail",
+      "sendReplyEmail",
+      "uploadAttachments"
+    ],
+    "category": "Mail"
+  },
+  {
+    "serverName": "Mail-Reading-Search-MCP-Server",
+    "displayName": "Mail Lezen & Zoeken",
+    "service": "Zoho Mail",
+    "description": "Read, search, and browse emails including message content, attachments, and folder structure. Core template for any mail-related agent workflow.",
+    "tools": [
+      "getMailAccounts",
+      "listEmails",
+      "SearchEmails",
+      "getAllFolders",
+      "getMessageContent",
+      "getAccountDetails",
+      "getMessageAttachmentInfo",
+      "getMessageAttachmentContent",
+      "getMessageDetails",
+      "getFolder",
+      "getOriginalMessage",
+      "readMessages",
+      "flagMessages"
+    ],
+    "category": "Mail"
+  },
+  {
+    "serverName": "Accountant-MCP-Server",
+    "displayName": "Boekhouding & Rapportage",
+    "service": "Zoho Books",
+    "description": "A specialized MCP server for managing end-to-end accounting operations including chart of accounts, journals, projects, currencies, taxes, and financial configurations.",
+    "tools": [
+      "list_organizations",
+      "get_organization",
+      "create_chart_of_account",
+      "list_chart_of_accounts",
+      "get_chart_of_account",
+      "update_chart_of_account",
+      "delete_chart_of_account",
+      "mark_chart_of_account_active",
+      "mark_chart_of_account_inactive",
+      "list_chart_of_account_transactions",
+      "delete_chart_of_account_transaction",
+      "list_currencies",
+      "create_journal",
+      "list_journals",
+      "update_journal",
+      "get_journal",
+      "delete_journal",
+      "add_journal_attachment",
+      "add_journal_comment",
+      "delete_journal_comment",
+      "mark_journal_published",
+      "list_locations",
+      "list_contacts",
+      "list_taxes",
+      "list_tax_exemptions",
+      "list_tax_authorities",
+      "get_tags",
+      "create_project",
+      "list_projects",
+      "update_projects_using_custom_field",
+      "update_project",
+      "get_project",
+      "delete_project",
+      "mark_project_active",
+      "mark_project_inactive",
+      "clone_project",
+      "add_project_user",
+      "list_project_users",
+      "invite_project_user",
+      "update_project_user",
+      "get_project_user",
+      "delete_project_user",
+      "add_project_comment",
+      "list_project_comments",
+      "delete_project_comment",
+      "list_project_invoices",
+      "add_project_task",
+      "list_project_tasks",
+      "update_project_task",
+      "get_project_task",
+      "delete_project_task",
+      "list_users",
+      "list_invoices",
+      "create_base_currency_adjustment",
+      "list_base_currency_adjustments",
+      "get_base_currency_adjustment",
+      "delete_base_currency_adjustment",
+      "list_base_currency_adjustment_accounts",
+      "create_custom_field",
+      "list_custom_fields",
+      "update_custom_field",
+      "delete_custom_field",
+      "update_field_dropdown_options",
+      "bulk_fetch_fields",
+      "check_formula_syntax",
+      "list_custom_fields_simple",
+      "get_fields_meta"
+    ],
+    "category": "Finance"
+  },
+  {
+    "serverName": "Complete-CRM-Operations-MCP-Server",
+    "displayName": "Compleet CRM Beheer",
+    "service": "Zoho CRM",
+    "description": "All-in-one server for CRM CRUD operations across modules: Leads, Contacts, Accounts, Deals, Tasks, Notes, and email sending.",
+    "tools": [
+      "Get_Records",
+      "Create_Records",
+      "Update_Records",
+      "Delete_Records",
+      "Search_Records",
+      "Get_Deleted_Records",
+      "getRelatedRecords",
+      "convertInventory",
+      "Get_All_Tasks",
+      "Get_Tasks",
+      "Create_Tasks",
+      "Update_Task",
+      "Delete_Tasks",
+      "Create_Notes",
+      "Get_Note",
+      "Update_Note",
+      "Delete_Note",
+      "Delete_Notes",
+      "getTimelines",
+      "Send_Mail"
+    ],
+    "category": "CRM"
+  },
+  {
+    "serverName": "Lead-Management-MCP-Server",
+    "displayName": "Lead Beheer",
+    "service": "Zoho CRM",
+    "description": "A specialized MCP server for managing the end-to-end lead lifecycle, including creation, searching, updates, and lead conversion.",
+    "tools": [
+      "Get_Records",
+      "Create_Records",
+      "Update_Records",
+      "Search_Records",
+      "convertInventory"
+    ],
+    "category": "CRM"
+  },
+  {
+    "serverName": "Deal-Lifecycle-MCP-Server",
+    "displayName": "Deal Pipeline",
+    "service": "Zoho CRM",
+    "description": "Automate and track sales deal progression, search for existing opportunities, and manage blueprint transitions.",
+    "tools": [
+      "Get_Records",
+      "Update_Records",
+      "Search_Records"
+    ],
+    "category": "CRM"
+  },
+  {
+    "serverName": "Account-Management-MCP-Server",
+    "displayName": "Account Management",
+    "service": "Zoho CRM",
+    "description": "Manage corporate accounts and their associated contacts to maintain a clean hierarchical view of customer data.",
+    "tools": [
+      "Get_Records",
+      "Create_Records",
+      "Update_Records",
+      "getRelatedRecords"
+    ],
+    "category": "CRM"
+  },
+  {
+    "serverName": "Activity-Center-MCP-Server",
+    "displayName": "Activiteiten",
+    "service": "Zoho CRM",
+    "description": "Unified server for managing daily operations including tasks, calls, and events to ensure follow-up consistency.",
+    "tools": [
+      "Get_Tasks",
+      "Create_Tasks",
+      "Update_Task",
+      "Get_Records",
+      "Create_Records"
+    ],
+    "category": "CRM"
+  },
+  {
+    "serverName": "Notes-Collaboration-MCP-Server",
+    "displayName": "Notities & Samenwerking",
+    "service": "Zoho CRM",
+    "description": "Capture and retrieve internal notes across various CRM modules to maintain context during the sales process.",
+    "tools": [
+      "Get_Note",
+      "Create_Notes",
+      "getRelatedRecords"
+    ],
+    "category": "CRM"
+  },
+  {
+    "serverName": "Email-Followup-MCP-Server",
+    "displayName": "Email Follow-up",
+    "service": "Zoho CRM",
+    "description": "Automate outbound communication and follow-up emails directly from CRM records.",
+    "tools": [
+      "Send_Mail"
+    ],
+    "category": "CRM"
+  },
+  {
+    "serverName": "App-Health-Monitor-MCP-Server",
+    "displayName": "App Gezondheid",
+    "service": "Zoho Apptics",
+    "description": "Monitor overall app health by combining daily active device counts with crash summaries across platforms. Useful for leadership dashboards and real-time stability tracking.",
+    "tools": [
+      "getUserProjects",
+      "getActivedeviceCountByDate",
+      "getCrashSummary"
+    ],
+    "category": "Mobile Analytics"
+  },
+  {
+    "serverName": "Engagement-Screen-Analytics-MCP-Server",
+    "displayName": "Engagement Analytics",
+    "service": "Zoho Apptics",
+    "description": "Generate weekly engagement reports by surfacing top events and most-visited screens across platforms. Helps product teams understand feature usage and navigation behavior.",
+    "tools": [
+      "getUserProjects",
+      "getEventSummary",
+      "getAllScreenStats"
+    ],
+    "category": "Mobile Analytics"
+  },
+  {
+    "serverName": "Platform-Version-Dashboard-MCP-Server",
+    "displayName": "Platform & Versies",
+    "service": "Zoho Apptics",
+    "description": "Compare active device counts grouped by platform and date to identify growth or decline trends. Also tracks version adoption to see how quickly users upgrade to the latest release.",
+    "tools": [
+      "getUserProjects",
+      "getAllActivedeviceStats"
+    ],
+    "category": "Mobile Analytics"
+  },
+  {
+    "serverName": "Market-Expansion-MCP-Server",
+    "displayName": "Markt Expansie",
+    "service": "Zoho Apptics",
+    "description": "Analyze geographic distribution of user interactions by retrieving event counts grouped by country. Helps identify high and low engagement regions for market expansion decisions.",
+    "tools": [
+      "getUserProjects",
+      "getEventCountrywiseSummary"
+    ],
+    "category": "Mobile Analytics"
+  },
+  {
+    "serverName": "Crash-Intelligence-MCP-Server",
+    "displayName": "Crash Analyse",
+    "service": "Zoho Apptics",
+    "description": "End-to-end crash investigation flow. Start with a crash summary to confirm a spike, drill into the timeline via crashes by date, identify top crash signatures from the crash list, and retrieve the full stack trace and session context for a specific event.",
+    "tools": [
+      "getUserProjects",
+      "getCrashSummary",
+      "getCrashesByDate",
+      "getCrashList",
+      "getCrashSummaryWithUniqueMessageId"
+    ],
+    "category": "Mobile Analytics"
+  },
+  {
+    "serverName": "Feature-Rollout-Validation-MCP-Server",
+    "displayName": "Feature Rollout",
+    "service": "Zoho Apptics",
+    "description": "Verify that a newly released feature is being triggered on real devices post-launch. Combines event count stats with device-level event counts to validate rollout reach and adoption.",
+    "tools": [
+      "getUserProjects",
+      "getAllEventStats",
+      "getEventDeviceCount"
+    ],
+    "category": "Mobile Analytics"
+  }
+];
+
+        // Quick Start use cases
+        const quickUseCases = {
+            lead: {
+                name: 'Lead toevoegen aan CRM',
+                purpose: 'Voeg een nieuwe lead toe aan Zoho CRM met automatische bedrijfsverrijking en toewijzing aan de juiste sales rep.',
+                output: 'Een bevestiging met lead ID, bedrijfsnaam, aantal werknemers, toegewezen sales rep en aanbevolen vervolgstappen.',
+                triggers: [
+                    'voeg een lead toe',
+                    'maak een nieuwe lead aan',
+                    'registreer dit bedrijf als lead',
+                    'nieuwe prospect toevoegen'
+                ],
+                mcpServer: 'Lead-Management-MCP-Server',
+                exampleTriggers: ['voeg lead toe', 'nieuwe prospect', 'bedrijf toevoegen']
+            },
+            contact: {
+                name: 'Contact opzoeken in CRM',
+                purpose: 'Zoek contactgegevens op in Zoho CRM op basis van naam, email of bedrijf.',
+                output: 'Volledige contactgegevens inclusief bedrijfsinformatie, recente interacties en open deals.',
+                triggers: [
+                    'zoek contact op',
+                    'wie is [naam]',
+                    'gegevens van [email]',
+                    'laat contactinfo zien'
+                ],
+                mcpServer: 'Complete-CRM-Operations-MCP-Server',
+                exampleTriggers: ['zoek contact', 'wie is', 'contactinfo opvragen']
+            },
+            afspraak: {
+                name: 'Afspraak inplannen',
+                purpose: 'Plan een afspraak in Zoho Calendar en stuur automatisch uitnodigingen.',
+                output: 'Bevestiging van de afspraak met datum, tijd, locatie en deelnemers.',
+                triggers: [
+                    'plan een afspraak in',
+                    'maak een meeting aan',
+                    'schedule een call',
+                    'reserveer tijd voor'
+                ],
+                mcpServer: 'Activity-Center-MCP-Server',
+                exampleTriggers: ['plan afspraak', 'meeting inplannen', 'tijdslot reserveren']
+            },
+            email: {
+                name: 'Email versturen vanuit CRM',
+                purpose: 'Verstuur een email vanuit Zoho CRM met automatische tracking en koppeling aan het contact.',
+                output: 'Bevestiging dat de email is verstuurd met subject, ontvanger en tracking status.',
+                triggers: [
+                    'stuur een email naar',
+                    'mail [naam]',
+                    'verstuur bericht aan',
+                    'email dit contact'
+                ],
+                mcpServer: 'Email-Followup-MCP-Server',
+                exampleTriggers: ['stuur email', 'mail versturen', 'bericht naar']
+            },
+            deal: {
+                name: 'Deal aanmaken',
+                purpose: 'Maak een nieuwe deal aan in Zoho CRM en koppel deze aan een bestaand contact of account.',
+                output: 'Deal ID, naam, waarde, verwachte sluitdatum en toegewezen sales rep.',
+                triggers: [
+                    'maak een deal aan',
+                    'nieuwe opportunity toevoegen',
+                    'registreer deze verkoop',
+                    'deal aanmaken voor'
+                ],
+                mcpServer: 'Deal-Lifecycle-MCP-Server',
+                exampleTriggers: ['deal aanmaken', 'opportunity toevoegen', 'verkoop registreren']
+            },
+            taak: {
+                name: 'Taak aanmaken',
+                purpose: 'Maak een taak aan in Zoho CRM en wijs toe aan een teamlid.',
+                output: 'Taak ID, beschrijving, deadline, toegewezen aan en prioriteit.',
+                triggers: [
+                    'maak een taak aan',
+                    'plan actie in',
+                    'reminder instellen voor',
+                    'taak toewijzen aan'
+                ],
+                mcpServer: 'Activity-Center-MCP-Server',
+                exampleTriggers: ['taak aanmaken', 'actie inplannen', 'reminder zetten']
+            }
+        };
+
+        // Page navigation
+        function startBuilding() {
+            document.getElementById('landing-page').classList.add('hidden');
+            document.getElementById('mode-selection-page').classList.remove('hidden');
+        }
+
+        // Mode selection
+        function startQuickMode() {
+            currentMode = 'quick';
+            document.getElementById('mode-selection-page').classList.add('hidden');
+            document.getElementById('quick-mode').classList.remove('hidden');
+            updateQuickProgress();
+        }
+
+        function startAdvancedMode() {
+            currentMode = 'advanced';
+            document.getElementById('mode-selection-page').classList.add('hidden');
+            document.getElementById('advanced-mode').classList.remove('hidden');
+            loadMCPServers();
+            updateProgress();
+        }
+
+        function backToModeSelection() {
+            document.getElementById('mode-selection-page').classList.remove('hidden');
+            document.getElementById('quick-mode').classList.add('hidden');
+            document.getElementById('advanced-mode').classList.add('hidden');
+            currentMode = null;
+            currentStep = 1;
+            quickStep = 1;
+        }
+
+        // Quick Start functions
+        function selectQuickUseCase(type) {
+            const useCase = quickUseCases[type];
+            if (useCase) {
+                document.getElementById('quick-skill-name').value = useCase.name;
+                document.getElementById('quick-purpose').value = useCase.purpose;
+                document.getElementById('quick-output').value = useCase.output;
+                quickTriggers = [...useCase.triggers];
+                quickSkillData.mcpServerName = useCase.mcpServer;
+                renderQuickTriggers();
+                updateQuickTriggerExamples(type);
+            }
+        }
+
+        function updateQuickTriggerExamples(type) {
+            const useCase = quickUseCases[type];
+            const exampleContainer = document.getElementById('quick-trigger-examples');
+            if (exampleContainer && useCase) {
+                exampleContainer.innerHTML = useCase.exampleTriggers
+                    .map(ex => `<div class="trigger-example-pill" onclick="addQuickTriggerExample('${ex}')">${ex}</div>`)
+                    .join('');
+            }
+        }
+
+        function addQuickTrigger() {
+            const input = document.getElementById('quick-trigger-input');
+            const triggerText = input.value.trim();
+            
+            if (triggerText && !quickTriggers.includes(triggerText)) {
+                quickTriggers.push(triggerText);
+                renderQuickTriggers();
+                input.value = '';
+            }
+        }
+
+        function addQuickTriggerExample(text) {
+            if (!quickTriggers.includes(text)) {
+                quickTriggers.push(text);
+                renderQuickTriggers();
+            }
+        }
+
+        function renderQuickTriggers() {
+            const list = document.getElementById('quick-trigger-list');
+            if (!list) return;
+            
+            list.innerHTML = quickTriggers.map((trigger, index) => `
+                <div class="trigger-item">
+                    <span class="trigger-text">${trigger}</span>
+                    <button class="trigger-remove" onclick="removeQuickTrigger(${index})">×</button>
+                </div>
+            `).join('');
+        }
+
+        function removeQuickTrigger(index) {
+            quickTriggers.splice(index, 1);
+            renderQuickTriggers();
+        }
+
+        function goToQuickStep(step) {
+            // Hide current step
+            document.querySelector(`#quick-step-${quickStep}`).classList.remove('active');
+            
+            // Update step
+            quickStep = step;
+            
+            // Show new step
+            document.querySelector(`#quick-step-${quickStep}`).classList.add('active');
+            
+            // Update progress
+            updateQuickProgress();
+            
+            // Generate preview if on step 3
+            if (step === 3) {
+                generateQuickPreview();
+            }
+            
+            window.scrollTo(0, 0);
+        }
+
+        function updateQuickProgress() {
+            document.querySelectorAll('.quick-progress-step').forEach((step, index) => {
+                const stepNum = index + 1;
+                step.classList.remove('active', 'completed');
+                
+                if (stepNum === quickStep) {
+                    step.classList.add('active');
+                } else if (stepNum < quickStep) {
+                    step.classList.add('completed');
+                }
+            });
+            
+            // Update progress line
+            const progressPercentage = ((quickStep - 1) / 2) * 100;
+            const fill = document.getElementById('quick-progress-fill');
+            if (fill) {
+                fill.style.width = progressPercentage + '%';
+            }
+        }
+
+        function generateQuickPreview() {
+            const skillData = collectQuickSkillData();
+            const content = generateSkillContent(skillData);
+            
+            document.getElementById('quick-preview-content').textContent = content;
+            document.getElementById('quick-preview-filename').textContent = `${skillData.name.toLowerCase().replace(/\s+/g, '-')}-SKILL.md`;
+        }
+
+        function collectQuickSkillData() {
+            const name = document.getElementById('quick-skill-name').value || 'quick-skill';
+            const purpose = document.getElementById('quick-purpose').value;
+            const outputDescription = document.getElementById('quick-output').value;
+            
+            // Find MCP server if one was selected
+            let mcpServer = null;
+            if (quickSkillData.mcpServerName) {
+                mcpServer = mcpServers.find(s => s.serverName === quickSkillData.mcpServerName);
+                if (mcpServer) {
+                    // Select all tools for quick mode
+                    selectedTools = [...mcpServer.tools];
+                }
+            }
+
+            return {
+                name: name.toLowerCase().replace(/\s+/g, '-'),
+                purpose: purpose,
+                triggers: quickTriggers,
+                outputType: 'confirmation',
+                outputDescription: outputDescription,
+                mcpServer: mcpServer,
+                selectedTools: mcpServer ? mcpServer.tools : [],
+                examples: [],
+                edgeCases: 'Standaard error handling. Valideer altijd input data en geef duidelijke foutmeldingen.',
+                implementationSteps: `1. Analyseer de input van de gebruiker
+2. Voer de benodigde Zoho-operaties uit via de MCP server
+3. Valideer de resultaten
+4. Geef duidelijke feedback aan de gebruiker`,
+                dependencies: [],
+                branding: true,
+                quickMode: true
+            };
+        }
+
+        function generateSkillContent(skillData) {
+            const titleName = skillData.name
+                .split('-')
+                .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+                .join(' ');
+            
+            // Build frontmatter
+            let frontmatter = `---
+name: ${skillData.name}
+description: ${skillData.purpose.substring(0, 150)}`;
+            
+            if (skillData.mcpServer) {
+                frontmatter += `\ncompatibility: MCP Server: ${skillData.mcpServer.serverName}`;
+            }
+            
+            if (skillData.branding) {
+                frontmatter += `\nframework: MFORZ`;
+            }
+            
+            frontmatter += `\n---`;
+            
+            // Main content
+            let content = `${frontmatter}
+
+# ${titleName}
+
+## Doel
+${skillData.purpose}
+
+Deze skill helpt je om Zoho One workflows te automatiseren door Claude specifieke instructies te geven over hoe deze taak consistent en betrouwbaar moet worden uitgevoerd.
+
+## Wanneer deze skill gebruiken
+Claude herkent automatisch wanneer deze skill moet worden gebruikt op basis van:
+
+${skillData.triggers.map(t => `- ${t}`).join('\n')}
+
+Maar gebruik deze skill ook wanneer de vraag van de gebruiker deze workflow impliceert, ook met andere bewoordingen.
+`;
+
+            if (skillData.mcpServer) {
+                content += `\n## MCP Server Integratie
+**Server:** ${skillData.mcpServer.serverName}  
+**Gebruiksvriendelijke naam:** ${skillData.mcpServer.displayName}  
+**Service:** ${skillData.mcpServer.service}  
+**Categorie:** ${skillData.mcpServer.category}
+
+**Server beschrijving:**  
+${skillData.mcpServer.description}
+
+**Benodigde tools:**
+${skillData.selectedTools.map(t => `- ${t}`).join('\n')}
+
+**Toolset scope:** ${skillData.selectedTools.length} van ${skillData.mcpServer.tools.length} beschikbare tools geselecteerd
+
+## Zoho Connector Setup
+Deze skill maakt gebruik van de **Zoho Connector** in Claude. Zorg ervoor dat:
+1. Je de Zoho Connector hebt geactiveerd in je Claude-omgeving
+2. De MCP server "${skillData.mcpServer.serverName}" beschikbaar is
+3. Je de benodigde authenticatie hebt ingesteld voor ${skillData.mcpServer.service}
+
+Ga naar de Connector-instellingen in Claude en controleer of de Zoho-integratie correct is geconfigureerd.
+`;
+            }
+            
+            content += `\n## Verwachte Output
+**Type:** ${getOutputTypeLabel(skillData.outputType)}
+
+${skillData.outputDescription}
+`;
+
+            content += `\n## Implementatie Stappen
+${skillData.implementationSteps}
+`;
+
+            if (skillData.examples && skillData.examples.length > 0) {
+                content += `\n## Voorbeelden
+
+${skillData.examples.map((ex, i) => `**Voorbeeld ${i + 1}:**
+Input: ${ex.input}
+Output: ${ex.output}
+`).join('\n')}`;
+            }
+            
+            content += `\n## Edge Cases & Speciale Afhandeling
+${skillData.edgeCases}
+
+**Belangrijke principes:**
+- Leg altijd uit WAAROM je bepaalde acties onderneemt, niet alleen WAT je doet
+- Valideer alle input data voordat je wijzigingen doorvoert in Zoho
+- Geef duidelijke, bruikbare feedback aan de gebruiker
+- Vraag bij onduidelijkheden om verduidelijking in plaats van aannames te maken
+`;
+
+            content += `\n## Implementatie Notities
+- Volg MFORZ best practices voor Zoho One integraties
+- Gebruik correcte error handling en validatie
+- Geef gebruikers duidelijke voortgangsupdates tijdens multi-step operaties
+- Leg bij fouten uit wat er mis ging EN wat de gebruiker eraan kan doen
+`;
+
+            if (skillData.branding) {
+                content += `\n## Over deze Skill
+Gebouwd volgens MFORZ best practices voor Zoho One workflows.  
+Vragen of implementatie ondersteuning: https://mforz.com
+`;
+            }
+            
+            content += `\n---
+Gegenereerd met MFORZ Skill Builder | mforz.com  
+Gemaakt op ${new Date().toLocaleDateString('nl-NL')}
+`;
+            
+            return content;
+        }
+
+        function getOutputTypeLabel(type) {
+            const labels = {
+                'confirmation': 'Bevestiging',
+                'data': 'Gestructureerde data',
+                'summary': 'Samenvatting',
+                'action': 'Actie-items'
+            };
+            return labels[type] || type;
+        }
+
+        function downloadQuickSkill() {
+            const skillData = collectQuickSkillData();
+            const content = generateSkillContent(skillData);
+            const blob = new Blob([content], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${skillData.name}-SKILL.md`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function sendQuickGuide() {
+            const email = document.getElementById('quick-email-input').value;
+            if (email && email.includes('@')) {
+                document.getElementById('quick-email-success').classList.add('show');
+                setTimeout(() => {
+                    document.getElementById('quick-email-success').classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        function startNewSkill() {
+            // Reset state
+            currentMode = null;
+            currentStep = 1;
+            quickStep = 1;
+            
+            // Hide all modes
+            document.getElementById('landing-page').classList.add('hidden');
+            document.getElementById('quick-mode').classList.add('hidden');
+            document.getElementById('advanced-mode').classList.add('hidden');
+            
+            // Show mode selection
+            document.getElementById('mode-selection-page').classList.remove('hidden');
+            
+            // Reset forms
+            document.querySelectorAll('input, textarea').forEach(el => el.value = '');
+            document.querySelectorAll('.form-checkbox').forEach(el => el.checked = false);
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Advanced Mode Functions
+        function goToAdvStep(step) {
+            // Hide current step
+            const currentStepEl = document.querySelector(`#adv-step-${currentStep}`);
+            if (currentStepEl) currentStepEl.classList.remove('active');
+            
+            // Update progress steps
+            document.querySelectorAll('.progress-step').forEach((el, index) => {
+                const stepNum = index + 1;
+                el.classList.remove('active');
+                
+                if (stepNum < step) {
+                    el.classList.add('completed');
+                } else if (stepNum === step) {
+                    el.classList.add('active');
+                } else {
+                    el.classList.remove('completed');
+                }
+            });
+            
+            // Update current step
+            currentStep = step;
+            
+            // Show new step
+            const newStepEl = document.querySelector(`#adv-step-${currentStep}`);
+            if (newStepEl) newStepEl.classList.add('active');
+            
+            // Update progress bar
+            updateProgress();
+            
+            // Generate preview if on step 6
+            if (step === 6) {
+                generateAdvPreview();
+            }
+            
+            window.scrollTo(0, 0);
+        }
+
+        function updateProgress() {
+            const totalSteps = 6;
+            const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            const fillEl = document.getElementById('progress-fill');
+            if (fillEl) {
+                fillEl.style.width = `${progress}%`;
+            }
+        }
+
+        function addTrigger() {
+            const input = document.getElementById('trigger-input');
+            const triggerText = input.value.trim();
+            
+            if (triggerText && !triggers.includes(triggerText)) {
+                triggers.push(triggerText);
+                renderTriggers();
+                input.value = '';
+            }
+        }
+
+        function addExampleTrigger(text) {
+            if (!triggers.includes(text)) {
+                triggers.push(text);
+                renderTriggers();
+            }
+        }
+
+        function renderTriggers() {
+            const list = document.getElementById('trigger-list');
+            if (!list) return;
+            
+            list.innerHTML = triggers.map((trigger, index) => `
+                <div class="trigger-item">
+                    <span class="trigger-text">${trigger}</span>
+                    <button class="trigger-remove" onclick="removeTrigger(${index})">×</button>
+                </div>
+            `).join('');
+        }
+
+        function removeTrigger(index) {
+            triggers.splice(index, 1);
+            renderTriggers();
+        }
+
+        function toggleMCPSelector() {
+            const checkbox = document.getElementById('use-mcp');
+            const selector = document.getElementById('mcp-selector-adv');
+            
+            if (checkbox.checked) {
+                selector.classList.remove('hidden');
+                loadMCPServers();
+            } else {
+                selector.classList.add('hidden');
+                selectedMCPServer = null;
+                selectedTools = [];
+                document.getElementById('tool-selector-adv').classList.remove('show');
+            }
+        }
+
+        function loadMCPServers() {
+            // Group by category
+            const categories = {};
+            mcpServers.forEach(server => {
+                if (!categories[server.category]) {
+                    categories[server.category] = [];
+                }
+                categories[server.category].push(server);
+            });
+            
+            // Render by category
+            const container = document.getElementById('mcp-categories');
+            if (!container) return;
+            
+            container.innerHTML = Object.entries(categories).map(([category, servers]) => `
+                <div class="mcp-category">
+                    <div class="mcp-category-title">${category}</div>
+                    <div class="mcp-grid">
+                        ${servers.map(server => `
+                            <div class="mcp-option" onclick="selectMCPServer('${server.serverName}')">
+                                <div class="mcp-option-name">${server.displayName}</div>
+                                <div class="mcp-option-service">${server.service}</div>
+                                <div class="mcp-option-tools">${server.tools.length} tools</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function selectMCPServer(serverName) {
+            selectedMCPServer = mcpServers.find(s => s.serverName === serverName);
+            
+            // Update UI
+            document.querySelectorAll('.mcp-option').forEach(el => el.classList.remove('selected'));
+            event.target.closest('.mcp-option').classList.add('selected');
+            
+            // Load tools
+            loadTools();
+        }
+
+        function loadTools() {
+            if (!selectedMCPServer) return;
+            
+            const toolSelector = document.getElementById('tool-selector-adv');
+            const toolGrid = document.getElementById('tool-grid-adv');
+            
+            toolGrid.innerHTML = selectedMCPServer.tools.map(tool => `
+                <label class="tool-option">
+                    <input type="checkbox" value="${tool}" onchange="toggleTool('${tool}')">
+                    <span class="tool-option-name">${tool}</span>
+                </label>
+            `).join('');
+            
+            toolSelector.classList.add('show');
+        }
+
+        function toggleTool(tool) {
+            const index = selectedTools.indexOf(tool);
+            if (index > -1) {
+                selectedTools.splice(index, 1);
+            } else {
+                selectedTools.push(tool);
+            }
+        }
+
+        function collectAdvSkillData() {
+            const name = document.getElementById('skill-name').value || 'advanced-skill';
+            const purpose = document.getElementById('skill-purpose').value;
+            const outputType = document.getElementById('output-type').value;
+            const outputDescription = document.getElementById('output-description').value;
+            const implementationSteps = document.getElementById('implementation-steps').value;
+            const edgeCases = document.getElementById('edge-cases').value;
+            
+            const govConfirm = document.getElementById('gov-confirm-writes')?.checked;
+            const govDuplicates = document.getElementById('gov-check-duplicates')?.checked;
+            const govReadOnly = document.getElementById('gov-read-only')?.checked;
+            const govEnvironment = document.getElementById('gov-environment')?.value || 'production';
+            const branding = document.getElementById('branding-attribution')?.checked;
+
+            return {
+                name: name.toLowerCase().replace(/\s+/g, '-'),
+                purpose: purpose,
+                triggers: triggers,
+                outputType: outputType,
+                outputDescription: outputDescription,
+                mcpServer: selectedMCPServer,
+                selectedTools: selectedMCPServer ? selectedTools : [],
+                implementationSteps: implementationSteps,
+                edgeCases: edgeCases,
+                examples: [],
+                dependencies: [],
+                governance: {
+                    confirmWrites: govConfirm,
+                    checkDuplicates: govDuplicates,
+                    readOnly: govReadOnly,
+                    environment: govEnvironment
+                },
+                branding: branding,
+                quickMode: false
+            };
+        }
+
+        function generateAdvPreview() {
+            const skillData = collectAdvSkillData();
+            const content = generateAdvSkillContent(skillData);
+            
+            document.getElementById('adv-preview-content').textContent = content;
+            document.getElementById('adv-preview-filename').textContent = `${skillData.name}-SKILL.md`;
+        }
+
+        function generateAdvSkillContent(skillData) {
+            const titleName = skillData.name
+                .split('-')
+                .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+                .join(' ');
+            
+            // Build frontmatter
+            let frontmatter = `---
+name: ${skillData.name}
+description: ${skillData.purpose.substring(0, 150)}`;
+            
+            if (skillData.mcpServer) {
+                frontmatter += `\ncompatibility: MCP Server: ${skillData.mcpServer.serverName}`;
+            }
+            
+            if (skillData.branding) {
+                frontmatter += `\nframework: MFORZ`;
+            }
+            
+            frontmatter += `\n---`;
+            
+            // Main content
+            let content = `${frontmatter}
+
+# ${titleName}
+
+## Doel
+${skillData.purpose}
+
+Deze skill helpt je om Zoho One workflows te automatiseren door Claude specifieke instructies te geven over hoe deze taak consistent en betrouwbaar moet worden uitgevoerd.
+
+## Wanneer deze skill gebruiken
+Claude herkent automatisch wanneer deze skill moet worden gebruikt op basis van:
+
+${skillData.triggers.map(t => `- ${t}`).join('\n')}
+
+Maar gebruik deze skill ook wanneer de vraag van de gebruiker deze workflow impliceert, ook met andere bewoordingen.
+`;
+
+            if (skillData.mcpServer) {
+                content += `\n## MCP Server Integratie
+**Server:** ${skillData.mcpServer.serverName}  
+**Gebruiksvriendelijke naam:** ${skillData.mcpServer.displayName}  
+**Service:** ${skillData.mcpServer.service}  
+**Categorie:** ${skillData.mcpServer.category}
+
+**Server beschrijving:**  
+${skillData.mcpServer.description}
+
+**Benodigde tools:**
+${skillData.selectedTools.map(t => `- ${t}`).join('\n')}
+
+**Toolset scope:** ${skillData.selectedTools.length} van ${skillData.mcpServer.tools.length} beschikbare tools geselecteerd
+
+## Zoho Connector Setup
+Deze skill maakt gebruik van de **Zoho Connector** in Claude. Zorg ervoor dat:
+1. Je de Zoho Connector hebt geactiveerd in je Claude-omgeving
+2. De MCP server "${skillData.mcpServer.serverName}" beschikbaar is
+3. Je de benodigde authenticatie hebt ingesteld voor ${skillData.mcpServer.service}
+
+Ga naar de Connector-instellingen in Claude en controleer of de Zoho-integratie correct is geconfigureerd.
+`;
+            }
+            
+            content += `\n## Verwachte Output
+**Type:** ${getOutputTypeLabel(skillData.outputType)}
+
+${skillData.outputDescription}
+`;
+
+            if (skillData.implementationSteps) {
+                content += `\n## Implementatie Stappen
+${skillData.implementationSteps}
+`;
+            }
+            
+            if (skillData.edgeCases) {
+                content += `\n## Edge Cases & Speciale Afhandeling
+${skillData.edgeCases}
+
+**Belangrijke principes:**
+- Leg altijd uit WAAROM je bepaalde acties onderneemt, niet alleen WAT je doet
+- Valideer alle input data voordat je wijzigingen doorvoert in Zoho
+- Geef duidelijke, bruikbare feedback aan de gebruiker
+- Vraag bij onduidelijkheden om verduidelijking in plaats van aannames te maken
+`;
+            }
+
+            if (skillData.governance && (skillData.governance.confirmWrites || skillData.governance.checkDuplicates || skillData.governance.readOnly)) {
+                content += `\n## Governance & Veiligheid
+`;
+                if (skillData.governance.readOnly) {
+                    content += `- **Alleen-lezen modus:** Geen create/update/delete operaties toegestaan\n`;
+                }
+                if (skillData.governance.confirmWrites) {
+                    content += `- **Bevestiging vereist:** Vraag altijd toestemming voordat schrijfacties worden uitgevoerd\n`;
+                }
+                if (skillData.governance.checkDuplicates) {
+                    content += `- **Duplicaatcheck:** Controleer of vergelijkbare records al bestaan voordat nieuwe worden aangemaakt\n`;
+                }
+                content += `- **Omgeving:** ${skillData.governance.environment}\n`;
+            }
+
+            content += `\n## Implementatie Notities
+- Volg MFORZ best practices voor Zoho One integraties
+- Gebruik correcte error handling en validatie
+- Geef gebruikers duidelijke voortgangsupdates tijdens multi-step operaties
+- Leg bij fouten uit wat er mis ging EN wat de gebruiker eraan kan doen
+`;
+
+            if (skillData.branding) {
+                content += `\n## Over deze Skill
+Gebouwd volgens MFORZ best practices voor Zoho One workflows.  
+Vragen of implementatie ondersteuning: https://mforz.com
+`;
+            }
+            
+            content += `\n---
+Gegenereerd met MFORZ Skill Builder | mforz.com  
+Gemaakt op ${new Date().toLocaleDateString('nl-NL')}
+`;
+            
+            return content;
+        }
+
+        function downloadAdvSkill() {
+            const skillData = collectAdvSkillData();
+            const content = generateAdvSkillContent(skillData);
+            const blob = new Blob([content], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${skillData.name}-SKILL.md`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function sendForReview() {
+            // Create modal overlay
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                padding: 20px;
+            `;
+            
+            modal.innerHTML = `
+                <div style="background: white; border-radius: 16px; max-width: 560px; width: 100%; padding: 32px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);">
+                    <div style="text-align: center; margin-bottom: 24px;">
+                        <div style="font-size: 48px; margin-bottom: 16px;">📤</div>
+                        <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px;">Skill Review Aanvragen</h2>
+                        <p style="color: var(--text-muted); line-height: 1.6;">Wil je feedback voordat je deze skill activeert?</p>
+                    </div>
+                    
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-bottom: 24px;">
+                        <p style="font-size: 14px; color: var(--text-dark); margin-bottom: 12px;">Het MFORZ team reviewt je skill en geeft binnen <strong>1-2 werkdagen</strong> feedback op:</p>
+                        <ul style="margin-left: 20px; color: var(--text-dark); line-height: 1.8; font-size: 14px;">
+                            <li>✓ Trigger-kwaliteit — Herkent Claude deze skill betrouwbaar?</li>
+                            <li>✓ Edge case coverage — Zijn uitzonderingen goed afgedekt?</li>
+                            <li>✓ Security posture — Zijn de veiligheidsregels passend?</li>
+                            <li>✓ Production readiness — Is deze skill klaar voor live gebruik?</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-bottom: 16px;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-dark);">Naam</label>
+                        <input type="text" id="review-name" placeholder="Jouw naam" style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
+                    </div>
+                    
+                    <div style="margin-bottom: 16px;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-dark);">Bedrijfsnaam</label>
+                        <input type="text" id="review-company" placeholder="Jouw bedrijf" style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
+                    </div>
+                    
+                    <div style="margin-bottom: 24px;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-dark);">Email</label>
+                        <input type="email" id="review-email" placeholder="je@email.nl" style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
+                    </div>
+                    
+                    <button onclick="submitForReview()" style="width: 100%; background: var(--primary); color: white; border: none; padding: 14px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 16px;">
+                        Verstuur Skill voor Review
+                    </button>
+                    
+                    <p style="margin-top: 16px; font-size: 12px; color: var(--text-muted); text-align: center;">💡 Je kunt de skill altijd ook zelf downloaden zonder review.</p>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Close on background click
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeReviewModal();
+                }
+            });
+            
+            // Store modal reference
+            window.reviewModal = modal;
+        }
+        
+        function closeReviewModal() {
+            if (window.reviewModal) {
+                document.body.removeChild(window.reviewModal);
+                window.reviewModal = null;
+            }
+        }
+        
+        function submitForReview() {
+            const name = document.getElementById('review-name').value;
+            const company = document.getElementById('review-company').value;
+            const email = document.getElementById('review-email').value;
+            
+            if (!name || name.trim() === '') {
+                alert('Voer je naam in');
+                return;
+            }
+            
+            if (!company || company.trim() === '') {
+                alert('Voer je bedrijfsnaam in');
+                return;
+            }
+            
+            if (!email || !email.includes('@')) {
+                alert('Voer een geldig email-adres in');
+                return;
+            }
+            
+            // Collect skill data (try both modes)
+            let skillData, skillContent, skillName;
+            if (currentMode === 'advanced') {
+                skillData = collectAdvSkillData();
+                skillContent = generateAdvSkillContent(skillData);
+                skillName = skillData.name || 'Unnamed Skill';
+            } else if (currentMode === 'quick') {
+                skillData = collectQuickSkillData();
+                skillContent = generateSkillContent(skillData);
+                skillName = skillData.name || 'Unnamed Quick Skill';
+            }
+            
+            // Create lead in Zoho CRM
+            createZohoCRMLead(name, company, email, skillName, skillContent);
+            
+            closeReviewModal();
+            
+            // Show success modal
+            const successModal = document.createElement('div');
+            successModal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                padding: 20px;
+            `;
+            
+            successModal.innerHTML = `
+                <div style="background: white; border-radius: 16px; max-width: 480px; width: 100%; padding: 32px; text-align: center;">
+                    <div style="font-size: 64px; margin-bottom: 16px;">✅</div>
+                    <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px;">Skill verstuurd voor review!</h2>
+                    <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 24px;">
+                        We hebben je skill ontvangen en sturen binnen 1-2 werkdagen een review naar <strong>${email}</strong>
+                    </p>
+                    <button onclick="closeSuccessModal()" style="background: var(--primary); color: white; border: none; padding: 12px 32px; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%;">
+                        Sluiten
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(successModal);
+            window.successModal = successModal;
+            
+            // Also log to console for debugging
+            console.log('Skill submitted for review:', {
+                email: email,
+                skillName: skillData.name,
+                skillContentLength: skillContent.length
+            });
+        }
+        
+        function closeSuccessModal() {
+            if (window.successModal) {
+                document.body.removeChild(window.successModal);
+                window.successModal = null;
+            }
+        }
+
+        async function createZohoCRMLead(name, company, email, skillName, skillContent) {
+            try {
+                // Prepare data for Zoho Flow webhook
+                const webhookData = {
+                    name: name,
+                    company: company,
+                    email: email,
+                    skillName: skillName,
+                    skillContent: skillContent,
+                    mode: currentMode === 'advanced' ? 'Complete Designer (6 stappen)' : 'Snelstart (3 stappen)',
+                    timestamp: new Date().toISOString(),
+                    source: 'MFORZ Skill Builder',
+                    userAgent: navigator.userAgent,
+                    referrer: document.referrer || 'Direct'
+                };
+
+                console.log('Sending to Zoho Flow:', webhookData);
+
+                // Zoho Flow webhook URL - ACTIEF
+                const ZOHO_FLOW_WEBHOOK = 'https://flow.zoho.eu/20072364821/flow/webhook/incoming?zapikey=1001.72910cf8b9dfd47ca1fc571663718d36.86cdce801780ae614034f9487ee97b58&isdebug=false';
+                
+                // Verstuur naar Zoho Flow
+                const response = await fetch(ZOHO_FLOW_WEBHOOK, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(webhookData)
+                });
+
+                if (response.ok) {
+                    console.log('✅ Lead succesvol verstuurd naar Zoho CRM via Flow');
+                } else {
+                    console.error('❌ Fout bij versturen naar Zoho Flow:', response.statusText);
+                }
+                
+                // Log data voor debugging
+                console.log('📊 Lead data klaar voor Zoho Flow webhook:', JSON.stringify(webhookData, null, 2));
+                
+            } catch (error) {
+                console.error('Error in createZohoCRMLead:', error);
+                // Continue - don't break user experience even if webhook fails
+            }
+        }
+
+        function sendAdvGuide() {
+            const email = document.getElementById('adv-email-input').value;
+            if (email && email.includes('@')) {
+                document.getElementById('adv-email-success').classList.add('show');
+                setTimeout(() => {
+                    document.getElementById('adv-email-success').classList.remove('show');
+                }, 3000);
+            }
+        }
+        
+        function goToStep(step) {
+            // Redirect to new function
+            goToAdvStep(step);
+        }
+
+        // Make progress steps clickable
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.progress-step').forEach(step => {
+                step.addEventListener('click', function() {
+                    if (this.classList.contains('completed')) {
+                        const stepNumber = parseInt(this.getAttribute('data-step'));
+                        goToStep(stepNumber);
+                    }
+                });
+            });
+            
+            // Development: Add test webhook button
+            // Remove this in production!
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                addTestWebhookButton();
+            }
+        });
+        
+        // DEVELOPMENT ONLY - Test Webhook Function
+        function addTestWebhookButton() {
+            const testButton = document.createElement('button');
+            testButton.innerHTML = '🧪 Test Zoho Flow Webhook';
+            testButton.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                background: #10b981;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-weight: 600;
+                cursor: pointer;
+                box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+                z-index: 10000;
+            `;
+            testButton.onclick = testZohoFlowWebhook;
+            document.body.appendChild(testButton);
+        }
+        
+        async function testZohoFlowWebhook() {
+            const testData = {
+                name: "Test Gebruiker",
+                company: "Test Bedrijf BV",
+                email: "test@example.com",
+                skillName: "Lead toevoegen aan CRM",
+                skillContent: "# Test Skill\n\nDit is een test skill voor Zoho Flow webhook testing.\n\n## Trigger\n- test trigger\n\n## Uitvoering\n1. Test stap 1\n2. Test stap 2",
+                mode: "quick",
+                timestamp: new Date().toISOString(),
+                source: "MFORZ Skill Builder - TEST",
+                userAgent: navigator.userAgent,
+                referrer: "Development Test"
+            };
+            
+            console.log('🧪 Sending test data to Zoho Flow:', testData);
+            
+            // Replace with your actual Zoho Flow webhook URL
+            const ZOHO_FLOW_WEBHOOK = 'YOUR_ZOHO_FLOW_WEBHOOK_URL_HERE';
+            
+            if (ZOHO_FLOW_WEBHOOK === 'YOUR_ZOHO_FLOW_WEBHOOK_URL_HERE') {
+                alert('⚠️ Eerst webhook URL instellen!\n\nVervang "YOUR_ZOHO_FLOW_WEBHOOK_URL_HERE" in de code met je echte Zoho Flow webhook URL.');
+                console.log('📋 Test data ready to send:', JSON.stringify(testData, null, 2));
+                return;
+            }
+            
+            try {
+                const response = await fetch(ZOHO_FLOW_WEBHOOK, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(testData)
+                });
+                
+                if (response.ok) {
+                    console.log('✅ Test webhook successful!');
+                    alert('✅ Test data verstuurd naar Zoho Flow!\n\nCheck je Zoho Flow execution logs.');
+                } else {
+                    console.error('❌ Webhook failed:', response.statusText);
+                    alert('❌ Webhook failed: ' + response.statusText);
+                }
+            } catch (error) {
+                console.error('❌ Error:', error);
+                alert('❌ Error: ' + error.message);
+            }
+        }
+    </script>
+</body>
+</html>
