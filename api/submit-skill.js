@@ -10,33 +10,21 @@ export default async function handler(req, res) {
         const { payload } = req.body;
         console.log('📥 Received:', JSON.stringify(payload, null, 2));
 
-        const zohoToken = process.env.ZOHO_API_TOKEN;
-        if (!zohoToken) {
-            return res.status(500).json({ status: 'error', message: 'ZOHO_API_TOKEN not configured' });
-        }
-
-        const zohoUrl = 'https://www.zohoapis.eu/crm/v7/functions/skillbuildersubmit/actions/execute';
+        const zohoUrl = 'https://www.zohoapis.eu/crm/v7/functions/skillbuilderapi/actions/execute?auth_type=apikey&zapikey=1003.bded7296486d59c9fdb79f41f68593cf.d0db53f4d4b0031a3c75be4808b483bd';
 
         const response = await fetch(zohoUrl, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Zoho-oauthtoken ${zohoToken}`
-            },
-            body: JSON.stringify({ payload })
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
         });
 
-        const text = await response.text();
-        console.log('📊 Zoho status:', response.status);
-        console.log('📄 Zoho response:', text);
+        const data = await response.json();
+        console.log('📄 Zoho response:', JSON.stringify(data, null, 2));
 
-        let data;
-        try { data = JSON.parse(text); } catch { data = { raw: text }; }
-
-        if (response.ok) {
+        if (data.code === 'success') {
             return res.status(200).json({ status: 'success', data });
         } else {
-            return res.status(response.status).json({ status: 'error', zohoResponse: data });
+            return res.status(400).json({ status: 'error', zohoResponse: data });
         }
 
     } catch (error) {
