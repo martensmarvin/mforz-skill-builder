@@ -16,22 +16,33 @@ export default async function handler(req, res) {
             });
         }
 
-        const zohoUrl = 'https://www.zohoapis.eu/crm/v7/functions/skillbuildersubmit/actions/execute?auth_type=oauth';
+        // Get API token from environment variable
+        const zohoToken = process.env.ZOHO_API_TOKEN;
+        if (!zohoToken) {
+            console.error('❌ ZOHO_API_TOKEN not set in environment');
+            return res.status(500).json({
+                status: 'error',
+                message: 'Server configuration error: Missing ZOHO_API_TOKEN'
+            });
+        }
+
+        const zohoUrl = 'https://www.zohoapis.eu/crm/v7/functions/skillbuildersubmit/actions/execute';
 
         console.log('🔗 Calling Zoho:', zohoUrl);
         console.log('📤 Payload:', JSON.stringify({ payload }, null, 2));
+        console.log('🔐 Using token:', zohoToken.substring(0, 20) + '...');
 
         const response = await fetch(zohoUrl, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Zoho-oauthtoken ${zohoToken}`
             },
             body: JSON.stringify({ payload })
         });
 
         console.log('📊 Status:', response.status);
 
-        // Try to parse response as JSON
         let data;
         const contentType = response.headers.get('content-type');
         
@@ -45,26 +56,27 @@ export default async function handler(req, res) {
 
         console.log('📄 Response data:', JSON.stringify(data, null, 2));
 
-        // Check success (even if status is not 200, if no error it's ok)
         if (response.ok || response.status === 200) {
-            console.log('✅ SUCCESS: Submitted to Zoho');
+            console.log('✅ SUCCESS: Skill created in Zoho CRM');
             return res.status(200).json({
                 status: 'success',
-                message: 'Skill submitted successfully'
+                message: 'Skill saved successfully',
+                data: data
             });
         } else {
             console.error('❌ Zoho error:', data);
-            return res.status(200).json({
-                status: 'success',
-                message: 'Skill submitted (Zoho response: ' + response.status + ')'
+            return res.status(response.status || 400).json({
+                status: 'error',
+                message: data.message || 'Failed to save skill',
+                zohoResponse: data
             });
         }
 
     } catch (error) {
         console.error('💥 Error:', error.message);
-        return res.status(200).json({
-            status: 'success',
-            message: 'Skill submitted (with processing)'
+        return res.status(500).json({
+            status: 'error',
+            message: 'Server error: ' + error.message
         });
     }
 }
