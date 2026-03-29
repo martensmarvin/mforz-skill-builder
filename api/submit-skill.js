@@ -19,7 +19,7 @@ export default async function handler(req, res) {
         // Get API token from environment variable
         const zohoToken = process.env.ZOHO_API_TOKEN;
         if (!zohoToken) {
-            console.error('❌ ZOHO_API_TOKEN not set in environment');
+            console.error('❌ ZOHO_API_TOKEN not set');
             return res.status(500).json({
                 status: 'error',
                 message: 'Server configuration error: Missing ZOHO_API_TOKEN'
@@ -30,7 +30,6 @@ export default async function handler(req, res) {
 
         console.log('🔗 Calling Zoho:', zohoUrl);
         console.log('📤 Payload:', JSON.stringify({ payload }, null, 2));
-        console.log('🔐 Using token:', zohoToken.substring(0, 20) + '...');
 
         const response = await fetch(zohoUrl, {
             method: 'POST',
@@ -41,30 +40,31 @@ export default async function handler(req, res) {
             body: JSON.stringify({ payload })
         });
 
-        console.log('📊 Status:', response.status);
+        console.log('📊 Response status:', response.status);
+        console.log('📊 Response headers:', Object.fromEntries(response.headers));
+
+        const responseText = await response.text();
+        console.log('📄 Raw response:', responseText);
 
         let data;
-        const contentType = response.headers.get('content-type');
-        
-        if (contentType && contentType.includes('application/json')) {
-            data = await response.json();
-        } else {
-            const text = await response.text();
-            console.log('⚠️ Response is not JSON, raw text:', text);
-            data = { rawResponse: text };
+        try {
+            data = JSON.parse(responseText);
+        } catch (e) {
+            data = { rawResponse: responseText };
         }
 
-        console.log('📄 Response data:', JSON.stringify(data, null, 2));
+        console.log('📄 Parsed data:', JSON.stringify(data, null, 2));
 
-        if (response.ok || response.status === 200) {
-            console.log('✅ SUCCESS: Skill created in Zoho CRM');
+        if (response.ok) {
+            console.log('✅ SUCCESS: Skill created');
             return res.status(200).json({
                 status: 'success',
                 message: 'Skill saved successfully',
                 data: data
             });
         } else {
-            console.error('❌ Zoho error:', data);
+            console.error('❌ Zoho error status:', response.status);
+            console.error('❌ Zoho error data:', data);
             return res.status(response.status || 400).json({
                 status: 'error',
                 message: data.message || 'Failed to save skill',
@@ -73,7 +73,8 @@ export default async function handler(req, res) {
         }
 
     } catch (error) {
-        console.error('💥 Error:', error.message);
+        console.error('💥 Catch error:', error.message);
+        console.error('💥 Error stack:', error.stack);
         return res.status(500).json({
             status: 'error',
             message: 'Server error: ' + error.message
