@@ -10,7 +10,12 @@ export default async function handler(req, res) {
         const { payload } = req.body;
         console.log('📥 Received:', JSON.stringify(payload, null, 2));
 
-        const zohoUrl = 'https://www.zohoapis.eu/crm/v7/functions/skillbuilderapi/actions/execute?auth_type=apikey&zapikey=1003.bded7296486d59c9fdb79f41f68593cf.d0db53f4d4b0031a3c75be4808b483bd';
+        const apiKey = process.env.ZOHO_API_KEY;
+        if (!apiKey) {
+            return res.status(500).json({ status: 'error', message: 'ZOHO_API_KEY not configured' });
+        }
+
+        const zohoUrl = `https://www.zohoapis.eu/crm/v7/functions/skillbuilderapi/actions/execute?auth_type=apikey&zapikey=${apiKey}`;
 
         const response = await fetch(zohoUrl, {
             method: 'POST',
