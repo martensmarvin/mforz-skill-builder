@@ -2666,7 +2666,7 @@
                                 <div class="result-card-sub">Download and upload to Claude via Settings → Skills.</div>
                             </div>
                         </div>
-                        <div class="result-card-actions">
+                        <div class="result-card-actions adv-download-buttons" style="display:flex;flex-wrap:wrap;gap:12px;">
                             <button class="btn-download-primary" onclick="downloadAdvSkill()">
                                 📥 Download SKILL.md
                             </button>
@@ -3220,159 +3220,159 @@
           Get_Tasks: { label: "View tasks", description: "Retrieves CRM tasks.", group: "Tasks", recommended: true },
           Create_Tasks: { label: "Create tasks", description: "Creates a new task in CRM.", group: "Tasks", recommended: true },
           Update_Task: { label: "Update task", description: "Updates an existing CRM task.", group: "Tasks", recommended: true },
-          Delete_Tasks: { label: "Delete tasks", description: "Verwijdert taken uit CRM.", group: "Tasks", recommended: false },
-          Create_Notes: { label: "Add notes", description: "Voegt een notitie toe aan een CRM-record.", group: "Notes", recommended: true },
-          Get_Note: { label: "Notitie bekijken", description: "Haalt een bestaande notitie op.", group: "Notes", recommended: false },
-          Update_Note: { label: "Update note", description: "Past een bestaande notitie aan.", group: "Notes", recommended: false },
-          Delete_Note: { label: "Delete note", description: "Verwijdert één notitie.", group: "Notes", recommended: false },
-          Delete_Notes: { label: "Meerdere notities verwijderen", description: "Verwijdert meerdere notities tegelijk.", group: "Notes", recommended: false },
-          getTimelines: { label: "Tijdlijn bekijken", description: "Toont tijdlijn- en activiteitshistorie van een record.", group: "Relations & context", recommended: false },
-          Send_Mail: { label: "Send email", description: "Stuurt een e-mail vanuit CRM of gekoppeld record.", group: "Communicatie", recommended: false },
-          convertInventory: { label: "Lead of voorraadproces converteren", description: "Voert een conversieactie uit binnen een specifiek CRM-proces.", group: "Workflow & conversie", recommended: false },
-          getOrganizations: { label: "Organisaties bekijken", description: "Toont beschikbare Desk-organisaties.", group: "Basis & context", recommended: false },
-          getDepartments: { label: "Afdelingen bekijken", description: "Toont beschikbare afdelingen in Zoho Desk.", group: "Basis & context", recommended: false },
-          getAccessibleOrganizations: { label: "Toegankelijke organisaties bekijken", description: "Toont welke organisaties beschikbaar zijn voor de huidige gebruiker.", group: "Basis & context", recommended: false },
-          getTickets: { label: "Tickets bekijken", description: "Haalt supporttickets op.", group: "Tickets", recommended: true },
-          getTicket: { label: "Ticketdetails bekijken", description: "Haalt één specifiek ticket op.", group: "Tickets", recommended: true },
-          searchTickets: { label: "Tickets zoeken", description: "Zoekt tickets op onderwerp, status, contact of andere criteria.", group: "Tickets", recommended: true },
-          listOfTickets: { label: "Ticketoverzicht tonen", description: "Toont een lijst van tickets.", group: "Tickets", recommended: false },
+          Delete_Tasks: { label: "Delete tasks", description: "Deletes tasks from CRM.", group: "Tasks", recommended: false },
+          Create_Notes: { label: "Add notes", description: "Adds a note to a CRM record.", group: "Notes", recommended: true },
+          Get_Note: { label: "View note", description: "Retrieves an existing note.", group: "Notes", recommended: false },
+          Update_Note: { label: "Update note", description: "Updates an existing note.", group: "Notes", recommended: false },
+          Delete_Note: { label: "Delete note", description: "Deletes a single note.", group: "Notes", recommended: false },
+          Delete_Notes: { label: "Delete multiple notes", description: "Deletes multiple notes at once.", group: "Notes", recommended: false },
+          getTimelines: { label: "View timeline", description: "Shows timeline and activity history of a record.", group: "Relations & context", recommended: false },
+          Send_Mail: { label: "Send email", description: "Sends an email from CRM or linked record.", group: "Communication", recommended: false },
+          convertInventory: { label: "Convert lead or inventory process", description: "Voert een conversieactie uit binnen een specifiek CRM-proces.", group: "Workflow & conversie", recommended: false },
+          getOrganizations: { label: "View organisations", description: "Shows available Desk organisations.", group: "Context & setup", recommended: false },
+          getDepartments: { label: "View departments", description: "Shows available departments in Zoho Desk.", group: "Context & setup", recommended: false },
+          getAccessibleOrganizations: { label: "View accessible organisations", description: "Shows which organisations are available for the current user.", group: "Context & setup", recommended: false },
+          getTickets: { label: "View tickets", description: "Retrieves support tickets.", group: "Tickets", recommended: true },
+          getTicket: { label: "View ticket details", description: "Retrieves one specific ticket.", group: "Tickets", recommended: true },
+          searchTickets: { label: "Search tickets", description: "Search tickets by subject, status, contact or other criteria.", group: "Tickets", recommended: true },
+          listOfTickets: { label: "Show ticket overview", description: "Shows a list of tickets.", group: "Tickets", recommended: false },
           doSearch: { label: "General search", description: "Voert een bredere zoekactie uit binnen Desk.", group: "Search & retrieve", recommended: false },
-          createTicket: { label: "Create ticket", description: "Maakt een nieuw supportticket aan.", group: "Tickets", recommended: true },
+          createTicket: { label: "Create ticket", description: "Creates a new support ticket.", group: "Tickets", recommended: true },
           updateTicket: { label: "Update ticket", description: "Past een bestaand supportticket aan.", group: "Tickets", recommended: true },
-          getTicketConversations: { label: "Ticketgesprekken bekijken", description: "Haalt conversaties binnen een ticket op.", group: "Communicatie", recommended: false },
-          getThreads: { label: "Threads bekijken", description: "Toont berichten- of replythreads binnen tickets.", group: "Communicatie", recommended: false },
-          getThread: { label: "Threaddetails bekijken", description: "Haalt één specifieke thread op.", group: "Communicatie", recommended: false },
-          getTicketComments: { label: "Ticketcommentaar bekijken", description: "Haalt comments van een ticket op.", group: "Communicatie", recommended: false },
-          createTicketComment: { label: "Ticketcommentaar toevoegen", description: "Voegt een comment toe aan een ticket.", group: "Communicatie", recommended: false },
-          sendReply: { label: "Antwoord versturen", description: "Stuurt een reply op een ticket of thread.", group: "Communicatie", recommended: true },
-          getArticles: { label: "Artikelen bekijken", description: "Haalt kennisbankartikelen op.", group: "Knowledge base", recommended: false },
-          getArticle: { label: "Artikel bekijken", description: "Haalt één kennisbankartikel op.", group: "Knowledge base", recommended: false },
-          searchSolutions: { label: "Search solutions", description: "Zoekt relevante oplossingen of kennisbankartikelen.", group: "Knowledge base", recommended: true },
-          suggestArticlesForTicket: { label: "Artikelen voorstellen voor ticket", description: "Zoekt passende kennisbankartikelen voor een ticket.", group: "Knowledge base", recommended: false },
-          createArticle: { label: "Artikel aanmaken", description: "Maakt een nieuw kennisbankartikel aan.", group: "Knowledge base", recommended: false },
-          updateArticle: { label: "Artikel bijwerken", description: "Past een bestaand kennisbankartikel aan.", group: "Knowledge base", recommended: false },
-          getAllKBRootCategories: { label: "Kennisbankcategorieën bekijken", description: "Toont hoofdcategorieën van de kennisbank.", group: "Knowledge base", recommended: false },
-          getAgents: { label: "View agents", description: "Toont supportmedewerkers of agents.", group: "Basis & context", recommended: false },
-          getContacts: { label: "Contacten bekijken", description: "Haalt Desk-contacten op.", group: "Contacts & accounts", recommended: true },
-          getContact: { label: "Contactdetails bekijken", description: "Haalt één contact op.", group: "Contacts & accounts", recommended: false },
-          searchContacts: { label: "Contacten zoeken", description: "Zoekt contacten op naam, e-mail of andere gegevens.", group: "Contacts & accounts", recommended: true },
-          createContact: { label: "Create contact", description: "Maakt een nieuw contact aan in Desk.", group: "Contacts & accounts", recommended: false },
+          getTicketConversations: { label: "View ticket conversations", description: "Retrieves conversations within a ticket.", group: "Communication", recommended: false },
+          getThreads: { label: "View threads", description: "Shows message or reply threads within tickets.", group: "Communication", recommended: false },
+          getThread: { label: "View thread details", description: "Retrieves one specific thread.", group: "Communication", recommended: false },
+          getTicketComments: { label: "View ticket comment", description: "Retrieves comments from a ticket.", group: "Communication", recommended: false },
+          createTicketComment: { label: "Add ticket comment", description: "Adds a comment to a ticket.", group: "Communication", recommended: false },
+          sendReply: { label: "Send reply", description: "Sends a reply to a ticket or thread.", group: "Communication", recommended: true },
+          getArticles: { label: "View items", description: "Retrieves knowledge base articles.", group: "Knowledge base", recommended: false },
+          getArticle: { label: "View item", description: "Retrieves one knowledge base article.", group: "Knowledge base", recommended: false },
+          searchSolutions: { label: "Search solutions", description: "Searches for relevant solutions or knowledge base articles.", group: "Knowledge base", recommended: true },
+          suggestArticlesForTicket: { label: "Artikelen voorstellen voor ticket", description: "Searches for matching knowledge base articles for a ticket.", group: "Knowledge base", recommended: false },
+          createArticle: { label: "Create item", description: "Creates a new knowledge base article.", group: "Knowledge base", recommended: false },
+          updateArticle: { label: "Update item", description: "Past een bestaand kennisbankartikel aan.", group: "Knowledge base", recommended: false },
+          getAllKBRootCategories: { label: "View knowledge base categories", description: "Shows main categories of the knowledge base.", group: "Knowledge base", recommended: false },
+          getAgents: { label: "View agents", description: "Shows support staff or agents.", group: "Context & setup", recommended: false },
+          getContacts: { label: "View contacts", description: "Retrieves Desk contacts.", group: "Contacts & accounts", recommended: true },
+          getContact: { label: "View contact details", description: "Retrieves one contact.", group: "Contacts & accounts", recommended: false },
+          searchContacts: { label: "Search contacts", description: "Search contacts by name, email or other details.", group: "Contacts & accounts", recommended: true },
+          createContact: { label: "Create contact", description: "Creates a new contact in Desk.", group: "Contacts & accounts", recommended: false },
           updateContact: { label: "Update contact", description: "Past een bestaand contact aan.", group: "Contacts & accounts", recommended: false },
-          getContactTicketHistory: { label: "View contact ticket history", description: "Toont eerdere tickets van een contact.", group: "Contacts & accounts", recommended: false },
-          getAccounts: { label: "Accounts bekijken", description: "Haalt accounts op in Desk.", group: "Contacts & accounts", recommended: false },
-          getAccount: { label: "Accountdetails bekijken", description: "Haalt één account op.", group: "Contacts & accounts", recommended: false },
-          searchAccounts: { label: "Accounts zoeken", description: "Searches accounts by name or other criteria.", group: "Contacts & accounts", recommended: false },
-          createAccount: { label: "Create account", description: "Maakt een nieuw account aan in Desk.", group: "Contacts & accounts", recommended: false },
-          getTicketsByContact: { label: "View tickets by contact", description: "Toont alle tickets van een specifiek contact.", group: "Contacts & accounts", recommended: false },
-          getTicketsByAccount: { label: "Tickets per account bekijken", description: "Toont alle tickets van een specifiek account.", group: "Contacts & accounts", recommended: false },
-          getMailAccounts: { label: "Mailaccounts bekijken", description: "Toont beschikbare mailaccounts.", group: "Basis & context", recommended: false },
-          getAllFolders: { label: "View folders", description: "Toont alle beschikbare mailmappen.", group: "Mailbox management", recommended: false },
+          getContactTicketHistory: { label: "View contact ticket history", description: "Shows previous tickets of a contact.", group: "Contacts & accounts", recommended: false },
+          getAccounts: { label: "View accounts", description: "Retrieves accounts in Desk.", group: "Contacts & accounts", recommended: false },
+          getAccount: { label: "View account details", description: "Retrieves one account.", group: "Contacts & accounts", recommended: false },
+          searchAccounts: { label: "Search accounts", description: "Search accounts by name or other criteria.", group: "Contacts & accounts", recommended: false },
+          createAccount: { label: "Create account", description: "Creates a new account in Desk.", group: "Contacts & accounts", recommended: false },
+          getTicketsByContact: { label: "View tickets by contact", description: "Shows all tickets of a specific contact.", group: "Contacts & accounts", recommended: false },
+          getTicketsByAccount: { label: "View tickets per account", description: "Shows all tickets of a specific account.", group: "Contacts & accounts", recommended: false },
+          getMailAccounts: { label: "View mail accounts", description: "Shows available mail accounts.", group: "Context & setup", recommended: false },
+          getAllFolders: { label: "View folders", description: "Shows all available mail folders.", group: "Mailbox management", recommended: false },
           moveMessages: { label: "Move messages", description: "Verplaatst e-mails naar een andere map.", group: "Mailbox management", recommended: false },
           archiveMessage: { label: "Bericht archiveren", description: "Archiveert een e-mail.", group: "Mailbox management", recommended: false },
-          unArchiveMessage: { label: "Bericht uit archief halen", description: "Haalt een e-mail terug uit het archief.", group: "Mailbox management", recommended: false },
-          deleteEmail: { label: "E-mail verwijderen", description: "Verwijdert een e-mail.", group: "Mailbox management", recommended: false },
+          unArchiveMessage: { label: "Bericht uit archief halen", description: "Retrieves an email from the archive.", group: "Mailbox management", recommended: false },
+          deleteEmail: { label: "Delete email", description: "Deletes an email.", group: "Mailbox management", recommended: false },
           spamMessage: { label: "Als spam markeren", description: "Markeert een bericht als spam.", group: "Mailbox management", recommended: false },
-          unSpamMessage: { label: "Spammarkering verwijderen", description: "Haalt de spamstatus van een bericht weg.", group: "Mailbox management", recommended: false },
+          unSpamMessage: { label: "Remove spam flag", description: "Removes the spam status from a message.", group: "Mailbox management", recommended: false },
           unreadMessage: { label: "Als ongelezen markeren", description: "Zet een bericht terug op ongelezen.", group: "Mailbox management", recommended: false },
-          applyLabelToMessages: { label: "Label toevoegen aan berichten", description: "Voegt labels toe aan e-mails.", group: "Mailbox management", recommended: false },
-          removeLabelFromMessage: { label: "Label verwijderen van bericht", description: "Verwijdert een label van een e-mail.", group: "Mailbox management", recommended: false },
-          createFolder: { label: "Map aanmaken", description: "Maakt een nieuwe mailmap aan.", group: "Mailbox management", recommended: false },
-          renameFolder: { label: "Map hernoemen", description: "Wijzigt de naam van een bestaande map.", group: "Mailbox management", recommended: false },
-          createLabel: { label: "Label aanmaken", description: "Maakt een nieuw label aan.", group: "Mailbox management", recommended: false },
-          getAllLabelDetails: { label: "Labels bekijken", description: "Toont beschikbare labels en details.", group: "Mailbox management", recommended: false },
-          listPersonalTasks: { label: "View personal tasks", description: "Toont persoonlijke mailgerelateerde taken.", group: "Tasks", recommended: false },
-          sendEmail: { label: "Send email", description: "Stuurt een nieuwe e-mail.", group: "Communicatie", recommended: true },
-          sendReplyEmail: { label: "Antwoordmail versturen", description: "Stuurt een reply op een bestaand bericht.", group: "Communicatie", recommended: true },
-          uploadAttachments: { label: "Bijlagen uploaden", description: "Voegt bijlagen toe aan uitgaande e-mails.", group: "Attachments", recommended: false },
-          listEmails: { label: "View emails", description: "Toont een lijst van e-mails.", group: "Search & retrieve", recommended: true },
-          SearchEmails: { label: "Search emails", description: "Zoekt e-mails op onderwerp, afzender of inhoud.", group: "Search & retrieve", recommended: true },
-          getMessageContent: { label: "View message content", description: "Haalt de inhoud van een e-mail op.", group: "Search & retrieve", recommended: true },
-          getAccountDetails: { label: "Accountdetails bekijken", description: "Toont details van een mailaccount.", group: "Basis & context", recommended: false },
-          getMessageAttachmentInfo: { label: "Bijlage-info bekijken", description: "Toont metadata van bijlagen in een bericht.", group: "Attachments", recommended: false },
-          getMessageAttachmentContent: { label: "Bijlage ophalen", description: "Haalt de inhoud van een e-mailbijlage op.", group: "Attachments", recommended: false },
-          getMessageDetails: { label: "Berichtdetails bekijken", description: "Toont details van een specifiek bericht.", group: "Search & retrieve", recommended: false },
-          getFolder: { label: "Mapdetails bekijken", description: "Haalt details van een specifieke map op.", group: "Mailbox management", recommended: false },
-          getOriginalMessage: { label: "View original message", description: "Haalt het oorspronkelijke bericht van een thread op.", group: "Search & retrieve", recommended: false },
+          applyLabelToMessages: { label: "Apply label to messages", description: "Applies labels to emails.", group: "Mailbox management", recommended: false },
+          removeLabelFromMessage: { label: "Remove label from message", description: "Removes a label from an email.", group: "Mailbox management", recommended: false },
+          createFolder: { label: "Create folder", description: "Creates a new mail folder.", group: "Mailbox management", recommended: false },
+          renameFolder: { label: "Rename folder", description: "Renames an existing folder.", group: "Mailbox management", recommended: false },
+          createLabel: { label: "Create label", description: "Creates a new label.", group: "Mailbox management", recommended: false },
+          getAllLabelDetails: { label: "View labels", description: "Shows available labels and details.", group: "Mailbox management", recommended: false },
+          listPersonalTasks: { label: "View personal tasks", description: "Shows personal mail-related tasks.", group: "Tasks", recommended: false },
+          sendEmail: { label: "Send email", description: "Sends a new email.", group: "Communication", recommended: true },
+          sendReplyEmail: { label: "Send reply email", description: "Sends a reply to an existing message.", group: "Communication", recommended: true },
+          uploadAttachments: { label: "Upload attachments", description: "Adds attachments to outgoing emails.", group: "Attachments", recommended: false },
+          listEmails: { label: "View emails", description: "Shows a list of emails.", group: "Search & retrieve", recommended: true },
+          SearchEmails: { label: "Search emails", description: "Searches emails by subject, sender or content.", group: "Search & retrieve", recommended: true },
+          getMessageContent: { label: "View message content", description: "Retrieves the content of an email.", group: "Search & retrieve", recommended: true },
+          getAccountDetails: { label: "View account details", description: "Shows details of a mail account.", group: "Context & setup", recommended: false },
+          getMessageAttachmentInfo: { label: "View attachment info", description: "Shows attachment metadata in a message.", group: "Attachments", recommended: false },
+          getMessageAttachmentContent: { label: "Retrieve attachment", description: "Retrieves the content of an email attachment.", group: "Attachments", recommended: false },
+          getMessageDetails: { label: "View message details", description: "Shows details of a specific message.", group: "Search & retrieve", recommended: false },
+          getFolder: { label: "View folder details", description: "Retrieves details of a specific folder.", group: "Mailbox management", recommended: false },
+          getOriginalMessage: { label: "View original message", description: "Retrieves the original message of a thread.", group: "Search & retrieve", recommended: false },
           readMessages: { label: "Berichten als gelezen markeren", description: "Markeert berichten als gelezen.", group: "Mailbox management", recommended: false },
-          flagMessages: { label: "Berichten markeren", description: "Voegt een vlag of markering toe aan berichten.", group: "Mailbox management", recommended: false },
-          list_organizations: { label: "Organisaties bekijken", description: "Toont beschikbare Books-organisaties.", group: "Basis & context", recommended: false },
-          get_organization: { label: "Organisatiedetails bekijken", description: "Haalt details van een Books-organisatie op.", group: "Basis & context", recommended: false },
-          list_invoices: { label: "Facturen bekijken", description: "Toont een overzicht van facturen.", group: "Invoices", recommended: true },
-          get_invoice: { label: "Factuurdetails bekijken", description: "Haalt één factuur op.", group: "Invoices", recommended: true },
+          flagMessages: { label: "Flag messages", description: "Adds a flag or marker to messages.", group: "Mailbox management", recommended: false },
+          list_organizations: { label: "View organisations", description: "Shows available Books organisations.", group: "Context & setup", recommended: false },
+          get_organization: { label: "View organisation details", description: "Retrieves details of a Books organisation.", group: "Context & setup", recommended: false },
+          list_invoices: { label: "View invoices", description: "Shows an overview of invoices.", group: "Invoices", recommended: true },
+          get_invoice: { label: "View invoice details", description: "Retrieves one invoice.", group: "Invoices", recommended: true },
           create_invoice: { label: "Create invoice", description: "Creates a new invoice.", group: "Invoices", recommended: true },
-          get_estimate: { label: "Offertedetails bekijken", description: "Haalt een offerte of estimate op.", group: "Offertes", recommended: false },
-          list_contacts: { label: "Contacten bekijken", description: "Toont contacten in Zoho Books.", group: "Contacts", recommended: true },
-          get_contact: { label: "Contactdetails bekijken", description: "Haalt één contact op.", group: "Contacts", recommended: false },
-          create_contact: { label: "Create contact", description: "Maakt een nieuw contact aan in Zoho Books.", group: "Contacts", recommended: false },
-          list_items: { label: "Artikelen bekijken", description: "Toont artikelen of productregels.", group: "Items & producten", recommended: false },
-          list_bills: { label: "Inkoopfacturen bekijken", description: "Toont bills of inkoopfacturen.", group: "Purchasing & expenses", recommended: false },
-          list_expenses: { label: "View expenses", description: "Toont geregistreerde kosten.", group: "Purchasing & expenses", recommended: false },
-          list_bank_accounts: { label: "View bank accounts", description: "Toont gekoppelde bankrekeningen.", group: "Bank & betalingen", recommended: false },
-          list_bank_transactions: { label: "Banktransacties bekijken", description: "Toont banktransacties.", group: "Bank & betalingen", recommended: false },
-          list_chart_of_accounts: { label: "Rekeningschema bekijken", description: "Toont het chart of accounts.", group: "Boekhouding", recommended: false },
-          list_customer_payments: { label: "Klantbetalingen bekijken", description: "Toont ontvangen betalingen van klanten.", group: "Bank & betalingen", recommended: false },
-          list_vendor_payments: { label: "Leveranciersbetalingen bekijken", description: "Toont betalingen aan leveranciers.", group: "Bank & betalingen", recommended: false },
-          list_sales_orders: { label: "Verkooporders bekijken", description: "Toont sales orders.", group: "Orders", recommended: false },
-          create_chart_of_account: { label: "Grootboekrekening aanmaken", description: "Maakt een nieuwe grootboekrekening aan.", group: "Boekhouding", recommended: false },
-          get_chart_of_account: { label: "Grootboekrekening bekijken", description: "Haalt één grootboekrekening op.", group: "Boekhouding", recommended: false },
-          update_chart_of_account: { label: "Grootboekrekening bijwerken", description: "Past een bestaande grootboekrekening aan.", group: "Boekhouding", recommended: false },
-          delete_chart_of_account: { label: "Grootboekrekening verwijderen", description: "Deletes a ledger account.", group: "Boekhouding", recommended: false },
+          get_estimate: { label: "View quote details", description: "Retrieves a quote or estimate.", group: "Quotes", recommended: false },
+          list_contacts: { label: "View contacts", description: "Shows contacts in Zoho Books.", group: "Contacts", recommended: true },
+          get_contact: { label: "View contact details", description: "Retrieves one contact.", group: "Contacts", recommended: false },
+          create_contact: { label: "Create contact", description: "Creates a new contact in Zoho Books.", group: "Contacts", recommended: false },
+          list_items: { label: "View items", description: "Shows items or product lines.", group: "Items & producten", recommended: false },
+          list_bills: { label: "View purchase invoices", description: "Shows bills or purchase invoices.", group: "Purchasing & expenses", recommended: false },
+          list_expenses: { label: "View expenses", description: "Shows recorded expenses.", group: "Purchasing & expenses", recommended: false },
+          list_bank_accounts: { label: "View bank accounts", description: "Shows linked bank accounts.", group: "Bank & betalingen", recommended: false },
+          list_bank_transactions: { label: "View bank transactions", description: "Shows bank transactions.", group: "Bank & betalingen", recommended: false },
+          list_chart_of_accounts: { label: "View chart of accounts", description: "Shows the chart of accounts.", group: "Boekhouding", recommended: false },
+          list_customer_payments: { label: "View customer payments", description: "Shows received payments from customers.", group: "Bank & betalingen", recommended: false },
+          list_vendor_payments: { label: "View vendor payments", description: "Shows payments to suppliers.", group: "Bank & betalingen", recommended: false },
+          list_sales_orders: { label: "View sales orders", description: "Shows sales orders.", group: "Orders", recommended: false },
+          create_chart_of_account: { label: "Create ledger account", description: "Creates a new general ledger account.", group: "Boekhouding", recommended: false },
+          get_chart_of_account: { label: "View ledger account", description: "Retrieves one general ledger account.", group: "Boekhouding", recommended: false },
+          update_chart_of_account: { label: "Update ledger account", description: "Past een bestaande grootboekrekening aan.", group: "Boekhouding", recommended: false },
+          delete_chart_of_account: { label: "Delete ledger account", description: "Deletes a ledger account.", group: "Boekhouding", recommended: false },
           mark_chart_of_account_active: { label: "Grootboekrekening activeren", description: "Zet een grootboekrekening actief.", group: "Boekhouding", recommended: false },
           mark_chart_of_account_inactive: { label: "Grootboekrekening deactiveren", description: "Zet een grootboekrekening inactief.", group: "Boekhouding", recommended: false },
-          list_chart_of_account_transactions: { label: "Transacties per grootboekrekening bekijken", description: "Toont transacties gekoppeld aan een grootboekrekening.", group: "Boekhouding", recommended: false },
-          create_journal: { label: "Journaalpost aanmaken", description: "Maakt een nieuwe journaalpost aan.", group: "Journaal & correcties", recommended: false },
-          list_journals: { label: "Journaalposten bekijken", description: "Toont bestaande journaalposten.", group: "Journaal & correcties", recommended: false },
-          update_journal: { label: "Update journal entry", description: "Past een journaalpost aan.", group: "Journaal & correcties", recommended: false },
-          get_journal: { label: "Journaalpost bekijken", description: "Haalt één journaalpost op.", group: "Journaal & correcties", recommended: false },
-          delete_journal: { label: "Journaalpost verwijderen", description: "Verwijdert een journaalpost.", group: "Journaal & correcties", recommended: false },
-          add_journal_attachment: { label: "Add attachment to journal entry", description: "Voegt een bijlage toe aan een journaalpost.", group: "Journaal & correcties", recommended: false },
-          add_journal_comment: { label: "Commentaar toevoegen aan journaalpost", description: "Adds a comment to a journal entry.", group: "Journaal & correcties", recommended: false },
-          delete_journal_comment: { label: "Commentaar verwijderen van journaalpost", description: "Verwijdert een opmerking van een journaalpost.", group: "Journaal & correcties", recommended: false },
-          mark_journal_published: { label: "Journaalpost publiceren", description: "Markeert een journaalpost als gepubliceerd.", group: "Journaal & correcties", recommended: false },
-          list_locations: { label: "Locaties bekijken", description: "Toont beschikbare locaties of vestigingen.", group: "Basis & context", recommended: false },
-          list_taxes: { label: "Belastingen bekijken", description: "Toont belastinginstellingen.", group: "Belastingen", recommended: false },
-          list_tax_exemptions: { label: "Belastingvrijstellingen bekijken", description: "Toont belastingvrijstellingen.", group: "Belastingen", recommended: false },
-          list_tax_authorities: { label: "Belastingautoriteiten bekijken", description: "Toont gekoppelde belastingautoriteiten.", group: "Belastingen", recommended: false },
-          get_tags: { label: "Tags bekijken", description: "Toont beschikbare tags.", group: "Metadata & management", recommended: false },
+          list_chart_of_account_transactions: { label: "View transactions per ledger account", description: "Shows transactions linked to a ledger account.", group: "Boekhouding", recommended: false },
+          create_journal: { label: "Create journal entry", description: "Creates a new journal entry.", group: "Journal & corrections", recommended: false },
+          list_journals: { label: "View journal entries", description: "Shows existing journal entries.", group: "Journal & corrections", recommended: false },
+          update_journal: { label: "Update journal entry", description: "Past een journaalpost aan.", group: "Journal & corrections", recommended: false },
+          get_journal: { label: "View journal entry", description: "Retrieves one journal entry.", group: "Journal & corrections", recommended: false },
+          delete_journal: { label: "Delete journal entry", description: "Deletes a journal entry.", group: "Journal & corrections", recommended: false },
+          add_journal_attachment: { label: "Add attachment to journal entry", description: "Adds an attachment to a journal entry.", group: "Journal & corrections", recommended: false },
+          add_journal_comment: { label: "Commentaar toevoegen aan journaalpost", description: "Adds a comment to a journal entry.", group: "Journal & corrections", recommended: false },
+          delete_journal_comment: { label: "Delete journal entry comment", description: "Deletes a comment from a journal entry.", group: "Journal & corrections", recommended: false },
+          mark_journal_published: { label: "Journaalpost publiceren", description: "Markeert een journaalpost als gepubliceerd.", group: "Journal & corrections", recommended: false },
+          list_locations: { label: "View locations", description: "Shows available locations or branches.", group: "Context & setup", recommended: false },
+          list_taxes: { label: "View taxes", description: "Shows tax settings.", group: "Belastingen", recommended: false },
+          list_tax_exemptions: { label: "View tax exemptions", description: "Shows tax exemptions.", group: "Belastingen", recommended: false },
+          list_tax_authorities: { label: "View tax authorities", description: "Shows linked tax authorities.", group: "Belastingen", recommended: false },
+          get_tags: { label: "View tags", description: "Shows available tags.", group: "Metadata & management", recommended: false },
           create_project: { label: "Create project", description: "Creates a new project.", group: "Projects", recommended: false },
-          list_projects: { label: "View projects", description: "Toont bestaande projecten.", group: "Projects", recommended: false },
-          update_project: { label: "Project bijwerken", description: "Past een bestaand project aan.", group: "Projects", recommended: false },
-          get_project: { label: "Projectdetails bekijken", description: "Haalt één project op.", group: "Projects", recommended: false },
-          delete_project: { label: "Project verwijderen", description: "Verwijdert een project.", group: "Projects", recommended: false },
+          list_projects: { label: "View projects", description: "Shows existing projects.", group: "Projects", recommended: false },
+          update_project: { label: "Update project", description: "Past een bestaand project aan.", group: "Projects", recommended: false },
+          get_project: { label: "View project details", description: "Retrieves one project.", group: "Projects", recommended: false },
+          delete_project: { label: "Delete project", description: "Deletes a project.", group: "Projects", recommended: false },
           mark_project_active: { label: "Project activeren", description: "Zet een project actief.", group: "Projects", recommended: false },
           mark_project_inactive: { label: "Project deactiveren", description: "Zet een project inactief.", group: "Projects", recommended: false },
-          clone_project: { label: "Project kopiëren", description: "Maakt een kopie van een bestaand project.", group: "Projects", recommended: false },
+          clone_project: { label: "Project kopiëren", description: "Creates a copy of an existing project.", group: "Projects", recommended: false },
           add_project_user: { label: "Projectgebruiker toevoegen", description: "Adds a user to a project.", group: "Projects", recommended: false },
-          list_project_users: { label: "Projectgebruikers bekijken", description: "Toont gebruikers gekoppeld aan een project.", group: "Projects", recommended: false },
-          invite_project_user: { label: "Projectgebruiker uitnodigen", description: "Stuurt een uitnodiging naar een projectgebruiker.", group: "Projects", recommended: false },
+          list_project_users: { label: "View project users", description: "Shows users linked to a project.", group: "Projects", recommended: false },
+          invite_project_user: { label: "Invite project user", description: "Sends an invitation to a project user.", group: "Projects", recommended: false },
           update_project_user: { label: "Update project user", description: "Past gegevens van een projectgebruiker aan.", group: "Projects", recommended: false },
-          get_project_user: { label: "Projectgebruiker bekijken", description: "Haalt gegevens van één projectgebruiker op.", group: "Projects", recommended: false },
-          delete_project_user: { label: "Projectgebruiker verwijderen", description: "Verwijdert een gebruiker uit een project.", group: "Projects", recommended: false },
-          add_project_comment: { label: "Projectcommentaar toevoegen", description: "Voegt een comment toe aan een project.", group: "Projects", recommended: false },
-          list_project_comments: { label: "Projectcommentaar bekijken", description: "Toont comments bij een project.", group: "Projects", recommended: false },
-          delete_project_comment: { label: "Projectcommentaar verwijderen", description: "Verwijdert een projectcommentaar.", group: "Projects", recommended: false },
-          list_project_invoices: { label: "Projectfacturen bekijken", description: "Toont facturen gekoppeld aan een project.", group: "Projects", recommended: false },
-          add_project_task: { label: "Projecttaak aanmaken", description: "Voegt een taak toe aan een project.", group: "Projecttaken", recommended: false },
-          list_project_tasks: { label: "Projecttaken bekijken", description: "Toont taken binnen een project.", group: "Projecttaken", recommended: false },
-          update_project_task: { label: "Projecttaak bijwerken", description: "Past een projecttaak aan.", group: "Projecttaken", recommended: false },
-          get_project_task: { label: "Projecttaak bekijken", description: "Haalt één projecttaak op.", group: "Projecttaken", recommended: false },
-          delete_project_task: { label: "Projecttaak verwijderen", description: "Verwijdert een projecttaak.", group: "Projecttaken", recommended: false },
-          list_users: { label: "View users", description: "Toont gebruikers binnen Zoho Books.", group: "Basis & context", recommended: false },
-          create_base_currency_adjustment: { label: "Valutacorrectie aanmaken", description: "Maakt een correctie aan voor de basisvaluta.", group: "Valuta & correcties", recommended: false },
-          list_base_currency_adjustments: { label: "Valutacorrecties bekijken", description: "Toont bestaande valutacorrecties.", group: "Valuta & correcties", recommended: false },
-          get_base_currency_adjustment: { label: "Valutacorrectie bekijken", description: "Haalt één valutacorrectie op.", group: "Valuta & correcties", recommended: false },
-          delete_base_currency_adjustment: { label: "Valutacorrectie verwijderen", description: "Verwijdert een valutacorrectie.", group: "Valuta & correcties", recommended: false },
-          list_base_currency_adjustment_accounts: { label: "Valutacorrectierekeningen bekijken", description: "Toont rekeningen voor valutacorrecties.", group: "Valuta & correcties", recommended: false },
-          create_custom_field: { label: "Custom field aanmaken", description: "Maakt een nieuw aangepast veld aan.", group: "Custom fields", recommended: false },
-          list_custom_fields: { label: "Custom fields bekijken", description: "Toont aangepaste velden.", group: "Custom fields", recommended: false },
-          update_custom_field: { label: "Custom field bijwerken", description: "Past een aangepast veld aan.", group: "Custom fields", recommended: false },
-          delete_custom_field: { label: "Custom field verwijderen", description: "Verwijdert een aangepast veld.", group: "Custom fields", recommended: false },
+          get_project_user: { label: "View project user", description: "Retrieves data of one project user.", group: "Projects", recommended: false },
+          delete_project_user: { label: "Remove project user", description: "Removes a user from a project.", group: "Projects", recommended: false },
+          add_project_comment: { label: "Add project comment", description: "Adds a comment to a project.", group: "Projects", recommended: false },
+          list_project_comments: { label: "View project comment", description: "Shows comments on a project.", group: "Projects", recommended: false },
+          delete_project_comment: { label: "Delete project comment", description: "Deletes a project comment.", group: "Projects", recommended: false },
+          list_project_invoices: { label: "View project invoices", description: "Shows invoices linked to a project.", group: "Projects", recommended: false },
+          add_project_task: { label: "Create project task", description: "Adds a task to a project.", group: "Project tasks", recommended: false },
+          list_project_tasks: { label: "View project tasks", description: "Shows tasks within a project.", group: "Project tasks", recommended: false },
+          update_project_task: { label: "Update project task", description: "Past een projecttaak aan.", group: "Project tasks", recommended: false },
+          get_project_task: { label: "View project task", description: "Retrieves one project task.", group: "Project tasks", recommended: false },
+          delete_project_task: { label: "Delete project task", description: "Deletes a project task.", group: "Project tasks", recommended: false },
+          list_users: { label: "View users", description: "Shows users within Zoho Books.", group: "Context & setup", recommended: false },
+          create_base_currency_adjustment: { label: "Create currency adjustment", description: "Creates an adjustment for the base currency.", group: "Valuta & correcties", recommended: false },
+          list_base_currency_adjustments: { label: "View currency adjustments", description: "Shows existing currency adjustments.", group: "Valuta & correcties", recommended: false },
+          get_base_currency_adjustment: { label: "View currency adjustment", description: "Retrieves one currency adjustment.", group: "Valuta & correcties", recommended: false },
+          delete_base_currency_adjustment: { label: "Delete currency adjustment", description: "Deletes a currency adjustment.", group: "Valuta & correcties", recommended: false },
+          list_base_currency_adjustment_accounts: { label: "View currency adjustment accounts", description: "Shows accounts for currency adjustments.", group: "Valuta & correcties", recommended: false },
+          create_custom_field: { label: "Create custom field", description: "Creates a new custom field.", group: "Custom fields", recommended: false },
+          list_custom_fields: { label: "View custom fields", description: "Shows custom fields.", group: "Custom fields", recommended: false },
+          update_custom_field: { label: "Update custom field", description: "Past een aangepast veld aan.", group: "Custom fields", recommended: false },
+          delete_custom_field: { label: "Delete custom field", description: "Deletes a custom field.", group: "Custom fields", recommended: false },
           update_field_dropdown_options: { label: "Update dropdown options", description: "Past keuzes van een dropdownveld aan.", group: "Custom fields", recommended: false },
-          bulk_fetch_fields: { label: "Bulk fetch fields", description: "Haalt veldinformatie in bulk op.", group: "Metadata & management", recommended: false },
+          bulk_fetch_fields: { label: "Bulk fetch fields", description: "Retrieves field information in bulk.", group: "Metadata & management", recommended: false },
           check_formula_syntax: { label: "Formulesyntax controleren", description: "Checks whether a formula is syntactically valid.", group: "Custom fields", recommended: false },
-          list_custom_fields_simple: { label: "Eenvoudige custom fields bekijken", description: "Toont een vereenvoudigd overzicht van custom fields.", group: "Custom fields", recommended: false },
-          get_fields_meta: { label: "Veldmetadata bekijken", description: "Shows technical metadata for fields.", group: "Metadata & management", recommended: false },
-          update_projects_using_custom_field: { label: "Project bijwerken via custom field", description: "Werkt projectgegevens bij met behulp van custom fields.", group: "Projects", recommended: false }
+          list_custom_fields_simple: { label: "View simple custom fields", description: "Shows a simplified overview of custom fields.", group: "Custom fields", recommended: false },
+          get_fields_meta: { label: "View field metadata", description: "Shows technical metadata for fields.", group: "Metadata & management", recommended: false },
+          update_projects_using_custom_field: { label: "Update project via custom field", description: "Werkt projectgegevens bij met behulp van custom fields.", group: "Projects", recommended: false }
         };
 
         // Quick Start use cases
@@ -3668,27 +3668,27 @@ Also use this skill when the user's request implies this workflow, even with dif
 `;
 
             if (skillData.mcpServer) {
-                content += `\n## MCP Server Integratie
+                content += `\n## MCP Server Integration
 **Server:** ${skillData.mcpServer.serverName}  
-**Gebruiksvriendelijke naam:** ${skillData.mcpServer.displayName}  
+**Display name:** ${skillData.mcpServer.displayName}  
 **Service:** ${skillData.mcpServer.service}  
-**Categorie:** ${skillData.mcpServer.category}
+**Category:** ${skillData.mcpServer.category}
 
-**Server beschrijving:**  
+**Server description:**  
 ${skillData.mcpServer.description}
 
-**Benodigde tools:**
+**Required tools:**
 ${skillData.selectedTools.map(t => `- ${t}`).join('\n')}
 
-**Toolset scope:** ${skillData.selectedTools.length} van ${skillData.mcpServer.tools.length} beschikbare tools selected
+**Toolset scope:** ${skillData.selectedTools.length} of ${skillData.mcpServer.tools.length} available tools selected
 
 ## Zoho Connector Setup
-Deze skill maakt gebruik van de **Zoho Connector** in Claude. Zorg ervoor dat:
+This skill uses the **Zoho Connector** in Claude. Make sure that:
 1. You have activated the Zoho Connector in your Claude environment
-2. De MCP server "${skillData.mcpServer.serverName}" beschikbaar is
-3. Je de benodigde authenticatie hebt ingesteld voor ${skillData.mcpServer.service}
+2. The MCP server "${skillData.mcpServer.serverName}" is available
+3. You have configured the required authentication for ${skillData.mcpServer.service}
 
-Ga naar de Connector-instellingen in Claude en controleer of de Zoho-integratie correct is geconfigureerd.
+Go to the Connector settings in Claude and verify that the Zoho integration is correctly configured.
 `;
             }
             
@@ -3779,7 +3779,7 @@ Created on ${new Date().toLocaleDateString('en-GB')}
                 // Send to CRM
                 const skillData = collectQuickSkillData();
                 const content = generateSkillContent(skillData);
-                createZohoCRMLead('Skill Builder User', '', email, skillData.name || 'Quick Skill', content, 'Fst. Guide');
+                createZohoCRMLead('Guide Request', '', email, skillData.name || 'Quick Skill', content, 'Fst. Guide');
             }
         }
 
@@ -4079,7 +4079,7 @@ Created on ${new Date().toLocaleDateString('en-GB')}
 
             if (nameEl) nameEl.textContent = selectedMCPServer.displayName;
             if (detailEl) detailEl.textContent = copy.desc || selectedMCPServer.description;
-            if (toolsBadge) toolsBadge.textContent = `${recCount} acties selected`;
+            if (toolsBadge) toolsBadge.textContent = `${recCount} actions selected`;
             if (statusBadge) statusBadge.textContent = recCount < totalCount ? 'Default toolset' : 'Full set';
             if (accordionBadge) accordionBadge.textContent = `${recCount} selected`;
             if (summary) summary.classList.add('visible');
@@ -4245,7 +4245,7 @@ Created on ${new Date().toLocaleDateString('en-GB')}
             const badge = document.getElementById('tool-accordion-badge');
             if (badge) badge.textContent = `${selectedTools.length} selected`;
             const toolsBadge = document.getElementById('summary-tools-badge');
-            if (toolsBadge) toolsBadge.textContent = `${selectedTools.length} acties selected`;
+            if (toolsBadge) toolsBadge.textContent = `${selectedTools.length} actions selected`;
             const statusBadge = document.getElementById('summary-status-badge');
             if (statusBadge && selectedMCPServer) {
                 const recCount = selectedMCPServer.tools.filter(t => TOOL_METADATA[t] && TOOL_METADATA[t].recommended).length;
@@ -4391,27 +4391,27 @@ Also use this skill when the user's request implies this workflow, even with dif
 `;
 
             if (skillData.mcpServer) {
-                content += `\n## MCP Server Integratie
+                content += `\n## MCP Server Integration
 **Server:** ${skillData.mcpServer.serverName}  
-**Gebruiksvriendelijke naam:** ${skillData.mcpServer.displayName}  
+**Display name:** ${skillData.mcpServer.displayName}  
 **Service:** ${skillData.mcpServer.service}  
-**Categorie:** ${skillData.mcpServer.category}
+**Category:** ${skillData.mcpServer.category}
 
-**Server beschrijving:**  
+**Server description:**  
 ${skillData.mcpServer.description}
 
-**Benodigde tools:**
+**Required tools:**
 ${skillData.selectedTools.map(t => `- ${t}`).join('\n')}
 
-**Toolset scope:** ${skillData.selectedTools.length} van ${skillData.mcpServer.tools.length} beschikbare tools selected
+**Toolset scope:** ${skillData.selectedTools.length} of ${skillData.mcpServer.tools.length} available tools selected
 
 ## Zoho Connector Setup
-Deze skill maakt gebruik van de **Zoho Connector** in Claude. Zorg ervoor dat:
+This skill uses the **Zoho Connector** in Claude. Make sure that:
 1. You have activated the Zoho Connector in your Claude environment
-2. De MCP server "${skillData.mcpServer.serverName}" beschikbaar is
-3. Je de benodigde authenticatie hebt ingesteld voor ${skillData.mcpServer.service}
+2. The MCP server "${skillData.mcpServer.serverName}" is available
+3. You have configured the required authentication for ${skillData.mcpServer.service}
 
-Ga naar de Connector-instellingen in Claude en controleer of de Zoho-integratie correct is geconfigureerd.
+Go to the Connector settings in Claude and verify that the Zoho integration is correctly configured.
 `;
             }
             
@@ -4443,7 +4443,7 @@ ${skillData.edgeCases}
                 content += `\n## Governance & Guardrails
 `;
                 if (skillData.governance.readOnly) {
-                    content += `- **Read-only mode:** Geen create/update/delete operaties toegestaan\n`;
+                    content += `- **Read-only mode:** No create, update, or delete operations allowed\n`;
                 }
                 if (skillData.governance.confirmWrites) {
                     content += `- **Confirmation required:** Always ask for approval before executing write actions\n`;
@@ -4706,7 +4706,7 @@ Created on ${new Date().toLocaleDateString('en-GB')}
                 // Send to CRM
                 const skillData = collectAdvSkillData();
                 const content = generateAdvSkillContent(skillData);
-                createZohoCRMLead('Skill Builder User', '', email, skillData.name || 'Adv Skill', content, 'Adv. Guide');
+                createZohoCRMLead('Guide Request', '', email, skillData.name || 'Adv Skill', content, 'Adv. Guide');
             }
         }
         
