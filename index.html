@@ -356,9 +356,9 @@
         
         .progress-line {
             position: absolute;
-            top: 24px;
-            left: 0;
-            right: 0;
+            top: 48px;
+            left: 8.33%;
+            right: 8.33%;
             height: 3px;
             background: var(--border);
             z-index: 1;
@@ -386,8 +386,8 @@
         .quick-progress-bar .progress-line {
             position: absolute;
             top: 48px;
-            left: 40px;
-            right: 40px;
+            left: 16.67%;
+            right: 16.67%;
             height: 3px;
             background: var(--border);
             z-index: 1;
@@ -3617,11 +3617,24 @@
                 mcpServer: mcpServer,
                 selectedTools: mcpServer ? mcpServer.tools : [],
                 examples: [],
-                edgeCases: 'Standard error handling. Always validate input data and provide clear error messages.',
-                implementationSteps: `1. Analyseer de input van de gebruiker
-2. Voer de benodigde Zoho-operaties uit via de MCP server
-3. Valideer de resultaten
-4. Geef duidelijke feedback aan de gebruiker`,
+                edgeCases: `**Missing required input:** If the user's request lacks essential information (e.g. name, email, record ID), ask for it explicitly before proceeding. Do not guess or use placeholder values.
+
+**Ambiguous matches:** If a search returns multiple records that could match the user's intent, present the options clearly and ask the user to confirm which one to use. Never pick one arbitrarily.
+
+**Duplicate prevention:** Before creating a new record, check whether a similar record already exists. If a likely duplicate is found, inform the user and ask whether to proceed, update the existing record, or cancel.
+
+**Avoiding blind overwrites:** Before updating an existing record, confirm what the current values are. Do not overwrite data without the user being aware of what will change.
+
+**Permission or connector issues:** If the Zoho Connector is unavailable or returns an authorisation error, inform the user clearly. Do not retry silently or proceed with partial access.
+
+**Validation failures:** If Zoho rejects the operation due to required fields, format errors, or business rule violations, surface the exact reason to the user and suggest how to fix it.`,
+                implementationSteps: `1. Analyse the user's request and identify the workflow to execute
+2. Validate that all required input is present — ask for missing fields before proceeding
+3. Check for ambiguity — if multiple records could match, clarify with the user
+4. Check for likely duplicates before creating new records
+5. Execute the Zoho action via the MCP server
+6. Validate the outcome — confirm the operation succeeded and the result is as expected
+7. Return clear, structured feedback: what was done, what record was affected, and any relevant IDs or next steps`,
                 dependencies: [],
                 branding: true,
                 quickMode: true
@@ -3702,6 +3715,18 @@ ${skillData.outputDescription}
 ${skillData.implementationSteps}
 `;
 
+            if (skillData.quickMode) {
+                content += `\n## MFORZ Standard Checks
+The following checks apply to every execution of this skill:
+
+- **Input validation:** Confirm all required fields are present before taking action
+- **Ambiguity check:** If multiple records match, surface the options — never assume
+- **Duplicate check:** Search before creating — flag likely duplicates for user confirmation
+- **Scope check:** Only act on what the user explicitly requested — no side effects
+- **Connector check:** Verify the Zoho Connector is active and responding before proceeding
+`;
+            }
+
             if (skillData.examples && skillData.examples.length > 0) {
                 content += `\n## Voorbeelden
 
@@ -3714,18 +3739,22 @@ Output: ${ex.output}
             content += `\n## Edge Cases & Exception Handling
 ${skillData.edgeCases}
 
-**Key principles:**
-- Always explain WHY you are taking an action, not just WHAT you are doing
-- Validate all input data before making changes in Zoho
-- Give the user clear, actionable feedback
-- When something is unclear, ask for clarification rather than making assumptions
+**MFORZ handling principles:**
+- **Validate first:** Never execute a Zoho action without confirming the required input is complete and valid
+- **Clarify ambiguity:** When the intent is unclear or multiple records match, ask — don't assume
+- **Prevent duplicates:** Check whether a record already exists before creating a new one
+- **Keep scope tight:** Only act on what the user explicitly requested — no unintended side effects
+- **Communicate actions clearly:** Always tell the user what you are about to do, what you did, and what the result was
 `;
 
             content += `\n## Implementation Notes
-- Follow MFORZ best practices for Zoho One integrations
-- Use proper error handling and validation
-- Give users clear progress updates during multi-step operations
-- When errors occur, explain what went wrong AND what the user can do about it
+MFORZ best practices applied in this skill:
+
+- **Validate first:** Check input completeness before touching any Zoho record
+- **Clarify ambiguity:** Surface multiple matches to the user rather than picking one
+- **Prevent duplicates:** Search before create — always confirm before adding a new record
+- **Keep scope tight:** Execute only what was requested — avoid unintended writes or side effects
+- **Communicate actions clearly:** Describe what is happening, what changed, and what the user should do next
 `;
 
             if (skillData.branding) {
@@ -4431,11 +4460,12 @@ ${skillData.implementationSteps}
                 content += `\n## Edge Cases & Exception Handling
 ${skillData.edgeCases}
 
-**Key principles:**
-- Always explain WHY you are taking an action, not just WHAT you are doing
-- Validate all input data before making changes in Zoho
-- Give the user clear, actionable feedback
-- When something is unclear, ask for clarification rather than making assumptions
+**MFORZ handling principles:**
+- **Validate first:** Never execute a Zoho action without confirming the required input is complete and valid
+- **Clarify ambiguity:** When the intent is unclear or multiple records match, ask — don't assume
+- **Prevent duplicates:** Check whether a record already exists before creating a new one
+- **Keep scope tight:** Only act on what the user explicitly requested — no unintended side effects
+- **Communicate actions clearly:** Always tell the user what you are about to do, what you did, and what the result was
 `;
             }
 
@@ -4455,10 +4485,13 @@ ${skillData.edgeCases}
             }
 
             content += `\n## Implementation Notes
-- Follow MFORZ best practices for Zoho One integrations
-- Use proper error handling and validation
-- Give users clear progress updates during multi-step operations
-- When errors occur, explain what went wrong AND what the user can do about it
+MFORZ best practices applied in this skill:
+
+- **Validate first:** Check input completeness before touching any Zoho record
+- **Clarify ambiguity:** Surface multiple matches to the user rather than picking one
+- **Prevent duplicates:** Search before create — always confirm before adding a new record
+- **Keep scope tight:** Execute only what was requested — avoid unintended writes or side effects
+- **Communicate actions clearly:** Describe what is happening, what changed, and what the user should do next
 `;
 
             if (skillData.branding) {
