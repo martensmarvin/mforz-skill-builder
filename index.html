@@ -1499,18 +1499,18 @@
             transition: left 0.2s;
             box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
-        .sidebar-hidden .info-bar-toggle {
+        .panel-off .info-bar-toggle {
             background: var(--border);
         }
-        .sidebar-hidden .info-bar-toggle::after {
+        .panel-off .info-bar-toggle::after {
             left: 2px;
         }
-        .sidebar-hidden .info-bar {
+        .panel-off .info-bar {
             background: var(--background);
             border-color: var(--border);
         }
-        .sidebar-hidden .info-bar-label { color: var(--text-muted); }
-        .sidebar-hidden .info-bar-sublabel { color: var(--text-muted); }
+        .panel-off .info-bar-label { color: var(--text-muted); }
+        .panel-off .info-bar-sublabel { color: var(--text-muted); }
 
         /* Subtle MFORZ footer line */
         .mforz-footer-line {
@@ -1592,23 +1592,23 @@
             transition: left 0.2s;
             box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
-        .sidebar-hidden .sidebar-leermodus {
+        .panel-off .sidebar-leermodus {
             background: var(--background);
             border-color: var(--border);
         }
-        .sidebar-hidden .sidebar-leermodus-title { color: var(--text-muted); }
-        .sidebar-hidden .sidebar-leermodus-sub { color: var(--text-muted); }
-        .sidebar-hidden .sidebar-toggle { background: var(--border); }
-        .sidebar-hidden .sidebar-toggle::after { left: 2px; }
+        .panel-off .sidebar-leermodus-title { color: var(--text-muted); }
+        .panel-off .sidebar-leermodus-sub { color: var(--text-muted); }
+        .panel-off .sidebar-toggle { background: var(--border); }
+        .panel-off .sidebar-toggle::after { left: 2px; }
 
         /* Tutorial card in sidebar */
-        .sidebar-tutorial {
+        .info-tutorial {
             background: #f0fdf4;
             border: 1.5px solid #86efac;
             border-radius: 10px;
             overflow: hidden;
         }
-        .sidebar-tutorial-header {
+        .info-tutorial-header {
             background: #dcfce7;
             padding: 10px 14px;
             font-size: 11px;
@@ -1618,23 +1618,23 @@
             letter-spacing: 0.05em;
             border-bottom: 1px solid #86efac;
         }
-        .sidebar-tutorial-body {
+        .info-tutorial-body {
             padding: 14px;
         }
-        .sidebar-tutorial-title {
+        .info-tutorial-title {
             font-size: 13px;
             font-weight: 700;
             color: #166534;
             margin-bottom: 6px;
             line-height: 1.3;
         }
-        .sidebar-tutorial-text {
+        .info-tutorial-text {
             font-size: 12px;
             color: var(--text-muted);
             line-height: 1.6;
             margin-bottom: 10px;
         }
-        .sidebar-tip {
+        .info-tip {
             background: #fffbeb;
             border-left: 3px solid var(--accent);
             padding: 8px 10px;
@@ -1644,7 +1644,7 @@
             line-height: 1.5;
             margin-top: 8px;
         }
-        .sidebar-tip-title {
+        .info-tip-title {
             font-weight: 700;
             margin-bottom: 3px;
         }
@@ -1658,7 +1658,7 @@
             font-style: italic;
             margin-top: 8px;
         }
-        .sidebar-error {
+        .info-error {
             font-size: 11px;
             color: #dc2626;
             line-height: 1.5;
@@ -1666,14 +1666,14 @@
             padding-top: 8px;
             border-top: 1px solid var(--border);
         }
-        .sidebar-error-label {
+        .info-error-label {
             font-weight: 700;
             display: block;
             margin-bottom: 2px;
         }
 
         /* Vaste categorielabels in de sidebar */
-        .sidebar-cat-label {
+        .info-cat-label {
             font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
@@ -1681,30 +1681,30 @@
             color: var(--primary);
             margin-bottom: 5px;
         }
-        .sidebar-cat-error {
+        .info-cat-error {
             color: #dc2626;
         }
-        .sidebar-tips-list {
+        .info-tips-list {
             margin: 0;
             padding-left: 16px;
             font-size: 12px;
             color: var(--text-muted);
             line-height: 1.6;
         }
-        .sidebar-tips-list li {
+        .info-tips-list li {
             margin-bottom: 4px;
         }
-        .sidebar-error-inline {
+        .info-error-inline {
             font-size: 12px;
             color: #dc2626;
             line-height: 1.5;
         }
 
         /* Waarom dit werkt label */
-        .sidebar-cat-waarom {
+        .info-cat-waarom {
             color: #166534;
         }
-        .sidebar-waarom-text {
+        .info-waarom-text {
             font-size: 12px;
             color: #166534;
             line-height: 1.6;
@@ -1714,17 +1714,17 @@
         }
 
         /* Sidebar learn-block kaart (groene content uit de hoofdflow) */
-        .sidebar-learn {
+        .info-learn {
             background: white;
             border: 1.5px solid #86efac;
             border-radius: 10px;
             overflow: hidden;
             transition: opacity 0.2s;
         }
-        .sidebar-learn.hidden-learn {
+        .info-learn.hidden-learn {
             display: none;
         }
-        .sidebar-learn-header {
+        .info-learn-header {
             background: #f0fdf4;
             padding: 10px 14px;
             font-size: 11px;
@@ -1734,22 +1734,22 @@
             letter-spacing: 0.05em;
             border-bottom: 1px solid #86efac;
         }
-        .sidebar-learn-body {
+        .info-learn-body {
             padding: 14px;
             font-size: 12px;
             color: #166534;
             line-height: 1.6;
         }
-        .sidebar-learn-body strong {
+        .info-learn-body strong {
             color: #166534;
         }
         /* Strip the outer background/border from nested div styles inside learn-body */
-        .sidebar-learn-body > div[style*="font-weight: 600"] {
+        .info-learn-body > div[style*="font-weight: 600"] {
             font-size: 12px;
             font-weight: 700;
             margin-bottom: 4px;
         }
-        .sidebar-learn-body > div[style*="font-size: 14px"] {
+        .info-learn-body > div[style*="font-size: 14px"] {
             font-size: 12px !important;
         }
 
@@ -1796,7 +1796,7 @@
         .adv-main {
             margin-right: 308px;
         }
-        .adv-sidebar {
+        .info-panel {
             position: absolute;
             top: 0;
             right: 0;
@@ -1813,7 +1813,7 @@
         .mode-switch-alt {
             display: none !important;
         }
-        .sidebar-hidden .mode-switch-alt {
+        .panel-off .mode-switch-alt {
             display: flex !important;
         }
 
@@ -1824,7 +1824,7 @@
             .adv-main {
                 width: 100%;
             }
-            .adv-sidebar {
+            .info-panel {
                 display: none !important;
             }
             .mobile-help-toggle {
@@ -1892,16 +1892,16 @@
             transition: left 0.2s;
             box-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
-        .sidebar-hidden .mode-switch {
+        .panel-off .mode-switch {
             background: var(--background);
             border-color: var(--border);
         }
-        .sidebar-hidden .mode-switch-label { color: var(--text-muted); }
-        .sidebar-hidden .mode-switch-switch { background: var(--border); }
-        .sidebar-hidden .mode-switch-switch::after { left: 2px; }
+        .panel-off .mode-switch-label { color: var(--text-muted); }
+        .panel-off .mode-switch-switch { background: var(--border); }
+        .panel-off .mode-switch-switch::after { left: 2px; }
 
         /* Sidebar tutorial header renamed */
-        .sidebar-tutorial-header-label {
+        .info-tutorial-header-label {
             font-size: 11px;
             font-weight: 700;
             color: var(--primary);
@@ -2731,22 +2731,22 @@
                 </div>
             </div></div><!-- /adv-main -->
 
-            <div class="adv-sidebar" id="adv-sidebar">
+            <div class="info-panel" id="info-panel">
                 <!-- Toggle bovenaan de sidebar -->
                 
 
                 <!-- Tutorial voor huidige stap -->
-                <div class="sidebar-tutorial" id="sidebar-tutorial">
-                    <div class="sidebar-tutorial-header">📖 What you'll learn</div>
-                    <div class="sidebar-tutorial-body" id="sidebar-tutorial-body">
+                <div class="info-tutorial" id="info-tutorial">
+                    <div class="info-tutorial-header">📖 What you'll learn</div>
+                    <div class="info-tutorial-body" id="info-tutorial-body">
                         <!-- Dynamically filled per step -->
                     </div>
                 </div>
 
                 <!-- Waarom dit werkt (groene leerblok) -->
-                <div class="sidebar-learn hidden-learn" id="sidebar-learn">
-                    <div class="sidebar-learn-header">🌱 Why this works</div>
-                    <div class="sidebar-learn-body" id="sidebar-learn-body">
+                <div class="info-learn hidden-learn" id="info-learn">
+                    <div class="info-learn-header">🌱 Why this works</div>
+                    <div class="info-learn-body" id="info-learn-body">
                         <!-- Dynamically filled per step -->
                     </div>
                 </div>
@@ -4765,7 +4765,7 @@ Created on ${new Date().toLocaleDateString('en-GB')}
             }
         };
         function updateSidebarTutorial(step) {
-            const body = document.getElementById('sidebar-tutorial-body');
+            const body = document.getElementById('info-tutorial-body');
             if (!body) return;
             const data = STEP_TUTORIALS[step];
             if (!data) { body.innerHTML = ''; return; }
@@ -4777,32 +4777,32 @@ Created on ${new Date().toLocaleDateString('en-GB')}
             const extraHTML = data.extra
                 ? data.extra.map(e => `
                 <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #86efac;">
-                    <div class="sidebar-cat-label sidebar-cat-waarom">${e.titel}</div>
-                    <div class="sidebar-waarom-text">${e.tekst}</div>
+                    <div class="info-cat-label info-cat-waarom">${e.titel}</div>
+                    <div class="info-waarom-text">${e.tekst}</div>
                 </div>`).join('')
                 : '';
 
             body.innerHTML = `
                 <div style="margin-bottom: 10px;">
-                    <div class="sidebar-tutorial-text">${data.leert}</div>
+                    <div class="info-tutorial-text">${data.leert}</div>
                 </div>
                 ${tipsHTML ? `<div style="margin-bottom: 10px;">
-                    <div class="sidebar-cat-label">Tips</div>
-                    <ul class="sidebar-tips-list">${tipsHTML}</ul>
+                    <div class="info-cat-label">Tips</div>
+                    <ul class="info-tips-list">${tipsHTML}</ul>
                 </div>` : ''}
                 ${data.fout ? `<div style="margin-bottom: 10px;">
-                    <div class="sidebar-cat-label sidebar-cat-error">Common mistake</div>
-                    <div class="sidebar-error-inline">${data.fout}</div>
+                    <div class="info-cat-label info-cat-error">Common mistake</div>
+                    <div class="info-error-inline">${data.fout}</div>
                 </div>` : ''}
                 ${data.waarom ? `<div style="margin-bottom: 0;">
-                    <div class="sidebar-cat-label sidebar-cat-waarom">Why this works</div>
-                    <div class="sidebar-waarom-text">${data.waarom}</div>
+                    <div class="info-cat-label info-cat-waarom">Why this works</div>
+                    <div class="info-waarom-text">${data.waarom}</div>
                 </div>` : ''}
                 ${extraHTML}
             `;
 
-            // sidebar-learn no longer used for learn-block content (learn-blocks are hidden)
-            const learnCard = document.getElementById('sidebar-learn');
+            // info-learn no longer used for learn-block content (learn-blocks are hidden)
+            const learnCard = document.getElementById('info-learn');
             if (learnCard) learnCard.classList.add('hidden-learn');
         }
 
