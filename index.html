@@ -1790,31 +1790,27 @@
 
         /* Layout: main met margin-rechts, sidebar absoluut gepositioneerd */
         .adv-body-row {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            gap: 24px;
-            min-height: 400px;
+            position: relative;
+            min-height: 500px;
         }
         .adv-main {
-            flex: 1;
-            min-width: 0;
+            margin-right: 308px;
         }
         .adv-sidebar {
-            width: 280px;
-            flex-shrink: 0;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 284px;
             display: flex;
             flex-direction: column;
             gap: 12px;
-            position: sticky;
-            top: 80px;
         }
         /* Leermodus uit: verberg sidebar, geef main volle breedte */
         .leermodus-off .adv-sidebar {
             display: none !important;
         }
         .leermodus-off .adv-main {
-            flex: 1;
+            margin-right: 0;
         }
 
         /* Fallback toggle: alleen zichtbaar als sidebar verborgen is */
@@ -3453,7 +3449,8 @@
             
             loadMCPServers();
             updateProgress();
-            updateSidebarTutorial(1);
+            // Slight delay to ensure DOM is visible before filling sidebar
+            setTimeout(() => updateSidebarTutorial(1), 50);
         }
 
         function backToModeSelection() {
