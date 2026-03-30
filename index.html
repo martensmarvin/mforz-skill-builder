@@ -1806,12 +1806,8 @@
             gap: 12px;
         }
         /* Leermodus uit: verberg sidebar, geef main volle breedte */
-        .sidebar-hidden .adv-sidebar {
-            display: none !important;
-        }
-        .sidebar-hidden .adv-main {
-            margin-right: 0;
-        }
+        /* sidebar always visible */
+
 
         /* Fallback toggle: alleen zichtbaar als sidebar verborgen is */
         .mode-switch-alt {
@@ -2281,10 +2277,7 @@
                     <div class="step-header">
                         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
                             <div class="step-number" style="margin-bottom:0;">Step 1 of 6</div>
-                            <label for="uitleg-toggle-step" class="mode-switch-alt" style="display:flex;align-items:center;gap:8px;cursor:pointer;background:white;border:1.5px solid #e2e8f0;border-radius:10px;padding:5px 12px;font-size:12px;font-weight:600;color:var(--text-dark);user-select:none;">
-                                Learning mode
-                                <input type="checkbox" id="uitleg-toggle-step" checked onchange="toggleSidebar()" class="toggle-input">
-                            </label>
+                            
                         </div>
                         <h2 class="step-title">What does this skill do?</h2>
                         <p class="step-description">Describe the Zoho task you want Claude to learn. A skill is an instruction file that tells Claude when and how to execute a specific Zoho process.</p>
@@ -2348,10 +2341,7 @@
                     <div class="step-header">
                         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
                             <div class="step-number" style="margin-bottom:0;">Step 2 of 6</div>
-                            <label for="uitleg-toggle-step" class="mode-switch-alt" style="display:flex;align-items:center;gap:8px;cursor:pointer;background:white;border:1.5px solid #e2e8f0;border-radius:10px;padding:5px 12px;font-size:12px;font-weight:600;color:var(--text-dark);user-select:none;">
-                                Learning mode
-                                <input type="checkbox" id="uitleg-toggle-step" checked onchange="toggleSidebar()" class="toggle-input">
-                            </label>
+                            
                         </div>
                         <h2 class="step-title">How does Claude recognise this skill?</h2>
                         <p class="step-description">Triggers are the phrases that activate this skill. Teach Claude to recognise when you want to use it.</p>
@@ -2406,10 +2396,7 @@
                     <div class="step-header">
                         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
                             <div class="step-number" style="margin-bottom:0;">Step 3 of 6</div>
-                            <label for="uitleg-toggle-step" class="mode-switch-alt" style="display:flex;align-items:center;gap:8px;cursor:pointer;background:white;border:1.5px solid #e2e8f0;border-radius:10px;padding:5px 12px;font-size:12px;font-weight:600;color:var(--text-dark);user-select:none;">
-                                Learning mode
-                                <input type="checkbox" id="uitleg-toggle-step" checked onchange="toggleSidebar()" class="toggle-input">
-                            </label>
+                            
                         </div>
                         <h2 class="step-title">Which Zoho actions does this skill need?</h2>
                         <p class="step-description">Choose a skillset that matches your workflow. The relevant actions are selected automatically. You can refine further if needed.</p>
@@ -2505,10 +2492,7 @@
                     <div class="step-header">
                         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
                             <div class="step-number" style="margin-bottom:0;">Step 4 of 6</div>
-                            <label for="uitleg-toggle-step" class="mode-switch-alt" style="display:flex;align-items:center;gap:8px;cursor:pointer;background:white;border:1.5px solid #e2e8f0;border-radius:10px;padding:5px 12px;font-size:12px;font-weight:600;color:var(--text-dark);user-select:none;">
-                                Learning mode
-                                <input type="checkbox" id="uitleg-toggle-step" checked onchange="toggleSidebar()" class="toggle-input">
-                            </label>
+                            
                         </div>
                         <h2 class="step-title">What are the execution steps?</h2>
                         <p class="step-description">Skills contain logic. Describe step by step what Claude should do when this skill is triggered.</p>
@@ -2552,10 +2536,7 @@
                     <div class="step-header">
                         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
                             <div class="step-number" style="margin-bottom:0;">Step 5 of 6</div>
-                            <label for="uitleg-toggle-step" class="mode-switch-alt" style="display:flex;align-items:center;gap:8px;cursor:pointer;background:white;border:1.5px solid #e2e8f0;border-radius:10px;padding:5px 12px;font-size:12px;font-weight:600;color:var(--text-dark);user-select:none;">
-                                Learning mode
-                                <input type="checkbox" id="uitleg-toggle-step" checked onchange="toggleSidebar()" class="toggle-input">
-                            </label>
+                            
                         </div>
                         <h2 class="step-title">What guardrails apply?</h2>
                         <p class="step-description">Every skill has governance rules. Decide how autonomously this skill can operate and which actions always require confirmation.</p>
@@ -2752,10 +2733,7 @@
 
             <div class="adv-sidebar" id="adv-sidebar">
                 <!-- Toggle bovenaan de sidebar -->
-                <div style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:8px 0;">
-                    <span style="font-size:13px;font-weight:600;color:#166534;">Learning mode</span>
-                    <input type="checkbox" id="uitleg-toggle-sidebar" checked onchange="toggleSidebar()" class="toggle-input">
-                </div>
+                
 
                 <!-- Tutorial voor huidige stap -->
                 <div class="sidebar-tutorial" id="sidebar-tutorial">
@@ -4716,7 +4694,7 @@ Created on ${new Date().toLocaleDateString('en-GB')}
         }
 
         // ── Leermodus ──────────────────────────────────────
-        let sidebarActive = true;
+        let sidebarActive = true; // always on
 
         // ── Tutorial content per stap ──────────────────────
         // Fixed 4-category structure per step: leert / tips / fout / waarom
@@ -4827,20 +4805,7 @@ Created on ${new Date().toLocaleDateString('en-GB')}
             const learnCard = document.getElementById('sidebar-learn');
             if (learnCard) learnCard.classList.add('hidden-learn');
         }
-        function toggleSidebar() {
-            sidebarActive = !sidebarActive;
-            const advMode = document.getElementById('advanced-mode');
-            if (sidebarActive) {
-                advMode.classList.remove('sidebar-hidden');
-                updateSidebarTutorial(currentStep);
-            } else {
-                advMode.classList.add('sidebar-hidden');
-            }
-            // Sync all checkboxes
-            document.querySelectorAll('.toggle-input').forEach(function(cb) {
-                cb.checked = sidebarActive;
-            });
-        }
+
 
         // ── Use-case pill selected state ───────────────────
         function selectQuickUseCaseAndMark(type) {
