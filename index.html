@@ -2400,7 +2400,7 @@
                 </div>
             </div>
 
-            <!-- Advanced Step 3: Zoho-acties -->
+            <!-- Advanced Step 3: Zoho actions -->
             <div id="adv-step-3" class="step">
                 <div class="step-content">
                     <div class="step-header">
@@ -2488,7 +2488,7 @@
                     <div class="learn-block" style="background: #f0fdf4; border-left: 4px solid #86efac; padding: 16px; border-radius: 8px; margin-top: 24px;">
                         <div style="font-weight: 600; color: #166534; margin-bottom: 8px;">💡 Why skillsets and not individual actions?</div>
                         <div style="font-size: 14px; color: #166534; line-height: 1.6;">
-                            Skillsets zijn vooraf samengestelde sets van acties die samen een logische workflow vormen. Ze geven je skill precies genoeg toegang — niet te breed, niet te smal. Verfijnen is altijd mogelijk via het uitklapbare paneel hierboven.
+                            Skillsets are pre-configured sets of actions that together form a logical workflow. They give your skill exactly the right level of access — not too broad, not too narrow. You can always refine further using the panel below.
                         </div>
                     </div>
 
@@ -3326,7 +3326,7 @@
           get_journal: { label: "View journal entry", description: "Retrieves one journal entry.", group: "Journal & corrections", recommended: false },
           delete_journal: { label: "Delete journal entry", description: "Deletes a journal entry.", group: "Journal & corrections", recommended: false },
           add_journal_attachment: { label: "Add attachment to journal entry", description: "Adds an attachment to a journal entry.", group: "Journal & corrections", recommended: false },
-          add_journal_comment: { label: "Commentaar toevoegen aan journaalpost", description: "Adds a comment to a journal entry.", group: "Journal & corrections", recommended: false },
+          add_journal_comment: { label: "Add journal entry comment", description: "Adds a comment to a journal entry.", group: "Journal & corrections", recommended: false },
           delete_journal_comment: { label: "Delete journal entry comment", description: "Deletes a comment from a journal entry.", group: "Journal & corrections", recommended: false },
           mark_journal_published: { label: "Journaalpost publiceren", description: "Markeert een journaalpost als gepubliceerd.", group: "Journal & corrections", recommended: false },
           list_locations: { label: "View locations", description: "Shows available locations or branches.", group: "Context & setup", recommended: false },
@@ -3342,7 +3342,7 @@
           mark_project_active: { label: "Project activeren", description: "Zet een project actief.", group: "Projects", recommended: false },
           mark_project_inactive: { label: "Project deactiveren", description: "Zet een project inactief.", group: "Projects", recommended: false },
           clone_project: { label: "Project kopiëren", description: "Creates a copy of an existing project.", group: "Projects", recommended: false },
-          add_project_user: { label: "Projectgebruiker toevoegen", description: "Adds a user to a project.", group: "Projects", recommended: false },
+          add_project_user: { label: "Add project user", description: "Adds a user to a project.", group: "Projects", recommended: false },
           list_project_users: { label: "View project users", description: "Shows users linked to a project.", group: "Projects", recommended: false },
           invite_project_user: { label: "Invite project user", description: "Sends an invitation to a project user.", group: "Projects", recommended: false },
           update_project_user: { label: "Update project user", description: "Past gegevens van een projectgebruiker aan.", group: "Projects", recommended: false },
@@ -4155,7 +4155,7 @@ Created on ${new Date().toLocaleDateString('en-GB')}
             function toolCardHTML(apiName, isChecked) {
                 const meta = TOOL_METADATA[apiName];
                 const label = meta ? meta.label : apiName;
-                const description = meta ? meta.description : 'Geen beschrijving beschikbaar.';
+                const description = meta ? meta.description : 'No description available.';
                 const group = meta ? meta.group : '';
                 const isRec = meta && meta.recommended;
                 const checkedAttr = isChecked ? 'checked' : '';
@@ -4175,7 +4175,7 @@ Created on ${new Date().toLocaleDateString('en-GB')}
                             <div class="tool-card-description">${description}</div>
                             <span class="tool-card-api">API: ${apiName}</span>
                         </div>
-                        ${isRec ? '<span class="tool-recommended-badge">Aanbevolen</span>' : ''}
+                        ${isRec ? '<span class="tool-recommended-badge">Recommended</span>' : ''}
                     </div>`;
             }
 
@@ -4197,11 +4197,11 @@ Created on ${new Date().toLocaleDateString('en-GB')}
             if (recommendedTools.length > 0) {
                 html += `
                     <div class="tool-helper-text">
-                        ✅ Deze acties zijn alvast selected op basis van jouw gekozen service. Zet uit wat je niet nodig hebt of voeg extra acties toe.
+                        ✅ These actions are pre-selected based on your chosen service. Deselect what you don't need or add extra actions.
                     </div>
                     <div class="tool-section">
                         <div class="tool-section-header">
-                            <span class="tool-section-title">Aanbevolen acties</span>
+                            <span class="tool-section-title">Recommended actions</span>
                             <span class="tool-section-count">${recommendedTools.length} selected</span>
                         </div>
                         <div class="tool-cards-grid">
@@ -4211,7 +4211,7 @@ Created on ${new Date().toLocaleDateString('en-GB')}
             } else {
                 html += `
                     <div class="tool-helper-text">
-                        Selecteer hieronder de acties die deze skill should be able to perform. Only select what is strictly needed.
+                        Select the actions this skill should be able to perform. Only select what is strictly needed.
                     </div>`;
             }
 
@@ -4232,8 +4232,8 @@ Created on ${new Date().toLocaleDateString('en-GB')}
                     <div class="tool-extra-section">
                         <div class="tool-extra-toggle" id="extra-toggle" onclick="toggleExtraTools()">
                             <span class="tool-extra-toggle-icon">▶</span>
-                            <span>Meer acties toevoegen</span>
-                            <span class="tool-extra-count-badge">${extraTools.length} beschikbaar</span>
+                            <span>Add more actions</span>
+                            <span class="tool-extra-count-badge">${extraTools.length} available</span>
                         </div>
                         <div class="tool-extra-content" id="extra-tools-content">
                             ${groupedHTML}
@@ -4947,7 +4947,7 @@ Created on ${new Date().toLocaleDateString('en-GB')}
                 name: "Test Gebruiker",
                 company: "Test Bedrijf BV",
                 email: "test@example.com",
-                skillName: "Lead toevoegen aan CRM",
+                skillName: "Add lead to CRM",
                 skillContent: "# Test Skill\n\nDit is een test skill voor Zoho Flow webhook testing.\n\n## Trigger\n- test trigger\n\n## Uitvoering\n1. Test step 1\n2. Test step 2",
                 mode: "quick",
                 timestamp: new Date().toISOString(),
