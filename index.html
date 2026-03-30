@@ -1453,7 +1453,7 @@
         }
 
         /* Leermodus toggle bar */
-        .leermodus-bar {
+        .info-bar {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -1466,19 +1466,19 @@
             user-select: none;
             transition: background 0.15s;
         }
-        .leermodus-bar:hover { background: #dcfce7; }
-        .leermodus-label {
+        .info-bar:hover { background: #dcfce7; }
+        .info-bar-label {
             font-size: 13px;
             font-weight: 600;
             color: #166534;
             flex: 1;
         }
-        .leermodus-sublabel {
+        .info-bar-sublabel {
             font-size: 11px;
             color: #4ade80;
             font-weight: 500;
         }
-        .leermodus-toggle {
+        .info-bar-toggle {
             width: 36px;
             height: 20px;
             background: #86efac;
@@ -1487,7 +1487,7 @@
             transition: background 0.2s;
             flex-shrink: 0;
         }
-        .leermodus-toggle::after {
+        .info-bar-toggle::after {
             content: '';
             position: absolute;
             width: 16px;
@@ -1499,18 +1499,18 @@
             transition: left 0.2s;
             box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
-        .leermodus-off .leermodus-toggle {
+        .sidebar-hidden .info-bar-toggle {
             background: var(--border);
         }
-        .leermodus-off .leermodus-toggle::after {
+        .sidebar-hidden .info-bar-toggle::after {
             left: 2px;
         }
-        .leermodus-off .leermodus-bar {
+        .sidebar-hidden .info-bar {
             background: var(--background);
             border-color: var(--border);
         }
-        .leermodus-off .leermodus-label { color: var(--text-muted); }
-        .leermodus-off .leermodus-sublabel { color: var(--text-muted); }
+        .sidebar-hidden .info-bar-label { color: var(--text-muted); }
+        .sidebar-hidden .info-bar-sublabel { color: var(--text-muted); }
 
         /* Subtle MFORZ footer line */
         .mforz-footer-line {
@@ -1592,14 +1592,14 @@
             transition: left 0.2s;
             box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
-        .leermodus-off .sidebar-leermodus {
+        .sidebar-hidden .sidebar-leermodus {
             background: var(--background);
             border-color: var(--border);
         }
-        .leermodus-off .sidebar-leermodus-title { color: var(--text-muted); }
-        .leermodus-off .sidebar-leermodus-sub { color: var(--text-muted); }
-        .leermodus-off .sidebar-toggle { background: var(--border); }
-        .leermodus-off .sidebar-toggle::after { left: 2px; }
+        .sidebar-hidden .sidebar-leermodus-title { color: var(--text-muted); }
+        .sidebar-hidden .sidebar-leermodus-sub { color: var(--text-muted); }
+        .sidebar-hidden .sidebar-toggle { background: var(--border); }
+        .sidebar-hidden .sidebar-toggle::after { left: 2px; }
 
         /* Tutorial card in sidebar */
         .sidebar-tutorial {
@@ -1806,18 +1806,18 @@
             gap: 12px;
         }
         /* Leermodus uit: verberg sidebar, geef main volle breedte */
-        .leermodus-off .adv-sidebar {
+        .sidebar-hidden .adv-sidebar {
             display: none !important;
         }
-        .leermodus-off .adv-main {
+        .sidebar-hidden .adv-main {
             margin-right: 0;
         }
 
         /* Fallback toggle: alleen zichtbaar als sidebar verborgen is */
-        .leer-toggle-fallback {
+        .mode-switch-alt {
             display: none !important;
         }
-        .leermodus-off .leer-toggle-fallback {
+        .sidebar-hidden .mode-switch-alt {
             display: flex !important;
         }
 
@@ -1848,7 +1848,7 @@
             flex: 1;
             margin-bottom: 0;
         }
-        .leer-toggle-inline {
+        .mode-switch {
             display: flex;
             align-items: center;
             gap: 8px;
@@ -1862,20 +1862,20 @@
             margin-top: 4px;
             transition: background 0.15s;
         }
-        .leer-toggle-inline:hover { background: #dcfce7; }
+        .mode-switch:hover { background: #dcfce7; }
 
         /* Fallback toggle in content: zelfde breedte als sidebar zodat switch rechts uitlijnt */
-        .leer-toggle-fallback {
+        .mode-switch-alt {
             width: 280px;
             justify-content: space-between;
         }
-        .leer-toggle-inline-label {
+        .mode-switch-label {
             font-size: 12px;
             font-weight: 600;
             color: #166534;
             white-space: nowrap;
         }
-        .leer-toggle-inline-switch {
+        .mode-switch-switch {
             width: 30px;
             height: 16px;
             background: #86efac;
@@ -1884,7 +1884,7 @@
             transition: background 0.2s;
             flex-shrink: 0;
         }
-        .leer-toggle-inline-switch::after {
+        .mode-switch-switch::after {
             content: '';
             position: absolute;
             width: 12px;
@@ -1896,13 +1896,13 @@
             transition: left 0.2s;
             box-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
-        .leermodus-off .leer-toggle-inline {
+        .sidebar-hidden .mode-switch {
             background: var(--background);
             border-color: var(--border);
         }
-        .leermodus-off .leer-toggle-inline-label { color: var(--text-muted); }
-        .leermodus-off .leer-toggle-inline-switch { background: var(--border); }
-        .leermodus-off .leer-toggle-inline-switch::after { left: 2px; }
+        .sidebar-hidden .mode-switch-label { color: var(--text-muted); }
+        .sidebar-hidden .mode-switch-switch { background: var(--border); }
+        .sidebar-hidden .mode-switch-switch::after { left: 2px; }
 
         /* Sidebar tutorial header renamed */
         .sidebar-tutorial-header-label {
@@ -2281,9 +2281,9 @@
                     <div class="step-header">
                         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
                             <div class="step-number" style="margin-bottom:0;">Step 1 of 6</div>
-                            <div class="leer-toggle-inline leer-toggle-fallback" onclick="toggleLeermodus()">
-                                <span class="leer-toggle-inline-label">Learning mode</span>
-                                <div class="leer-toggle-inline-switch"></div>
+                            <div class="mode-switch mode-switch-alt" onclick="toggleSidebar()">
+                                <span class="mode-switch-label">Uitleg</span>
+                                <div class="mode-switch-switch"></div>
                             </div>
                         </div>
                         <h2 class="step-title">What does this skill do?</h2>
@@ -2348,9 +2348,9 @@
                     <div class="step-header">
                         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
                             <div class="step-number" style="margin-bottom:0;">Step 2 of 6</div>
-                            <div class="leer-toggle-inline leer-toggle-fallback" onclick="toggleLeermodus()">
-                                <span class="leer-toggle-inline-label">Learning mode</span>
-                                <div class="leer-toggle-inline-switch"></div>
+                            <div class="mode-switch mode-switch-alt" onclick="toggleSidebar()">
+                                <span class="mode-switch-label">Uitleg</span>
+                                <div class="mode-switch-switch"></div>
                             </div>
                         </div>
                         <h2 class="step-title">How does Claude recognise this skill?</h2>
@@ -2406,9 +2406,9 @@
                     <div class="step-header">
                         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
                             <div class="step-number" style="margin-bottom:0;">Step 3 of 6</div>
-                            <div class="leer-toggle-inline leer-toggle-fallback" onclick="toggleLeermodus()">
-                                <span class="leer-toggle-inline-label">Learning mode</span>
-                                <div class="leer-toggle-inline-switch"></div>
+                            <div class="mode-switch mode-switch-alt" onclick="toggleSidebar()">
+                                <span class="mode-switch-label">Uitleg</span>
+                                <div class="mode-switch-switch"></div>
                             </div>
                         </div>
                         <h2 class="step-title">Which Zoho actions does this skill need?</h2>
@@ -2505,9 +2505,9 @@
                     <div class="step-header">
                         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
                             <div class="step-number" style="margin-bottom:0;">Step 4 of 6</div>
-                            <div class="leer-toggle-inline leer-toggle-fallback" onclick="toggleLeermodus()">
-                                <span class="leer-toggle-inline-label">Learning mode</span>
-                                <div class="leer-toggle-inline-switch"></div>
+                            <div class="mode-switch mode-switch-alt" onclick="toggleSidebar()">
+                                <span class="mode-switch-label">Uitleg</span>
+                                <div class="mode-switch-switch"></div>
                             </div>
                         </div>
                         <h2 class="step-title">What are the execution steps?</h2>
@@ -2552,9 +2552,9 @@
                     <div class="step-header">
                         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
                             <div class="step-number" style="margin-bottom:0;">Step 5 of 6</div>
-                            <div class="leer-toggle-inline leer-toggle-fallback" onclick="toggleLeermodus()">
-                                <span class="leer-toggle-inline-label">Learning mode</span>
-                                <div class="leer-toggle-inline-switch"></div>
+                            <div class="mode-switch mode-switch-alt" onclick="toggleSidebar()">
+                                <span class="mode-switch-label">Uitleg</span>
+                                <div class="mode-switch-switch"></div>
                             </div>
                         </div>
                         <h2 class="step-title">What guardrails apply?</h2>
@@ -2639,9 +2639,9 @@
                         <div class="step-header">
                             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
                                 <div class="step-number" style="margin-bottom:0;">Step 6 of 6</div>
-                                <div class="leer-toggle-inline leer-toggle-fallback" onclick="toggleLeermodus()">
-                                    <span class="leer-toggle-inline-label">Learning mode</span>
-                                    <div class="leer-toggle-inline-switch"></div>
+                                <div class="mode-switch mode-switch-alt" onclick="toggleSidebar()">
+                                    <span class="mode-switch-label">Uitleg</span>
+                                    <div class="mode-switch-switch"></div>
                                 </div>
                             </div>
                             <h2 class="step-title">Review & download</h2>
@@ -2752,9 +2752,9 @@
 
             <div class="adv-sidebar" id="adv-sidebar">
                 <!-- Toggle bovenaan de sidebar -->
-                <div class="leer-toggle-inline" onclick="toggleLeermodus()" style="justify-content:space-between;">
-                    <span class="leer-toggle-inline-label">Learning mode</span>
-                    <div class="leer-toggle-inline-switch"></div>
+                <div class="mode-switch" onclick="toggleSidebar()" style="justify-content:space-between;">
+                    <span class="mode-switch-label">Uitleg</span>
+                    <div class="mode-switch-switch"></div>
                 </div>
 
                 <!-- Tutorial voor huidige stap -->
@@ -4716,7 +4716,7 @@ Created on ${new Date().toLocaleDateString('en-GB')}
         }
 
         // ── Leermodus ──────────────────────────────────────
-        let leermodusActive = true;
+        let sidebarActive = true;
 
         // ── Tutorial content per stap ──────────────────────
         // Fixed 4-category structure per step: leert / tips / fout / waarom
@@ -4827,17 +4827,17 @@ Created on ${new Date().toLocaleDateString('en-GB')}
             const learnCard = document.getElementById('sidebar-learn');
             if (learnCard) learnCard.classList.add('hidden-learn');
         }
-        function toggleLeermodus() {
-            leermodusActive = !leermodusActive;
+        function toggleSidebar() {
+            sidebarActive = !sidebarActive;
             const advMode = document.getElementById('advanced-mode');
-            // CSS handles sidebar show/hide via .leermodus-off class
-            // and inline toggle switch via .leermodus-off .leer-toggle-inline-switch
-            if (leermodusActive) {
-                advMode.classList.remove('leermodus-off');
+            // CSS handles sidebar show/hide via .sidebar-hidden class
+            // and inline toggle switch via .sidebar-hidden .mode-switch-switch
+            if (sidebarActive) {
+                advMode.classList.remove('sidebar-hidden');
                 // Re-render sidebar tutorial for current step
                 updateSidebarTutorial(currentStep);
             } else {
-                advMode.classList.add('leermodus-off');
+                advMode.classList.add('sidebar-hidden');
             }
         }
 
