@@ -213,19 +213,19 @@
             width: 0;
             height: 0;
             border-style: solid;
-            border-width: 0 0 80px 80px;
-            border-color: transparent transparent #4ade80 transparent;
+            border-width: 0 0 100px 100px;
+            border-color: transparent transparent #86efac transparent;
         }
         .mode-card-learn-ribbon-label {
             position: absolute;
-            bottom: 10px;
-            right: 4px;
-            font-size: 10px;
+            bottom: 14px;
+            right: 5px;
+            font-size: 11px;
             font-weight: 700;
-            color: #14532d;
+            color: #166534;
             line-height: 1.2;
             text-align: right;
-            width: 60px;
+            width: 72px;
             letter-spacing: 0.02em;
         }
         
@@ -1950,10 +1950,9 @@
         <div id="landing-page">
             <div class="header">
                 <div class="header-content">
-                    <span class="header-eyebrow">MFORZ — Skill Builder for Claude + Zoho One</span>
+                    <span class="header-eyebrow">Skill Builder for Claude + Zoho One</span>
                     <h1>Build and understand <span class="highlight">Claude skills</span> for Zoho One</h1>
-                    <p class="header-intro">Describe your Zoho workflow, generate a ready-to-use <code style="background:rgba(255,255,255,0.6);padding:2px 6px;border-radius:4px;font-size:16px;">SKILL.md</code> and understand exactly why a well-built skill works the way it does.</p>
-                    <p class="header-detail">The MFORZ Skill Builder generates a structured instruction file for Claude — including triggers, actions, and guardrails. It walks you through each decision step by step, so you leave with both a working file and a clear understanding of how to build the next one yourself.</p>
+                    <p class="header-intro">Built for Zoho users and consultants.</p>
                     
                     <div class="header-capabilities">
                         <div class="capability-item">
@@ -1978,7 +1977,7 @@
                         <div style="font-weight: 600; color: var(--primary); margin-bottom: 12px; font-size: 15px;">💡 How it works</div>
                         <div style="font-size: 14px; color: var(--text-dark); line-height: 1.7;">
                             <strong>Step 1</strong> — Describe your Zoho workflow in the builder<br>
-                            <strong>Step 2</strong> — Download the generated <code style="background:#e2e8f0;padding:1px 5px;border-radius:3px;">SKILL.md</code>-bestand<br>
+                            <strong>Step 2</strong> — Download the generated <code style="background:#e2e8f0;padding:1px 5px;border-radius:3px;">SKILL.md</code> file<br>
                             <strong>Step 3</strong> — Upload it to Claude via Settings → Skills<br>
                             <strong>Step 4</strong> — Activate the Zoho Connector and test your skill<br><br>
                             The builder does not create live workflows — it generates an instruction file that teaches Claude how your Zoho process works.
@@ -2000,48 +1999,26 @@
 
         <!-- Mode Selection -->
         <div id="mode-selection" class="mode-selection">
-            <h2 class="mode-title">How do you want to build your skill?</h2>
-            <p class="mode-subtitle">Both paths deliver a ready-to-use <code style="background:#e2e8f0;padding:1px 5px;border-radius:3px;font-size:12px;">SKILL.md</code> file. The difference is how much detail and control you want.</p>
+            <h2 class="mode-title">How do you want to build?</h2>
             
             <div class="mode-cards">
                 <div class="mode-card" onclick="startQuickMode()">
-                    <div class="mode-card-label">Best for straightforward workflows</div>
-                    <h3>Quick Start — Simple Skill</h3>
-                    <p class="mode-card-desc">Pick a standard Zoho action, customise it, and download your SKILL.md. Ideal for single actions and repeatable processes.</p>
-                    <span class="mode-card-use-case">Good for: adding leads, looking up contacts, scheduling meetings</span>
-                    <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted);">
-                        <strong>What you get:</strong><br>
-                        • Pre-configured triggers for common Zoho actions<br>
-                        • Standard guardrails included<br>
-                        • Ready to upload to Claude immediately<br><br>
-                        ⏱ Time investment: ~3 minutes<br>
-                        📄 Result: a working SKILL.md file
-                    </div>
+                    <div class="mode-card-label">Quick Start</div>
+                    <h3>Quick Start</h3>
+                    <p class="mode-card-desc">3 steps · 3 minutes</p>
                 </div>
                 
                 <div class="mode-card" onclick="startAdvancedMode()">
-                    <div class="mode-card-label">Best for robust, multi-step workflows</div>
-                    <h3>Complete Designer — Full Skill</h3>
-                    <p class="mode-card-desc">Build a robust skill with triggers, edge cases, and guardrails. Work through 6 steps and define every aspect of your skill in detail.</p>
-                    <span class="mode-card-use-case">Good for: processes with exceptions, team workflows</span>
-                    <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted);">
-                        <strong>What you get:</strong><br>
-                        • Define all triggers and edge cases yourself<br>
-                        • Choose from all Zoho services and actions<br>
-                        • Custom guardrails per skill<br>
-                        • Detailed SKILL.md with a complete instruction set<br><br>
-                        ⏱ Time investment: ~8 minutes<br>
-                        📄 Result: a comprehensive SKILL.md file
-                    </div>
+                    <div class="mode-card-label">Complete Designer</div>
+                    <h3>Complete Designer</h3>
+                    <p class="mode-card-desc">6 steps · 8 minutes</p>
                     <!-- Corner ribbon rechtsonder: leermodus indicator -->
                     <div class="mode-card-learn-ribbon"></div>
                     <div class="mode-card-learn-ribbon-label">Learning&shy;mode</div>
                 </div>
             </div>
             
-            <p style="text-align: center; margin-top: 24px; font-size: 14px; color: var(--text-muted);">
-                💡 Tip: Experienced users often choose Quick Start for simple skills. Use Complete Designer when completeness and control matter.
-            </p>
+
         </div>
         </div>
         <!-- End Mode Selection Page -->
@@ -2075,7 +2052,7 @@
                     <div class="step-header">
                         <div class="step-number">Step 1 of 3</div>
                         <h2 class="step-title">Which Zoho skill do you want to build?</h2>
-                        <p class="step-description">Pick a common skill to start from, or describe your own. The builder sets up the matching triggers and structure automatically.</p>
+                        
                     </div>
 
                     <div class="form-group">
@@ -2092,13 +2069,13 @@
 
                     <div class="form-group">
                         <label class="form-label" for="quick-skill-name">Or describe your own skill</label>
-                        <p class="form-help">Use a verb: what does Claude do when this skill is active?</p>
+                        
                         <input type="text" id="quick-skill-name" class="form-input" placeholder="e.g. 'zoho-lead-intake' or 'schedule-meeting'">
                     </div>
 
                     <div class="form-group">
                         <label class="form-label" for="quick-purpose">What should this skill do?</label>
-                        <p class="form-help">What should Claude do, and what does it deliver?</p>
+                        
                         <textarea id="quick-purpose" class="form-textarea" placeholder="e.g. 'When I share a name and company, Claude adds them as a lead in Zoho CRM and creates a follow-up task.'"></textarea>
                     </div>
 
@@ -2115,12 +2092,12 @@
                     <div class="step-header">
                         <div class="step-number">Step 2 of 3</div>
                         <h2 class="step-title">Triggers & output</h2>
-                        <p class="step-description">Add the phrases Claude should recognise to activate this skill, and describe what it should return.</p>
+                        
                     </div>
 
                     <div class="form-group">
                         <label class="form-label">When should Claude use this skill?</label>
-                        <p class="form-help">How do you normally ask Claude for this? Add 2–3 variations.</p>
+                        
                         
                         <div class="trigger-builder">
                             <div class="trigger-input-group">
@@ -2143,7 +2120,7 @@
 
                     <div class="form-group">
                         <label class="form-label" for="quick-output">What should Claude return?</label>
-                        <p class="form-help">What should Claude report back when the skill is done?</p>
+                        
                         <textarea id="quick-output" class="form-textarea" placeholder="e.g. 'Confirmation with lead ID, company name, and assigned sales rep.'"></textarea>
                     </div>
 
@@ -2287,7 +2264,7 @@
                             </div>
                         </div>
                         <h2 class="step-title">What does this skill do?</h2>
-                        <p class="step-description">Describe the Zoho task you want Claude to learn. A skill is an instruction file that tells Claude when and how to execute a specific Zoho process.</p>
+                        
                                         </div>
 
 
@@ -2295,19 +2272,19 @@
 
                     <div class="form-group">
                         <label class="form-label" for="skill-name">Give this skill a recognisable name</label>
-                        <p class="form-help">This label is what you see in Claude. e.g. "zoho-lead-intake" or "crm-contact-enrichment"</p>
+                        
                         <input type="text" id="skill-name" class="form-input" placeholder="e.g. 'zoho-lead-intake'">
                     </div>
 
                     <div class="form-group">
                         <label class="form-label" for="skill-purpose">What should this skill be able to do?</label>
-                        <p class="form-help">Describe in 2–3 sentences what Claude should learn, and which Zoho actions it needs.</p>
+                        
                         <textarea id="skill-purpose" class="form-textarea" placeholder="Describe what this skill teaches Claude..."></textarea>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label" for="output-type">How do you know the skill succeeded?</label>
-                        <p class="form-help">This helps Claude understand when the skill has been completed successfully</p>
+                        
                         <select id="output-type" class="form-select">
                             <option value="confirmation">Confirmation — "Lead added with ID 12345"</option>
                             <option value="data">Structured data — Table or list of results</option>
@@ -2318,20 +2295,20 @@
 
                     <div class="form-group">
                         <label class="form-label" for="output-description">Describe exactly what Claude should respond</label>
-                        <p class="form-help">What should Claude report back? e.g. lead ID, company name, assigned rep.</p>
+                        
                         <textarea id="output-description" class="form-textarea" placeholder="Describe the ideal Claude response..."></textarea>
                     </div>
 
                     <div class="learn-block" style="background: #f0fdf4; border-left: 4px solid #86efac; padding: 16px; border-radius: 8px; margin-top: 24px;">
                         <div style="font-weight: 600; color: #166534; margin-bottom: 8px;">💡 Why this matters</div>
                         <div style="font-size: 14px; color: #166534; line-height: 1.6; margin-bottom: 12px;">
-                            Een heldere skill-definitie is het verschil tussen een skill die Claude soms begrijpt en een skill die altijd werkt.<br><br>
-                            Vage skill-doelen → Claude raadt wat je bedoelt<br>
-                            Heldere skill-doelen → Claude weet precies wat te doen
+                            A clear skill definition is the difference between a skill Claude sometimes understands and a skill that works reliably every time.<br><br>
+                            Vague skill goals → Claude has to guess what you mean<br>
+                            Clear skill goals → Claude knows exactly what to do
                         </div>
                         <div style="font-weight: 600; color: #166534; margin-bottom: 8px;">📚 What you'll learn</div>
                         <div style="font-size: 14px; color: #166534; line-height: 1.6;">
-                            Het definiëren van goede skills is de basis van effectieve Claude-automatisering. Deze skill-thinking kun je toepassen op elk Claude-project.
+                            Defining strong skills is the foundation of effective Claude automation. This skill design mindset can be applied to every Claude project you build.
                         </div>
                     </div>
 
@@ -2354,7 +2331,7 @@
                             </div>
                         </div>
                         <h2 class="step-title">How does Claude recognise this skill?</h2>
-                        <p class="step-description">Triggers are the phrases that activate this skill. Teach Claude to recognise when you want to use it.</p>
+                        
                                         </div>
 
 
@@ -2362,7 +2339,7 @@
 
                     <div class="form-group">
                         <label class="form-label">Trigger phrases for this skill</label>
-                        <p class="form-help">Add at least 3–5 variations. More triggers = more reliable recognition.</p>
+                        
                         
                         <div class="trigger-builder">
                             <div class="trigger-input-group">
@@ -2389,7 +2366,7 @@
                     <div class="learn-block" style="background: #f0fdf4; border-left: 4px solid #86efac; padding: 16px; border-radius: 8px; margin-top: 24px;">
                         <div style="font-weight: 600; color: #166534; margin-bottom: 8px;">📚 What you'll learn</div>
                         <div style="font-size: 14px; color: #166534; line-height: 1.6;">
-                            Trigger-design is cruciaal voor skill-herkenning. Een skill met 5+ gevarieerde triggers werkt betrouwbaarder dan een skill met 2 algemene triggers. Dit leermoment geldt voor alle Claude skills, niet alleen Zoho.
+                            Trigger design is crucial for reliable skill recognition. A skill with 5+ varied triggers performs more reliably than a skill with only 2 generic ones. This principle applies to all Claude skills, not just Zoho-related ones.
                         </div>
                     </div>
 
@@ -2412,7 +2389,7 @@
                             </div>
                         </div>
                         <h2 class="step-title">Which Zoho actions does this skill need?</h2>
-                        <p class="step-description">Choose a skillset that matches your workflow. The relevant actions are selected automatically. You can refine further if needed.</p>
+                        
                                         </div>
 
 
@@ -2420,7 +2397,7 @@
 
                     <div class="form-group" style="margin-bottom: 8px;">
                         <label class="form-label">Choose a skillset <span style="font-weight: 400; color: var(--text-muted);">(optional)</span></label>
-                        <p class="form-help">Select the set that best fits your workflow. Recommended actions are pre-selected.</p>
+                        
                     </div>
 
                     <div class="skillset-filters">
@@ -2488,7 +2465,7 @@
                     <div class="learn-block" style="background: #f0fdf4; border-left: 4px solid #86efac; padding: 16px; border-radius: 8px; margin-top: 24px;">
                         <div style="font-weight: 600; color: #166534; margin-bottom: 8px;">💡 Why skillsets and not individual actions?</div>
                         <div style="font-size: 14px; color: #166534; line-height: 1.6;">
-                            Skillsets are pre-configured sets of actions that together form a logical workflow. They give your skill exactly the right level of access — not too broad, not too narrow. You can always refine further using the panel below.
+
                         </div>
                     </div>
 
@@ -2535,7 +2512,7 @@
                     <div class="learn-block" style="background: #f0fdf4; border-left: 4px solid #86efac; padding: 16px; border-radius: 8px; margin-top: 24px;">
                         <div style="font-weight: 600; color: #166534; margin-bottom: 8px;">📚 What you'll learn</div>
                         <div style="font-size: 14px; color: #166534; line-height: 1.6;">
-                            Het afhandelen van uitzonderingen is wat een robuuste skill onderscheidt van een fragiele. Skills zonder uitzonderingslogica werken in zo'n 80% van situaties. Skills met goede uitzonderingsafhandeling werken in 95%+. Dit principe geldt voor elke Claude-skill die in productie draait.
+                            Handling exceptions is what separates a robust skill from a fragile one. Skills without exception logic may work in many situations, but skills with well-defined exception handling are far more reliable in production. This principle applies to every Claude skill that runs in a live environment.
                         </div>
                     </div>
 
@@ -2558,7 +2535,7 @@
                             </div>
                         </div>
                         <h2 class="step-title">What guardrails apply?</h2>
-                        <p class="step-description">Every skill has governance rules. Decide how autonomously this skill can operate and which actions always require confirmation.</p>
+                        
                                         </div>
 
 
@@ -2645,7 +2622,7 @@
                                 </div>
                             </div>
                             <h2 class="step-title">Review & download</h2>
-                            <p class="step-description" style="margin-bottom: 16px;">Review the generated SKILL.md below. Happy with it? Download and upload it to Claude to activate your skill.</p>
+                            
                         </div>
                     </div>
 
@@ -4035,7 +4012,7 @@ Created on ${new Date().toLocaleDateString('en-GB')}
         }
 
         function skipSkillset() {
-            // Wis zoekfilter en ga door naar stap 4 zonder skillset
+            // Clear search filterer en ga door naar stap 4 zonder skillset
             const search = document.getElementById('skillset-search');
             const serviceFilter = document.getElementById('skillset-service-filter');
             if (search) search.value = '';
@@ -4757,20 +4734,23 @@ Created on ${new Date().toLocaleDateString('en-GB')}
             1: {
                 leert: 'A clear skill definition determines whether Claude responds reliably. Describe the goal, the Zoho actions required, and the expected output.',
                 tips: [
-                    'Start with a verb: "Adds leads to CRM" is more concrete than "CRM management".',
-                    'Also describe WHAT Claude should report back — not just what it should do.'
+                    'Skill name: Use a short, verb-based label that describes the action — e.g. "zoho-lead-intake" or "crm-contact-enrichment". This is what you see in Claude.',
+                    'Skill purpose: Describe in 2–3 sentences what Claude should do and which Zoho actions it needs.',
+                    'Success type: Choose how Claude confirms the skill completed — e.g. a confirmation ID, a data summary, or a list of next steps.',
+                    'Expected response: Be specific — e.g. "Return the lead ID, company name, and assigned sales rep."'
                 ],
                 fout: 'Being too vague: "Handle Zoho tasks." Claude won\'t know when the skill should activate.',
                 waarom: 'Claude follows instructions literally. A concrete example helps enormously: "When I share a LinkedIn lead, Claude adds them to Zoho CRM with company enrichment and sales rep assignment."'
             },
             2: {
-                leert: 'Triggers determine when Claude recognises your skill. The more varied your triggers, the more reliably the skill activates.',
+                leert: 'Triggers are the phrases that activate this skill. Add at least 3–5 variations — phrased the way you would naturally say them.',
                 tips: [
-                    'Add at least 3–5 triggers — phrase them the way you\'d actually say them.',
-                    'Vary the wording: "add a lead", "new prospect", "register contact".'
+                    'Use different phrasing, not just synonyms — e.g. "add a lead", "new prospect from LinkedIn", "CRM intake for this contact".',
+                    'Claude matches on meaning, not exact words — varied phrasing helps it generalise correctly.',
+                    'Think about how colleagues might phrase the same request — add those variations too.'
                 ],
-                fout: 'Adding only one trigger. If you phrase it differently, Claude won\'t recognise the skill.',
-                waarom: 'Claude matches on recognition, not intent. More trigger variation means a wider recognition surface — you don\'t need to use the exact same phrase every time.'
+                fout: 'Using only 1–2 generic triggers. Claude will miss the skill or activate it for the wrong request.',
+                waarom: 'Trigger design is crucial for reliable skill recognition. A skill with 5+ varied triggers performs more reliably than a skill with only 2 generic ones. This principle applies to all Claude skills.'
             },
             3: {
                 leert: 'Skillsets group the actions that together form a logical workflow. Does your skill not need Zoho data? Simply skip this section — the skill file works without it.',
@@ -4791,22 +4771,30 @@ Created on ${new Date().toLocaleDateString('en-GB')}
                 waarom: 'Claude doesn\'t improvise — it follows the instructions you provide. Explicit conditions prevent unexpected behaviour in edge cases you didn\'t anticipate.'
             },
             5: {
-                leert: 'Guardrails determine how autonomously Claude operates. Start strict and loosen up once the skill has proven reliable.',
+                leert: 'Every skill has governance rules. Decide how autonomously Claude operates and which actions always require confirmation before executing.',
                 tips: [
-                    'New skill? Enable "Confirm before write actions" — you\'ll see what Claude is about to do before it happens.',
-                    'Always test in Sandbox before switching to Production. Production data is not reversible.'
+                    'New skill? Enable "Confirm before write actions" — Claude will show you what it is about to do before it happens.',
+                    'Always test in Sandbox before switching to Production. Production data is not reversible.',
+                    'Read-only mode is useful for reporting and lookup skills where no data should be changed.'
                 ],
-                fout: 'Running in production without confirmation from day one. If there\'s an error in your step description, Claude will have already changed data.',
-                waarom: 'Confirmation is a temporary safety net until you fully trust the skill. Ask yourself: what\'s the risk, how often does this run, are the actions reversible?'
+                fout: 'Running in production without confirmation from day one. If there is an error in your step description, Claude will have already changed data.',
+                waarom: 'Confirmation is a temporary safety net until you fully trust the skill. Ask yourself: what is the risk, how often does this run, are the actions reversible?',
+                extra: [
+                    {
+                        titel: '🌍 Environments explained',
+                        tekst: 'Production — Live Zoho data. Use only when the skill is tested and trusted. Changes are real and may not be reversible.\n\nSandbox — A copy of your Zoho environment for safe testing. No impact on live data. Recommended for new skills.\n\nDevelopment — For local or early-stage testing. Use when building and iterating before moving to Sandbox.'
+                    }
+                ]
             },
             6: {
-                leert: 'The SKILL.md file contains all the instructions you just configured: triggers, Zoho actions, execution steps, and guardrails. Upload it to Claude and activate the Zoho Connector.',
+                leert: 'Review your SKILL.md and download it. Upload the file to Claude via Settings → Skills, then activate the Zoho Connector to make it live.',
                 tips: [
-                    'Test immediately after uploading with one trigger: check that Claude recognises the skill correctly.',
-                    'You can always open the .md file in a text editor and adjust it manually.'
+                    'Test immediately after uploading with one trigger — check that Claude recognises the skill correctly.',
+                    'You can open the .md file in any text editor and adjust it manually at any time.',
+                    'Skills are living documents — iterate freely after your first test.'
                 ],
                 fout: null,
-                waarom: 'Skills are living documents — iterate freely after your first test. The quality of the file is determined by you; the builder gives it structure.',
+                waarom: 'The quality of the skill is determined by the inputs you provided. The builder gives it structure. The more specific your triggers and steps, the more reliably the skill performs.',
                 extra: [
                     {
                         titel: '🔧 Editing your skill',
