@@ -1790,26 +1790,30 @@
 
         /* Layout: main met margin-rechts, sidebar absoluut gepositioneerd */
         .adv-body-row {
-            position: relative;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 24px;
         }
         .adv-main {
-            margin-right: 300px;
+            flex: 1;
+            min-width: 0;
         }
         .adv-sidebar {
-            position: absolute;
-            top: 40px;
-            right: 0;
             width: 280px;
+            flex-shrink: 0;
             display: flex;
             flex-direction: column;
             gap: 12px;
+            position: sticky;
+            top: 80px;
         }
         /* Leermodus uit: verberg sidebar, geef main volle breedte */
         .leermodus-off .adv-sidebar {
             display: none !important;
         }
         .leermodus-off .adv-main {
-            margin-right: 0;
+            flex: 1;
         }
 
         /* Fallback toggle: alleen zichtbaar als sidebar verborgen is */
