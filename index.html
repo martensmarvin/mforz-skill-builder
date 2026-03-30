@@ -1544,7 +1544,7 @@
         
 
         /* Leermodus toggle in sidebar */
-        .sidebar-leermodus {
+        .info-mode {
             background: #f0fdf4;
             border: 1.5px solid #86efac;
             border-radius: 10px;
@@ -1553,25 +1553,25 @@
             user-select: none;
             transition: background 0.15s;
         }
-        .sidebar-leermodus:hover { background: #dcfce7; }
-        .sidebar-leermodus-header {
+        .info-mode:hover { background: #dcfce7; }
+        .info-mode-header {
             display: flex;
             align-items: center;
             gap: 8px;
             margin-bottom: 4px;
         }
-        .sidebar-leermodus-title {
+        .info-mode-title {
             font-size: 13px;
             font-weight: 700;
             color: #166534;
             flex: 1;
         }
-        .sidebar-leermodus-sub {
+        .info-mode-sub {
             font-size: 11px;
             color: #4ade80;
             margin-bottom: 0;
         }
-        .sidebar-toggle {
+        .info-toggle {
             width: 34px;
             height: 18px;
             background: #86efac;
@@ -1580,7 +1580,7 @@
             transition: background 0.2s;
             flex-shrink: 0;
         }
-        .sidebar-toggle::after {
+        .info-toggle::after {
             content: '';
             position: absolute;
             width: 14px;
@@ -1592,14 +1592,14 @@
             transition: left 0.2s;
             box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
-        .panel-off .sidebar-leermodus {
+        .panel-off .info-mode {
             background: var(--background);
             border-color: var(--border);
         }
-        .panel-off .sidebar-leermodus-title { color: var(--text-muted); }
-        .panel-off .sidebar-leermodus-sub { color: var(--text-muted); }
-        .panel-off .sidebar-toggle { background: var(--border); }
-        .panel-off .sidebar-toggle::after { left: 2px; }
+        .panel-off .info-mode-title { color: var(--text-muted); }
+        .panel-off .info-mode-sub { color: var(--text-muted); }
+        .panel-off .info-toggle { background: var(--border); }
+        .panel-off .info-toggle::after { left: 2px; }
 
         /* Tutorial card in sidebar */
         .info-tutorial {
@@ -1806,8 +1806,12 @@
             gap: 12px;
         }
         /* Leermodus uit: verberg sidebar, geef main volle breedte */
-        /* sidebar always visible */
-
+        .panel-off .info-panel {
+            display: none !important;
+        }
+        .panel-off .adv-main {
+            margin-right: 0;
+        }
 
         /* Fallback toggle: alleen zichtbaar als sidebar verborgen is */
         .mode-switch-alt {
@@ -2277,7 +2281,10 @@
                     <div class="step-header">
                         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
                             <div class="step-number" style="margin-bottom:0;">Step 1 of 6</div>
-                            
+                            <div class="mode-switch mode-switch-alt" onclick="togglePanel()">
+                                <span class="mode-switch-label">Learning mode</span>
+                                <div class="mode-switch-switch"></div>
+                            </div>
                         </div>
                         <h2 class="step-title">What does this skill do?</h2>
                         <p class="step-description">Describe the Zoho task you want Claude to learn. A skill is an instruction file that tells Claude when and how to execute a specific Zoho process.</p>
@@ -2341,7 +2348,10 @@
                     <div class="step-header">
                         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
                             <div class="step-number" style="margin-bottom:0;">Step 2 of 6</div>
-                            
+                            <div class="mode-switch mode-switch-alt" onclick="togglePanel()">
+                                <span class="mode-switch-label">Learning mode</span>
+                                <div class="mode-switch-switch"></div>
+                            </div>
                         </div>
                         <h2 class="step-title">How does Claude recognise this skill?</h2>
                         <p class="step-description">Triggers are the phrases that activate this skill. Teach Claude to recognise when you want to use it.</p>
@@ -2396,7 +2406,10 @@
                     <div class="step-header">
                         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
                             <div class="step-number" style="margin-bottom:0;">Step 3 of 6</div>
-                            
+                            <div class="mode-switch mode-switch-alt" onclick="togglePanel()">
+                                <span class="mode-switch-label">Learning mode</span>
+                                <div class="mode-switch-switch"></div>
+                            </div>
                         </div>
                         <h2 class="step-title">Which Zoho actions does this skill need?</h2>
                         <p class="step-description">Choose a skillset that matches your workflow. The relevant actions are selected automatically. You can refine further if needed.</p>
@@ -2492,7 +2505,10 @@
                     <div class="step-header">
                         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
                             <div class="step-number" style="margin-bottom:0;">Step 4 of 6</div>
-                            
+                            <div class="mode-switch mode-switch-alt" onclick="togglePanel()">
+                                <span class="mode-switch-label">Learning mode</span>
+                                <div class="mode-switch-switch"></div>
+                            </div>
                         </div>
                         <h2 class="step-title">What are the execution steps?</h2>
                         <p class="step-description">Skills contain logic. Describe step by step what Claude should do when this skill is triggered.</p>
@@ -2536,7 +2552,10 @@
                     <div class="step-header">
                         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
                             <div class="step-number" style="margin-bottom:0;">Step 5 of 6</div>
-                            
+                            <div class="mode-switch mode-switch-alt" onclick="togglePanel()">
+                                <span class="mode-switch-label">Learning mode</span>
+                                <div class="mode-switch-switch"></div>
+                            </div>
                         </div>
                         <h2 class="step-title">What guardrails apply?</h2>
                         <p class="step-description">Every skill has governance rules. Decide how autonomously this skill can operate and which actions always require confirmation.</p>
@@ -2620,8 +2639,8 @@
                         <div class="step-header">
                             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
                                 <div class="step-number" style="margin-bottom:0;">Step 6 of 6</div>
-                                <div class="mode-switch mode-switch-alt" onclick="toggleSidebar()">
-                                    <span class="mode-switch-label">Uitleg</span>
+                                <div class="mode-switch mode-switch-alt" onclick="togglePanel()">
+                                    <span class="mode-switch-label">Learning mode</span>
                                     <div class="mode-switch-switch"></div>
                                 </div>
                             </div>
@@ -2733,7 +2752,10 @@
 
             <div class="info-panel" id="info-panel">
                 <!-- Toggle bovenaan de sidebar -->
-                
+                <div class="mode-switch" onclick="togglePanel()" style="justify-content:space-between;">
+                    <span class="mode-switch-label">Learning mode</span>
+                    <div class="mode-switch-switch"></div>
+                </div>
 
                 <!-- Tutorial voor huidige stap -->
                 <div class="info-tutorial" id="info-tutorial">
@@ -4694,7 +4716,7 @@ Created on ${new Date().toLocaleDateString('en-GB')}
         }
 
         // ── Leermodus ──────────────────────────────────────
-        let sidebarActive = true; // always on
+        let panelActive = true;
 
         // ── Tutorial content per stap ──────────────────────
         // Fixed 4-category structure per step: leert / tips / fout / waarom
@@ -4805,7 +4827,19 @@ Created on ${new Date().toLocaleDateString('en-GB')}
             const learnCard = document.getElementById('info-learn');
             if (learnCard) learnCard.classList.add('hidden-learn');
         }
-
+        function togglePanel() {
+            panelActive = !panelActive;
+            const advMode = document.getElementById('advanced-mode');
+            // CSS handles sidebar show/hide via .panel-off class
+            // and inline toggle switch via .panel-off .mode-switch-switch
+            if (panelActive) {
+                advMode.classList.remove('panel-off');
+                // Re-render sidebar tutorial for current step
+                updateSidebarTutorial(currentStep);
+            } else {
+                advMode.classList.add('panel-off');
+            }
+        }
 
         // ── Use-case pill selected state ───────────────────
         function selectQuickUseCaseAndMark(type) {
