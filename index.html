@@ -1824,12 +1824,18 @@
             display: flex !important;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 768px) {
+            .adv-body-row {
+                flex-direction: column;
+            }
             .adv-main {
-                margin-right: 0;
+                width: 100%;
             }
             .adv-sidebar {
-                display: none !important;
+                width: 260px;
+                position: sticky;
+                top: 80px;
+                display: flex !important;
             }
             .mobile-help-toggle {
                 display: flex;
