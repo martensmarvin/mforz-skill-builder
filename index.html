@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MFORZ Skill Builder | SKILL.md for Claude + Zoho One</title>
     <meta name="description" content="Build a SKILL.md file for Claude AI and Zoho One automation. Describe your workflow, download the skill file, and upload it directly into Claude.">
-    <link rel="icon" href="https://mforz.com/wp-content/uploads/2024/09/cropped-transfer-e1543249783198-5-1.png" type="image/png">
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2025,14 +2025,40 @@
                 width: 100% !important;
             }
         }
+
+        .hero-process-strip {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr auto 1fr;
+            align-items: center;
+            gap: 0;
+            margin-top: 36px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+        }
+        .hero-process-arrow {
+            width: 32px;
+            text-align: center;
+            color: var(--border);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        @media (max-width: 540px) {
+            .hero-process-strip {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+            .hero-process-arrow {
+                display: none;
+            }
+        }
+
         @media (max-width: 600px) {
-    .mode-card:nth-child(2) {
-        display: none !important;
-    }
-    .mode-cards {
-        grid-template-columns: 1fr !important;
-    }
-}
+            .mode-card:nth-child(2) {
+                display: none !important;
+            }
+            .mode-cards {
+                grid-template-columns: 1fr !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2061,6 +2087,24 @@
                         <button onclick="startBuilding()" style="background: var(--accent); color: white; border: none; padding: 18px 48px; border-radius: 12px; font-size: 18px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(244, 144, 0, 0.3); transition: all 0.2s ease;">
                             Build my skill →
                         </button>
+                    </div>
+
+                    <!-- 3-step process strip -->
+                    <div class="hero-process-strip">
+                        <div style="text-align: center; padding: 0 8px;">
+                            <div style="font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px;">Build</div>
+                            <div style="font-size: 12px; color: var(--text-muted); line-height: 1.4;">Create a clear skill</div>
+                        </div>
+                        <div class="hero-process-arrow">→</div>
+                        <div style="text-align: center; padding: 0 8px;">
+                            <div style="font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px;">Connect</div>
+                            <div style="font-size: 12px; color: var(--text-muted); line-height: 1.4;">Link Claude to Zoho</div>
+                        </div>
+                        <div class="hero-process-arrow">→</div>
+                        <div style="text-align: center; padding: 0 8px;">
+                            <div style="font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px;">Activate</div>
+                            <div style="font-size: 12px; color: var(--text-muted); line-height: 1.4;">Use it in your workflow</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -5110,18 +5154,5 @@ Created on ${new Date().toLocaleDateString('en-GB')}
     <div class="mforz-footer-line">
         MFORZ Skill Generator · <a href="https://mforz.com" target="_blank">mforz.com</a> · Claude AI + Zoho One for SMBs
     </div>
-    <script>
-  function sendHeight() {
-    var height = document.documentElement.scrollHeight;
-    window.parent.postMessage({ type: 'resize', height: height }, '*');
-  }
-
-  // Stuur hoogte zodra pagina geladen is
-  window.addEventListener('load', sendHeight);
-
-  // Stuur hoogte bij elke content-verandering
-  var observer = new ResizeObserver(sendHeight);
-  observer.observe(document.body);
-</script>
 </body>
 </html>
