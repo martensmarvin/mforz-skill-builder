@@ -90,7 +90,7 @@
         }
         
         .header h1 {
-            font-size: 48px !important;
+            font-size: 56px !important;
             font-weight: 700;
             color: var(--text-dark);
             margin-bottom: 20px;
@@ -159,7 +159,7 @@
                 padding: 40px 24px 40px 24px;
             }
             .header h1 {
-                font-size: 36px !important;
+                font-size: 40px !important;
             }
             .header-capabilities {
                 grid-template-columns: 1fr;
@@ -865,7 +865,7 @@
             flex-shrink: 0;
         }
         .btn-download-primary {
-            padding: 12px 22px;
+            padding: 13px 20px;
             font-size: 14px;
             font-weight: 700;
             background: var(--accent);
@@ -876,7 +876,9 @@
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
+            width: 220px;
             white-space: nowrap;
         }
         .btn-download-primary:hover {
@@ -885,8 +887,8 @@
             transform: translateY(-1px);
         }
         .btn-review-secondary {
-            padding: 12px 18px;
-            font-size: 13px;
+            padding: 13px 20px;
+            font-size: 14px;
             font-weight: 600;
             background: white;
             color: var(--primary);
@@ -896,7 +898,9 @@
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 7px;
+            width: 220px;
             white-space: nowrap;
         }
         .btn-review-secondary:hover {
@@ -1942,6 +1946,85 @@
                 gap: 8px;
             }
         }
+
+        .quick-skill-tiles {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .quick-skill-tile {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.18s ease;
+            position: relative;
+        }
+        .quick-skill-tile:hover {
+            border-color: var(--accent);
+            box-shadow: 0 2px 10px rgba(244,144,0,0.12);
+            transform: translateY(-1px);
+        }
+        .quick-skill-tile.selected {
+            border-color: var(--primary);
+            background: rgba(47,79,111,0.04);
+            box-shadow: 0 0 0 3px rgba(47,79,111,0.10);
+        }
+        .quick-skill-tile-checkmark {
+            display: none;
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            width: 22px;
+            height: 22px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: 700;
+            align-items: center;
+            justify-content: center;
+        }
+        .quick-skill-tile.selected .quick-skill-tile-checkmark { display: flex; }
+        .quick-skill-tile-header {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+            padding-right: 28px;
+        }
+        .quick-skill-tile-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        .quick-skill-tile-meta {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 6px;
+        }
+        .quick-skill-tile-service {
+            font-size: 10px;
+            font-weight: 600;
+            color: white;
+            background: var(--primary);
+            padding: 2px 8px;
+            border-radius: 50px;
+        }
+        @media (max-width: 600px) {
+            .quick-skill-tiles { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .btn-download-primary,
+            .btn-review-secondary {
+                width: 100% !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1950,37 +2033,19 @@
         <div id="landing-page">
             <div class="header">
                 <div class="header-content">
-                    <span class="header-eyebrow">Skill Builder for Claude + Zoho One</span>
-                    <h1>Build and understand <span class="highlight">Claude skills</span> for Zoho One</h1>
+                    <span class="header-eyebrow">CLAUDE + ZOHO ONE</span>
+                    <h1>Skill Builder for <span class="highlight">Claude + Zoho One</span></h1>
                     <p class="header-intro">Built for Zoho users and consultants.</p>
                     
-                    <div class="header-capabilities">
-                        <div class="capability-item">
-                            <div class="capability-icon">✓</div>
-                            <div class="capability-text">Generate a working SKILL.md for CRM, Books, Desk, Mail, or Analytics</div>
+                    <div style="display:flex;flex-direction:column;gap:8px;margin-top:24px;">
+                        <div style="display:flex;align-items:center;gap:10px;font-size:15px;color:var(--text-dark);">
+                            <span style="color:var(--accent);font-weight:700;">✓</span> Create a clear SKILL.md for your Zoho workflow
                         </div>
-                        <div class="capability-item">
-                            <div class="capability-icon">✓</div>
-                            <div class="capability-text">Understand what triggers, actions, and guardrails do — and why they matter</div>
+                        <div style="display:flex;align-items:center;gap:10px;font-size:15px;color:var(--text-dark);">
+                            <span style="color:var(--accent);font-weight:700;">✓</span> Control triggers, actions, and guardrails
                         </div>
-                        <div class="capability-item">
-                            <div class="capability-icon">✓</div>
-                            <div class="capability-text">Choose exactly which Zoho actions Claude can perform — no more, no less</div>
-                        </div>
-                        <div class="capability-item">
-                            <div class="capability-icon">✓</div>
-                            <div class="capability-text">Download, upload to Claude, and activate your skill via the Zoho Connector</div>
-                        </div>
-                    </div>
-                    
-                    <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left: 4px solid var(--primary); padding: 20px; border-radius: 12px; margin-top: 32px; margin-bottom: 32px;">
-                        <div style="font-weight: 600; color: var(--primary); margin-bottom: 12px; font-size: 15px;">💡 How it works</div>
-                        <div style="font-size: 14px; color: var(--text-dark); line-height: 1.7;">
-                            <strong>Step 1</strong> — Describe your Zoho workflow in the builder<br>
-                            <strong>Step 2</strong> — Download the generated <code style="background:#e2e8f0;padding:1px 5px;border-radius:3px;">SKILL.md</code> file<br>
-                            <strong>Step 3</strong> — Upload it to Claude via Settings → Skills<br>
-                            <strong>Step 4</strong> — Activate the Zoho Connector and test your skill<br><br>
-                            The builder does not create live workflows — it generates an instruction file that teaches Claude how your Zoho process works.
+                        <div style="display:flex;align-items:center;gap:10px;font-size:15px;color:var(--text-dark);">
+                            <span style="color:var(--accent);font-weight:700;">✓</span> Download, upload, and activate in Claude
                         </div>
                     </div>
                     
@@ -1988,7 +2053,6 @@
                         <button onclick="startBuilding()" style="background: var(--accent); color: white; border: none; padding: 18px 48px; border-radius: 12px; font-size: 18px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(244, 144, 0, 0.3); transition: all 0.2s ease;">
                             Build my skill →
                         </button>
-                        <p style="margin-top: 14px; font-size: 12px; color: var(--text-muted);">No account needed · Download instantly · Built by <a href="https://mforz.com" target="_blank" style="color: var(--primary); font-weight: 600; text-decoration: none;">MFORZ</a></p>
                     </div>
                 </div>
             </div>
@@ -2010,7 +2074,7 @@
                 
                 <div class="mode-card" onclick="startAdvancedMode()">
                     <div class="mode-card-label">Complete Designer</div>
-                    <h3>Custom Made (Recommended)</h3>
+                    <h3>Custom Made (Advanced)</h3>
                     <p class="mode-card-desc">6 steps · 8 minutes</p>
                     <!-- Corner ribbon rechtsonder: leermodus indicator -->
                     <div class="mode-card-learn-ribbon"></div>
@@ -2037,7 +2101,7 @@
                     </div>
                     <div class="quick-progress-step" data-step="2">
                         <div class="quick-progress-number">2</div>
-                        <div class="quick-progress-text">Triggers & output</div>
+                        <div class="quick-progress-text">Triggers & Output</div>
                     </div>
                     <div class="quick-progress-step" data-step="3">
                         <div class="quick-progress-number">3</div>
@@ -2057,13 +2121,55 @@
 
                     <div class="form-group">
                         <label class="form-label">Common skills</label>
-                        <div class="use-case-pills">
-                            <div class="use-case-pill" onclick="selectQuickUseCaseAndMark('lead')">🎯 Add lead to CRM</div>
-                            <div class="use-case-pill" onclick="selectQuickUseCaseAndMark('contact')">👤 Look up contact</div>
-                            <div class="use-case-pill" onclick="selectQuickUseCaseAndMark('afspraak')">📅 Schedule a meeting</div>
-                            <div class="use-case-pill" onclick="selectQuickUseCaseAndMark('email')">✉️ Send email from CRM</div>
-                            <div class="use-case-pill" onclick="selectQuickUseCaseAndMark('deal')">💼 Create a deal</div>
-                            <div class="use-case-pill" onclick="selectQuickUseCaseAndMark('taak')">✅ Create a task</div>
+                        <div class="quick-skill-tiles">
+                            <div class="quick-skill-tile" onclick="selectQuickUseCaseAndMark('lead')">
+                                <div class="quick-skill-tile-checkmark">✓</div>
+                                <div class="quick-skill-tile-header">Add lead to CRM</div>
+                                <div class="quick-skill-tile-desc">Add a new lead with company enrichment and sales rep assignment.</div>
+                                <div class="quick-skill-tile-meta">
+                                    <span class="quick-skill-tile-service">Zoho CRM</span>
+                                </div>
+                            </div>
+                            <div class="quick-skill-tile" onclick="selectQuickUseCaseAndMark('contact')">
+                                <div class="quick-skill-tile-checkmark">✓</div>
+                                <div class="quick-skill-tile-header">Look up contact</div>
+                                <div class="quick-skill-tile-desc">Search and retrieve full contact details including deals and interactions.</div>
+                                <div class="quick-skill-tile-meta">
+                                    <span class="quick-skill-tile-service">Zoho CRM</span>
+                                </div>
+                            </div>
+                            <div class="quick-skill-tile" onclick="selectQuickUseCaseAndMark('afspraak')">
+                                <div class="quick-skill-tile-checkmark">✓</div>
+                                <div class="quick-skill-tile-header">Schedule a meeting</div>
+                                <div class="quick-skill-tile-desc">Schedule a meeting and send invitations automatically.</div>
+                                <div class="quick-skill-tile-meta">
+                                    <span class="quick-skill-tile-service">Zoho Calendar</span>
+                                </div>
+                            </div>
+                            <div class="quick-skill-tile" onclick="selectQuickUseCaseAndMark('email')">
+                                <div class="quick-skill-tile-checkmark">✓</div>
+                                <div class="quick-skill-tile-header">Send email from CRM</div>
+                                <div class="quick-skill-tile-desc">Send a tracked email from a CRM record with contact linkage.</div>
+                                <div class="quick-skill-tile-meta">
+                                    <span class="quick-skill-tile-service">Zoho CRM</span>
+                                </div>
+                            </div>
+                            <div class="quick-skill-tile" onclick="selectQuickUseCaseAndMark('deal')">
+                                <div class="quick-skill-tile-checkmark">✓</div>
+                                <div class="quick-skill-tile-header">Create a deal</div>
+                                <div class="quick-skill-tile-desc">Create a new deal and link it to an existing contact or account.</div>
+                                <div class="quick-skill-tile-meta">
+                                    <span class="quick-skill-tile-service">Zoho CRM</span>
+                                </div>
+                            </div>
+                            <div class="quick-skill-tile" onclick="selectQuickUseCaseAndMark('taak')">
+                                <div class="quick-skill-tile-checkmark">✓</div>
+                                <div class="quick-skill-tile-header">Create a task</div>
+                                <div class="quick-skill-tile-desc">Create and assign a task to a team member with deadline and priority.</div>
+                                <div class="quick-skill-tile-meta">
+                                    <span class="quick-skill-tile-service">Zoho CRM</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -2091,7 +2197,7 @@
                 <div class="step-content">
                     <div class="step-header">
                         <div class="step-number">Step 2 of 3</div>
-                        <h2 class="step-title">Triggers & output</h2>
+                        <h2 class="step-title">Triggers & Output</h2>
                         
                     </div>
 
@@ -2165,13 +2271,14 @@
                         </div>
                     </div>
                     <!-- Primary CTA -->
-                    <button onclick="downloadQuickSkill()" style="width:100%; padding:15px 24px; font-size:15px; font-weight:700; background:var(--accent); color:white; border:none; border-radius:var(--radius-sm); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:10px; transition:all 0.2s ease;">
-                        <span style="font-size:18px;">📥</span> Download SKILL.md
-                    </button>
-                    <!-- Secondary CTA -->
-                    <button onclick="sendForReview()" style="width:100%; padding:12px 24px; font-size:13px; font-weight:600; background:white; color:var(--primary); border:1.5px solid var(--border); border-radius:var(--radius-sm); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; transition:all 0.2s ease;">
-                        <span>🔍</span> Request a review
-                    </button>
+                    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:0;">
+                        <button onclick="downloadQuickSkill()" style="width:220px; padding:13px 20px; font-size:14px; font-weight:700; background:var(--accent); color:white; border:none; border-radius:var(--radius-sm); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; transition:all 0.2s ease;">
+                            📥 Download SKILL.md
+                        </button>
+                        <button onclick="sendForReview()" style="width:220px; padding:13px 20px; font-size:14px; font-weight:600; background:white; color:var(--primary); border:1.5px solid var(--border); border-radius:var(--radius-sm); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; transition:all 0.2s ease;">
+                            🔍 Request a review
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Activation steps -->
@@ -2233,7 +2340,7 @@
                     </div>
                     <div class="progress-step" data-step="3">
                         <div class="progress-number">3</div>
-                        <div class="progress-label">Zoho actions</div>
+                        <div class="progress-label">Zoho Actions</div>
                     </div>
                     <div class="progress-step" data-step="4">
                         <div class="progress-number">4</div>
@@ -3824,7 +3931,7 @@ Created on ${new Date().toLocaleDateString('en-GB')}
             if (quickFill) quickFill.style.width = '0%';
 
             // Reset selected use-case pills
-            document.querySelectorAll('.use-case-pill').forEach(p => p.classList.remove('selected'));
+            document.querySelectorAll('.use-case-pill, .quick-skill-tile').forEach(p => p.classList.remove('selected'));
 
             // Reset skillset selection
             document.querySelectorAll('.mcp-option').forEach(el => el.classList.remove('selected'));
@@ -3845,6 +3952,9 @@ Created on ${new Date().toLocaleDateString('en-GB')}
             // Reset forms
             document.querySelectorAll('input[type="text"], input[type="email"], textarea').forEach(el => el.value = '');
             document.querySelectorAll('input[type="checkbox"]').forEach(el => el.checked = false);
+            // Always keep MFORZ attribution checked by default
+            const brandingCb = document.getElementById('branding-attribution');
+            if (brandingCb) brandingCb.checked = true;
 
             // Reset trigger lists
             const triggerList = document.getElementById('trigger-list');
@@ -4520,48 +4630,33 @@ Created on ${new Date().toLocaleDateString('en-GB')}
             `;
             
             modal.innerHTML = `
-                <div style="background: white; border-radius: 16px; max-width: 560px; width: 100%; padding: 32px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);">
+                <div style="background: white; border-radius: 16px; max-width: 480px; width: 100%; padding: 32px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);">
                     <div style="text-align: center; margin-bottom: 24px;">
-                        <div style="font-size: 48px; margin-bottom: 16px;">🔍</div>
-                        <h2 style="font-size: 24px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px;">Request a review</h2>
-                        <p style="color: var(--text-muted); line-height: 1.6;">Want the MFORZ team to review your skill before you activate it? Leave your name and email address — we'll get back to you within 1–2 business days.</p>
+                        <h2 style="font-size: 22px; font-weight: 700; color: var(--accent); margin-bottom: 10px;">Skill Quality Score</h2>
+                        <p style="color: var(--text-muted); line-height: 1.6; font-size: 14px;">Send your skill for review and receive a Skill Quality Score by email.<br>Your score is based on trigger quality, edge case coverage, guardrails, and production readiness.<br><br>MFORZ will contact you after the review.</p>
                     </div>
                     
-                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin-bottom: 24px;">
-                        <p style="font-size: 14px; color: var(--text-dark); margin-bottom: 12px;">We'll review your skill within <strong>1–2 business days</strong> and give feedback on:</p>
-                        <ul style="margin-left: 20px; color: var(--text-dark); line-height: 1.8; font-size: 14px;">
-                            <li>Trigger quality — does Claude recognise the skill reliably?</li>
-                            <li>Edge case coverage — are unexpected situations handled well?</li>
-                            <li>Guardrails — are the settings appropriate for your situation?</li>
-                            <li>Readiness — is the skill ready for production use?</li>
-                        </ul>
-                        <p style="font-size: 12px; color: var(--text-muted); margin-top: 12px; line-height: 1.5;">Your skill is not stored in a database — we only receive a copy of the content to carry out the review.</p>
+                    <div style="margin-bottom: 14px;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 6px; color: var(--text-dark); font-size: 14px;">Name</label>
+                        <input type="text" id="review-name" placeholder="Your name" style="width: 100%; padding: 11px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
                     </div>
                     
-                    <div style="margin-bottom: 16px;">
-                        <label style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-dark);">Name</label>
-                        <input type="text" id="review-name" placeholder="Your name" style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
+                    <div style="margin-bottom: 14px;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 6px; color: var(--text-dark); font-size: 14px;">Company</label>
+                        <input type="text" id="review-company" placeholder="Your company" style="width: 100%; padding: 11px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
                     </div>
                     
-                    <div style="margin-bottom: 16px;">
-                        <label style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-dark);">Company</label>
-                        <input type="text" id="review-company" placeholder="Your company" style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
+                    <div style="margin-bottom: 22px;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 6px; color: var(--text-dark); font-size: 14px;">Email address</label>
+                        <input type="email" id="review-email" placeholder="you@company.com" style="width: 100%; padding: 11px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
                     </div>
                     
-                    <div style="margin-bottom: 24px;">
-                        <label style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-dark);">Email address</label>
-                        <input type="email" id="review-email" placeholder="you@company.com" style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
-                    </div>
-                    
-                    <button onclick="submitForReview()" style="width: 100%; background: var(--primary); color: white; border: none; padding: 14px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 16px;">
-                        Request review →
+                    <button onclick="submitForReview()" style="width: 100%; background: var(--primary); color: white; border: none; padding: 13px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 15px;">
+                        Submit for review →
                     </button>
-
-                    <button onclick="closeReviewModal()" style="width: 100%; background: transparent; color: var(--text-muted); border: none; padding: 10px 24px; border-radius: 8px; font-size: 14px; cursor: pointer; margin-top: 8px;">
+                    <button onclick="closeReviewModal()" style="width: 100%; background: transparent; color: var(--text-muted); border: none; padding: 10px 24px; border-radius: 8px; font-size: 13px; cursor: pointer; margin-top: 6px;">
                         Cancel
                     </button>
-                    
-                    <p style="margin-top: 12px; font-size: 12px; color: var(--text-muted); text-align: center;">You can also download and use the skill yourself — the review is optional.</p>
                 </div>
             `;
             
@@ -4865,7 +4960,7 @@ Created on ${new Date().toLocaleDateString('en-GB')}
         // ── Use-case pill selected state ───────────────────
         function selectQuickUseCaseAndMark(type) {
             // Remove selected from all pills
-            document.querySelectorAll('.use-case-pill').forEach(p => p.classList.remove('selected'));
+            document.querySelectorAll('.use-case-pill, .quick-skill-tile').forEach(p => p.classList.remove('selected'));
             // Mark the clicked pill
             const pills = document.querySelectorAll('.use-case-pill');
             pills.forEach(p => {
@@ -4981,4 +5076,4 @@ Created on ${new Date().toLocaleDateString('en-GB')}
         MFORZ Skill Generator · <a href="https://mforz.com" target="_blank">mforz.com</a> · Claude AI + Zoho One for SMBs
     </div>
 </body>
-</html>ƒ
+</html>
