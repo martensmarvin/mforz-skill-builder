@@ -5102,5 +5102,18 @@ Created on ${new Date().toLocaleDateString('en-GB')}
     <div class="mforz-footer-line">
         MFORZ Skill Generator · <a href="https://mforz.com" target="_blank">mforz.com</a> · Claude AI + Zoho One for SMBs
     </div>
+    <script>
+  function sendHeight() {
+    var height = document.documentElement.scrollHeight;
+    window.parent.postMessage({ type: 'resize', height: height }, '*');
+  }
+
+  // Stuur hoogte zodra pagina geladen is
+  window.addEventListener('load', sendHeight);
+
+  // Stuur hoogte bij elke content-verandering
+  var observer = new ResizeObserver(sendHeight);
+  observer.observe(document.body);
+</script>
 </body>
 </html>
