@@ -1,0 +1,12 @@
+{
+  "name": "mforz-skill-builder",
+  "version": "1.0.0",
+  "description": "SKILL.md builder for Claude + Zoho One",
+  "type": "module",
+  "scripts": {
+    "build": "echo 'Static HTML project - no build required'"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  }
+}
