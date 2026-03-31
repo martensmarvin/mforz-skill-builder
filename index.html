@@ -4630,31 +4630,58 @@ Created on ${new Date().toLocaleDateString('en-GB')}
             `;
             
             modal.innerHTML = `
-                <div style="background: white; border-radius: 16px; max-width: 480px; width: 100%; padding: 32px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);">
-                    <div style="text-align: center; margin-bottom: 24px;">
-                        <h2 style="font-size: 22px; font-weight: 700; color: var(--accent); margin-bottom: 10px;">Skill Quality Score</h2>
-                        <p style="color: var(--text-muted); line-height: 1.6; font-size: 14px;">Send your skill for review and receive a Skill Quality Score by email.<br>Your score is based on trigger quality, edge case coverage, guardrails, and production readiness.<br><br>MFORZ will contact you after the review.</p>
+                <div style="background: white; border-radius: 16px; max-width: 480px; width: 100%; padding: 28px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); max-height: 92vh; overflow-y: auto;">
+                    
+                    <h2 style="font-size: 20px; font-weight: 700; color: var(--accent); margin-bottom: 4px; text-align: center;">Skill Quality Score</h2>
+                    <p style="color: var(--text-muted); font-size: 13px; text-align: center; margin-bottom: 16px; line-height: 1.5;">Submit your skill and receive your score by email.<br>MFORZ will contact you after the review.</p>
+
+                    <!-- Preview card -->
+                    <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+                        <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 2px;">
+                            <span style="font-size: 28px; font-weight: 800; color: var(--primary); line-height: 1;">82</span>
+                            <span style="font-size: 14px; color: var(--text-muted); font-weight: 500;">/ 100</span>
+                        </div>
+                        <div style="font-size: 12px; font-weight: 600; color: var(--accent); margin-bottom: 12px;">Clear and production-minded</div>
+                        <div style="display: flex; flex-direction: column; gap: 6px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px;">
+                                <span style="color: var(--text-muted);">Trigger Quality</span>
+                                <span style="font-weight: 600; color: #166534; background: #f0fdf4; padding: 2px 8px; border-radius: 20px;">Strong</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px;">
+                                <span style="color: var(--text-muted);">Edge Cases</span>
+                                <span style="font-weight: 600; color: #92400e; background: #fffbeb; padding: 2px 8px; border-radius: 20px;">Moderate</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px;">
+                                <span style="color: var(--text-muted);">Guardrails</span>
+                                <span style="font-weight: 600; color: #166534; background: #f0fdf4; padding: 2px 8px; border-radius: 20px;">Strong</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px;">
+                                <span style="color: var(--text-muted);">Readiness</span>
+                                <span style="font-weight: 600; color: #1e40af; background: #eff6ff; padding: 2px 8px; border-radius: 20px;">Good</span>
+                            </div>
+                        </div>
+                        <div style="font-size: 10px; color: var(--text-muted); margin-top: 10px; padding-top: 8px; border-top: 1px solid #e2e8f0; text-align: center;">Example of the score you may receive by email</div>
+                    </div>
+
+                    <div style="margin-bottom: 12px;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 5px; color: var(--text-dark); font-size: 13px;">Name</label>
+                        <input type="text" id="review-name" placeholder="Your name" style="width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
                     </div>
                     
-                    <div style="margin-bottom: 14px;">
-                        <label style="display: block; font-weight: 600; margin-bottom: 6px; color: var(--text-dark); font-size: 14px;">Name</label>
-                        <input type="text" id="review-name" placeholder="Your name" style="width: 100%; padding: 11px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
+                    <div style="margin-bottom: 12px;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 5px; color: var(--text-dark); font-size: 13px;">Company</label>
+                        <input type="text" id="review-company" placeholder="Your company" style="width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
                     </div>
                     
-                    <div style="margin-bottom: 14px;">
-                        <label style="display: block; font-weight: 600; margin-bottom: 6px; color: var(--text-dark); font-size: 14px;">Company</label>
-                        <input type="text" id="review-company" placeholder="Your company" style="width: 100%; padding: 11px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
-                    </div>
-                    
-                    <div style="margin-bottom: 22px;">
-                        <label style="display: block; font-weight: 600; margin-bottom: 6px; color: var(--text-dark); font-size: 14px;">Email address</label>
-                        <input type="email" id="review-email" placeholder="you@company.com" style="width: 100%; padding: 11px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
+                    <div style="margin-bottom: 18px;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 5px; color: var(--text-dark); font-size: 13px;">Email address</label>
+                        <input type="email" id="review-email" placeholder="you@company.com" style="width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; box-sizing: border-box;">
                     </div>
                     
                     <button onclick="submitForReview()" style="width: 100%; background: var(--primary); color: white; border: none; padding: 13px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 15px;">
                         Submit for review →
                     </button>
-                    <button onclick="closeReviewModal()" style="width: 100%; background: transparent; color: var(--text-muted); border: none; padding: 10px 24px; border-radius: 8px; font-size: 13px; cursor: pointer; margin-top: 6px;">
+                    <button onclick="closeReviewModal()" style="width: 100%; background: transparent; color: var(--text-muted); border: none; padding: 9px 24px; border-radius: 8px; font-size: 13px; cursor: pointer; margin-top: 4px;">
                         Cancel
                     </button>
                 </div>
